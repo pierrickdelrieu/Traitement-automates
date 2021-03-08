@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class State {
 	
-	private String id; // '1' or 'A' 
+	private String id; // '1' or 'A'.
 	
 	private Map<String[], State> links; // keyword gives the state 
 
