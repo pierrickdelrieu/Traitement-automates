@@ -7,8 +7,8 @@ public class Language {
 
 	private List<String> dictionary; 
 	
-	public Language() {
-		this.dictionary = new ArrayList<String>();
+	public Language(int size) {
+		this.dictionary = new ArrayList<String>(size);
 	}
 	
 	public List<String> getDictionary() {
