@@ -2,11 +2,7 @@ package com.efrei.mathinfo.files;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
-
-import javax.swing.ListCellRenderer;
 
 import com.efrei.mathinfo.automates.Automate;
 import com.efrei.mathinfo.automates.Language;
@@ -22,7 +18,6 @@ public class FileReader {
 
 		Automate automate = new Automate();
 		Language language = null;
-		List<State> created = null;
 		int line = 0;
 		int transitions = 0;
 
@@ -36,7 +31,6 @@ public class FileReader {
 				automate.setLanguage(language);
 				break;
 			case 1:
-				created = new ArrayList<State>(Integer.valueOf(content)); // to store the created states 
 				break;
 			case 2:
 				loadStates(content, automate, StateType.ENTRY); // load the entries
@@ -55,11 +49,13 @@ public class FileReader {
 
 				if (!automate.containsStateID(values[0])) {
 					State state = new State(values[0]);
+					state.addType(StateType.COMMON);
 					automate.getStates().add(state);
 				}
 
 				if (!automate.containsStateID(values[1])) {
 					State state = new State(values[1]);
+					state.addType(StateType.COMMON);
 					automate.getStates().add(state);
 				}
 
@@ -78,11 +74,12 @@ public class FileReader {
 				}
 
 				break;
-
 			}
 
 			line++;
 		}
+		
+		scanner.close();
 
 		return automate;
 	}

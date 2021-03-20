@@ -3,7 +3,6 @@ package com.efrei.mathinfo;
 import java.io.FileNotFoundException;
 
 import com.efrei.mathinfo.automates.Automate;
-import com.efrei.mathinfo.automates.State;
 import com.efrei.mathinfo.files.FileReader;
 
 public class Main {
