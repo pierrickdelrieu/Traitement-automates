@@ -2,18 +2,19 @@ package com.efrei.mathinfo;
 
 import java.io.FileNotFoundException;
 
-import com.efrei.mathinfo.automates.Automate;
-import com.efrei.mathinfo.files.FileReader;
+import com.efrei.mathinfo.automates.Automaton;
+import com.efrei.mathinfo.io.FileReader;
 
 public class Main {
 
 	public static void main(String[] args) {
 		try {
-			Automate a = FileReader.createAutomateObject("/Users/benjaminlesieux/OneDrive/Bureau/git/Traitement-automates/com/efrei/mathinfo/test.txt");
+			// Creation of an Automaton instance
+			Automaton a = FileReader.createAutomateObject("src/com/efrei/mathinfo/aotomaton.txt");
 			
-			System.out.println(a);
+			System.out.println(a); // Display of the automaton with the toString method
 		
-		} catch (FileNotFoundException e) {
+		} catch (FileNotFoundException e) { // Error handling
 			e.printStackTrace();
 		}
 	}
