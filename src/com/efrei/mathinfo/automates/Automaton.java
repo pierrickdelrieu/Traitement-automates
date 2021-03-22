@@ -77,6 +77,10 @@ public class Automaton {
 		
 		return null; // if the state is not present in the automaton
 	}
+	
+	public Object[] getStatesByType(StateType type) {
+		return this.states.stream().filter(state -> state.getType().contains(type)).toArray();
+	}
 
 
 	@Override
@@ -91,13 +95,13 @@ public class Automaton {
 		result += this.states.size() + " états : " + Arrays.toString(this.states.toArray()) + "\n";
 		
 		// Inputs displays
-		Object[] entries = this.states.stream().filter(state -> state.getType().contains(StateType.ENTRY)).toArray();
+		Object[] entries = this.getStatesByType(StateType.ENTRY);
 		/*stream : allows you to use the filter method
 		* filter returns a list containing the filter conditions (<type> -> <filter conditions>)*/
 		result += entries.length + " entrées : " + Arrays.toString(entries) + "\n";
 
 		// Output displays
-		Object[] exits = this.states.stream().filter(state -> state.getType().contains(StateType.EXIT)).toArray();
+		Object[] exits = this.getStatesByType(StateType.EXIT);
 		result += exits.length + " sorties : " + Arrays.toString(exits) + "\n";
 
 		// Display of transitions
@@ -109,8 +113,6 @@ public class Automaton {
 			}
 		}
 		/*use of 'for each'*/
-		
-		
 		
 		return result;
 	}

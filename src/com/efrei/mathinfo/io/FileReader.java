@@ -57,7 +57,7 @@ public class FileReader {
 					automate.getStates().add(state);
 				}
 
-				// If the first state is not already created in the automaton
+				// If the second state is not already created in the automaton
 				if (!automate.containsStateID(values[1])) {
 					State state = new State(values[1]);
 					automate.getStates().add(state);
