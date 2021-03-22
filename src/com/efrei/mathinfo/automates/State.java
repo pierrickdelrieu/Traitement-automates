@@ -55,6 +55,11 @@ public class State {
 		this.types.add(type);
 	}
 
+	public void removeType(StateType type) {
+		if (this.types.contains(type)) {
+			this.types.remove(type);
+		}
+	}
 
 	@Override
 	public String toString() {

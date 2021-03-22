@@ -14,9 +14,8 @@ public class Main {
 			Automaton a = FileReader.createAutomateObject("src/com/efrei/mathinfo/automaton.txt");
 			
 			System.out.println(a); // Display of the automaton with the toString method
-			
-			System.out.println(Operations.isStandard(a));
-			System.out.println(Operations.isDeterministic(a));
+			Operations.standardize(a);
+			System.out.println(a);
 		
 		} catch (FileNotFoundException e) { // Error handling
 			e.printStackTrace();

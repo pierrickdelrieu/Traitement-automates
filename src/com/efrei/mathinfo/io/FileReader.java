@@ -47,7 +47,7 @@ public class FileReader {
 				automate.setNumTransitions(transitions);
 				break;
 			default: // The other lines contain the transitions
-				String[] word = content.split("[0-9]"); // When we have '01*9', the split returns '*'
+				String[] word = content.split("[0-9!-@]"); // When we have '01*9', the split returns '*'
 
 				values = content.split("[a-zA-Z*]"); // When we have '01*9', the split returns '01', '9'
 
