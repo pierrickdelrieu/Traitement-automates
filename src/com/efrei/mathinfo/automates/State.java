@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class State {
+public class State implements Cloneable {
 
 	// Instances
 	private String id; // '1' or 'A'.
@@ -23,7 +23,16 @@ public class State {
 		links = new HashMap<String, List<State>>();
 	}
 
+	private State(State state) {
+		this.id = state.getID();
+		this.types = state.getType();
+		this.links = state.getLinks();
+	}
 
+	public void setID(String id) {
+		this.id = id;
+	}
+	
 	// Read and write accessors
 	public String getID() {
 		return this.id;
@@ -64,5 +73,10 @@ public class State {
 	@Override
 	public String toString() {
 		return this.id;
+	}
+	
+	@Override
+	public State clone() {
+		return new State(this);
 	}
 }
