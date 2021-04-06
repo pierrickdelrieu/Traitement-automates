@@ -14,10 +14,16 @@ public class Main {
 			Automaton a = FileReader.createAutomateObject("src/com/efrei/mathinfo/automaton.txt");
 			
 			System.out.println(a); // Display of the automaton with the toString method
+			//Operations.standardize(a);
+			//System.out.println("standard -- ");
+			//System.out.println(a);
 			
-			System.out.println(Operations.isStandard(a));
-			System.out.println(Operations.isDeterministic(a));
-		
+			Operations.complete(a);
+			System.out.println("determined and completed -- ");
+			System.out.println(a);	
+			
+			Automaton b = Operations.getComplementary(a);
+			System.out.println(b);
 		} catch (FileNotFoundException e) { // Error handling
 			e.printStackTrace();
 		}

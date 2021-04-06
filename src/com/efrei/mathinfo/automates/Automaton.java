@@ -3,14 +3,14 @@ package com.efrei.mathinfo.automates;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
-public class Automaton {
+public class Automaton implements Cloneable {
 
 	// Attributes
 	private List<State> states;
 	private Alphabet alphabet;
 	private int numTransitions;
-
 
 	// Constructor
 	public Automaton() {
@@ -19,13 +19,17 @@ public class Automaton {
 	}
 	
 	public Automaton(List<State> states) {
-		this.states = List.copyOf(states);
+		this.states = new ArrayList<State>(states);
 	}
 
 
 	// Read and write accessors
 	public List<State> getStates() {
 		return this.states;
+	}
+	
+	public void changeStates(List<State> newStates) {
+		this.states = newStates;
 	}
 	
 	public void setAlphabet(Alphabet alphabet) {
@@ -78,10 +82,30 @@ public class Automaton {
 		return null; // if the state is not present in the automaton
 	}
 	
-	public Object[] getStatesByType(StateType type) {
-		return this.states.stream().filter(state -> state.getType().contains(type)).toArray();
+	public State[] getStatesByType(StateType type) {
+		
+		List<State> filteredList = this.states.stream().filter(state -> state.getType().contains(type)).collect(Collectors.toList());
+		State[] filteredArray = new State[] {};
+		
+		filteredArray = filteredList.toArray(filteredArray);
+		
+		return filteredArray;
 	}
 
+	public Automaton clone() {
+		
+		List<State> states = new ArrayList<State>();
+		this.states.stream().forEach(state -> states.add(state.clone()));
+		
+		Alphabet alphabet = new Alphabet(this.alphabet.getDictionary());
+		int transitions = Integer.valueOf(this.numTransitions);
+		
+		Automaton clone = new Automaton(states);
+		clone.setAlphabet(alphabet);
+		clone.setNumTransitions(transitions);
+		
+		return clone;
+	}
 
 	@Override
 	public String toString() {
@@ -95,24 +119,24 @@ public class Automaton {
 		result += this.states.size() + " états : " + Arrays.toString(this.states.toArray()) + "\n";
 		
 		// Inputs displays
-		Object[] entries = this.getStatesByType(StateType.ENTRY);
+		State[] entries = this.getStatesByType(StateType.ENTRY);
 		/*stream : allows you to use the filter method
 		* filter returns a list containing the filter conditions (<type> -> <filter conditions>)*/
 		result += entries.length + " entrées : " + Arrays.toString(entries) + "\n";
 
 		// Output displays
-		Object[] exits = this.getStatesByType(StateType.EXIT);
+		State[] exits = this.getStatesByType(StateType.EXIT);
 		result += exits.length + " sorties : " + Arrays.toString(exits) + "\n";
 
 		// Display of transitions
 		result += this.numTransitions + " transitions : \n";
 		
 		for (State state : this.states) { // for each state among all states
+
 			for (String key : state.getLinks().keySet()) { // for each key among all keys
 				result += state.getID() + "->" + key + "->" + Arrays.toString(state.getLinks().get(key).toArray()) + "\n";
 			}
 		}
-		/*use of 'for each'*/
 		
 		return result;
 	}

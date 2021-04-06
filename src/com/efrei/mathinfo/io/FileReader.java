@@ -47,9 +47,9 @@ public class FileReader {
 				automate.setNumTransitions(transitions);
 				break;
 			default: // The other lines contain the transitions
-				String[] word = content.split("[0-9]"); // When we have '01*9', the split returns '*'
+				String[] word = content.split("[0-9!-@A-Z]"); // When we have '01*9', the split returns '*'
 
-				values = content.split("[a-zA-Z*]"); // When we have '01*9', the split returns '01', '9'
+				values = content.split("[a-z*]"); // When we have '01*9', the split returns '01', '9'
 
 				// If the first state is not already created in the automaton
 				if (!automate.containsStateID(values[0])) {
@@ -73,7 +73,7 @@ public class FileReader {
 				state.addLink(transitionWord, next);
 
 				// we add as we read the new letters we find for the alphabet 
-				if (!alphabet.getDictionary().contains(transitionWord) && !transitionWord.equals("*")) {
+				if (!alphabet.getDictionary().contains(transitionWord) && !transitionWord.equals("")) {
 					alphabet.addWord(transitionWord);
 				}
 
