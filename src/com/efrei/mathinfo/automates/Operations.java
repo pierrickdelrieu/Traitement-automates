@@ -1,29 +1,82 @@
 package com.efrei.mathinfo.automates;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.Stack;
 
-@SuppressWarnings("unused")
 public class Operations {
-
-	// No instance
 
 	public static void determinize(Automaton automaton) {
 		if (!isDeterministic(automaton)) {
-			Automaton newAutomaton = new Automaton();
-			List<State> newStates = new ArrayList<State>();
 
-			Object[] entries = automaton.getStatesByType(StateType.ENTRY);
+			State[] entries = automaton.getStatesByType(StateType.ENTRY);
+			State newEntry = entries[0];
 
+			// If the state has more than one entry
 			if (entries.length > 1) {
+				newEntry = mergeStates(entries);
 			}
+
+			Stack<State> toDetermine = new Stack<State>();
+			toDetermine.add(newEntry);
+
+			List<State> newStates = new ArrayList<State>();
+			automaton.changeStates(newStates);
+
+			int transitions = 0;
+
+			while (!toDetermine.isEmpty()) {
+				State current = toDetermine.pop(); // we retrieve the state to determine
+
+				if (newStates.stream().noneMatch(state -> state.getID().equals(current.getID()))) {
+
+					for (String key : current.getLinks().keySet()) {
+						transitions++;
+						List<State> destinations = current.getLinks().get(key); // we retrieve all destination of key
+
+						if (destinations.size() > 1) {
+							State[] destinationsArr = destinations.toArray(new State[0]);
+							State mergedState = mergeStates(destinationsArr); // we merge the resulting states
+							
+							//see getById(mergedState.getID()) if null or not 
+
+							destinations.clear(); // we clear the destination list only to add the merged state
+							destinations.add(mergedState);
+
+							if (!newStates.contains(mergedState)) {
+								toDetermine.add(mergedState);
+							}
+						}
+
+						else {
+							toDetermine.add(destinations.get(0)); // we determine the next state
+						}
+					}
+
+					newStates.add(current);
+
+				}
+			}
+
+			// Remove all the other entries but not the first one (which is the only one we
+			// need)
+			for (State entry : newStates) {
+				if (entry != newStates.get(0)) {
+					entry.removeType(StateType.ENTRY);
+				}
+			}
+
+			automaton.setNumTransitions(transitions);
 		}
 	}
 
 	public static boolean isDeterministic(Automaton automaton) {
 
-		Object[] entries = automaton.getStatesByType(StateType.ENTRY);
+		State[] entries = automaton.getStatesByType(StateType.ENTRY);
 
 		if (entries.length > 1) { // check if the automaton has more than 1 entry, if it has, then it isn't
 									// deterministic
@@ -45,7 +98,29 @@ public class Operations {
 	}
 
 	public static void complete(Automaton automaton) {
-
+		if (!isDeterministic(automaton)) { // cannot complete if the automaton isn't deterministic
+			determinize(automaton);
+		}
+		
+		if (!isCompleted(automaton)) { 
+			
+			State bin = new State("P"); // we create the 'bin' state
+			for (String key : automaton.getAlphabet().getDictionary()) {
+				bin.addLink(key, bin); // we add as many loops on 'bin' as there are letters in the alphabet 
+			}
+			
+			for (State state : automaton.getStates()) {				
+				Set<String> keys = state.getLinks().keySet();
+				
+				for (String word : automaton.getAlphabet().getDictionary()) {
+					if (!keys.contains(word)) {
+						state.addLink(word, bin);
+					}
+				}
+			}
+			
+			automaton.getStates().add(bin);
+		}
 	}
 
 	public static boolean isCompleted(Automaton automaton) {
@@ -73,19 +148,22 @@ public class Operations {
 
 	public static void standardize(Automaton automaton) {
 		if (!isStandard(automaton)) {
-			State newEntry = new State("§");
+			State newEntry = new State("I");
 			newEntry.addType(StateType.ENTRY);
 
-			Object[] entries = automaton.getStatesByType(StateType.ENTRY);
+			State[] entries = automaton.getStatesByType(StateType.ENTRY);
 
-			for (Object entry : entries) {
-				for (String key : ((State) entry).getLinks().keySet()) {
-					for (State state : ((State) entry).getLinks().get(key)) {
+			for (State entry : entries) {
+				for (String key : entry.getLinks().keySet()) {
+					
+					List<State> destinations = entry.getLinks().get(key);
+					
+					for (State state : destinations) {
 						newEntry.addLink(key, state);
 					}
 				}
 
-				((State) entry).removeType(StateType.ENTRY);
+				entry.removeType(StateType.ENTRY);
 			}
 
 			automaton.getStates().add(newEntry);
@@ -94,9 +172,7 @@ public class Operations {
 
 	public static boolean isStandard(Automaton automaton) {
 
-		// We are unable to convert it to a State, but it does not matter, we just need
-		// the string value of the objet, which is the id of the state
-		Object[] entries = automaton.getStatesByType(StateType.ENTRY);
+		State[] entries = automaton.getStatesByType(StateType.ENTRY);
 
 		if (entries.length > 1) { // check if the automaton has more than 1 entry, if it has, then it isn't
 									// standard
@@ -133,7 +209,20 @@ public class Operations {
 	}
 
 	public static Automaton getComplementary(Automaton automaton) {
-		return null;
+
+		Automaton complementary = automaton.clone();
+
+		for (State state : complementary.getStates()) { // Adding the EXIT type to all common
+			if (!state.getType().contains(StateType.EXIT)) {
+				state.addType(StateType.EXIT);
+			}
+
+			else {
+				state.removeType(StateType.EXIT);
+			}
+		}
+
+		return complementary;
 	}
 
 	public static State mergeStates(State... states) {
@@ -146,23 +235,16 @@ public class Operations {
 			return states[0];
 		}
 
-		List<State> listStates = List.of(states);
+		List<State> listStates = new ArrayList<State>(List.of(states));
 		Iterator<State> itStates = listStates.iterator();
 
-		State current = itStates.next().clone();
+		State current = itStates.next().clone(); // we clone because we don't want to alter the initial states
 
 		while (itStates.hasNext()) {
-			State next = itStates.next();
-
-			// for each key and destinations of the next state
-			// we merge into the current state by merging the oldState list and the newState
-			// list
-			next.getLinks().forEach((key, destinations) -> current.getLinks().merge(key, destinations,
-					(oldState, newState) -> mergeLists(oldState, newState))); // this line states that oldState and
-																				// newState will be merged into
-																				// a new list by mergeLists(a,b)
+			State next = itStates.next().clone();
+			current.mergeWith(next);
 		}
-		
+
 		return current;
 	}
 
@@ -177,7 +259,34 @@ public class Operations {
 				states.add(state);
 			}
 		}
-
+		
 		return states;
+	}
+
+	public static Map<String, List<State>> mergeMaps(Map<String, List<State>> map1, Map<String, List<State>> map2) {
+
+		Map<String, List<State>> newMap = new HashMap<String, List<State>>();
+
+		if (!map1.isEmpty() && !map2.isEmpty()) {
+
+			newMap.putAll(map1);
+
+			for (String key : map2.keySet()) {
+				if (!newMap.containsKey(key)) {
+					newMap.put(key, map2.get(key));
+				}
+
+				else {
+					List<State> nMapStates = newMap.get(key);
+					List<State> map2States = map2.get(key);
+
+					List<State> merged = mergeLists(nMapStates, map2States);
+					newMap.remove(key);
+					newMap.put(key, merged);
+				}
+			}
+		}
+
+		return (map1.isEmpty() && !map2.isEmpty()) ? map2 : map1;
 	}
 }
