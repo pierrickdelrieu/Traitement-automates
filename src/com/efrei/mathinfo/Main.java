@@ -1,11 +1,9 @@
 package com.efrei.mathinfo;
 
 import java.io.FileNotFoundException;
-import java.util.Arrays;
 
 import com.efrei.mathinfo.automates.Automaton;
 import com.efrei.mathinfo.automates.Operations;
-import com.efrei.mathinfo.automates.State;
 import com.efrei.mathinfo.io.FileReader;
 
 public class Main {
@@ -16,20 +14,16 @@ public class Main {
 			Automaton a = FileReader.createAutomateObject("src/com/efrei/mathinfo/automaton.txt");
 			
 			System.out.println(a); // Display of the automaton with the toString method
-			Operations.standardize(a);
-			System.out.println(a);
+			//Operations.standardize(a);
+			//System.out.println("standard -- ");
+			//System.out.println(a);
 			
-			State ab = a.getByID("0");
-			State ad = a.getByID("1");
-			State ac = a.getByID("2");
-			State merged = Operations.mergeStates(ab, ad, ac);
-			merged.setID(String.join("", ab.toString(), ad.toString(), ac.toString()));
+			Operations.complete(a);
+			System.out.println("determined and completed -- ");
+			System.out.println(a);	
 			
-			for (String key : merged.getLinks().keySet()) {
-				System.out.println(merged.getID() + "->" + key + "->" + Arrays.toString(merged.getLinks().get(key).toArray()));
-			}
-			
-		
+			Automaton b = Operations.getComplementary(a);
+			System.out.println(b);
 		} catch (FileNotFoundException e) { // Error handling
 			e.printStackTrace();
 		}
