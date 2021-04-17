@@ -37,7 +37,7 @@ public class FileReader {
 				System.out.println(Arrays.toString(alphabet.getDictionary().toArray()));
 				automate.setAlphabet(alphabet);
 				break;
-			case 1: //
+			case 1: // Nothing here
 				break;
 			case 2: // Line 3 contains the input states
 				loadStates(content, automate, StateType.ENTRY); // Load the entries
