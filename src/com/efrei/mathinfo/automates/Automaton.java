@@ -3,6 +3,7 @@ package com.efrei.mathinfo.automates;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Automaton implements Cloneable {
@@ -11,7 +12,8 @@ public class Automaton implements Cloneable {
 	private List<State> states;
 	private Alphabet alphabet;
 	private int numTransitions;
-
+	private String filePath;
+	
 	// Constructor
 	public Automaton() {
 		this.states = new ArrayList<State>();
@@ -22,6 +24,9 @@ public class Automaton implements Cloneable {
 		this.states = new ArrayList<State>(states);
 	}
 
+	public String getFilePath() {
+		return this.filePath;
+	}
 
 	// Read and write accessors
 	public List<State> getStates() {
@@ -73,6 +78,7 @@ public class Automaton implements Cloneable {
 	 * 		   null if the state is not present in the automaton
 	 */
 	public State getByID(String id) {
+		
 		for (State state : this.states) {
 			if (state.getID().equals(id)) {
 				return state;
@@ -106,6 +112,10 @@ public class Automaton implements Cloneable {
 		
 		return clone;
 	}
+	
+	public void display() {
+		System.out.println(this);
+	}
 
 	@Override
 	public String toString() {
@@ -132,9 +142,17 @@ public class Automaton implements Cloneable {
 		result += this.numTransitions + " transitions : \n";
 		
 		for (State state : this.states) { // for each state among all states
+			
+			Set<String> allKeys = state.getLinks().keySet();
 
-			for (String key : state.getLinks().keySet()) { // for each key among all keys
-				result += state.getID() + "->" + key + "->" + Arrays.toString(state.getLinks().get(key).toArray()) + "\n";
+			for (String key : this.alphabet.getDictionary()) { // for each key among all keys
+				if (!allKeys.contains(key)) {
+					result += state.getID() + "->" + key + "->[x] \n";
+				}
+				
+				else {
+					result += state.getID() + "->" + key + "->" + Arrays.toString(state.getLinks().get(key).toArray()) + "\n";
+				}
 			}
 		}
 		

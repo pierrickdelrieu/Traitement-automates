@@ -11,6 +11,10 @@ public class Alphabet implements Cloneable {
 	// Constructor
 	public Alphabet(int size) {
 		this.dictionary = new ArrayList<String>(size);
+		
+		for (int i = 0; i < size; i++) {
+			this.dictionary.add(String.valueOf(Character.valueOf((char) ('a' + i))));
+		}
 	}
 	
 	public Alphabet(List<String> dictionary) {
