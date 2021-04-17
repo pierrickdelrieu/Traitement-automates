@@ -2,9 +2,11 @@ package com.efrei.mathinfo.io;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 import com.efrei.mathinfo.automates.Automaton;
+import com.efrei.mathinfo.automates.Operations;
 import com.efrei.mathinfo.automates.Alphabet;
 import com.efrei.mathinfo.automates.State;
 import com.efrei.mathinfo.automates.StateType;
@@ -12,7 +14,7 @@ import com.efrei.mathinfo.automates.StateType;
 public class FileReader {
 
 	// Class method
-	public static Automaton createAutomateObject(String filePath) throws FileNotFoundException {
+	public static Automaton createAutomatonObject(String filePath) throws FileNotFoundException {
 
 		File file = new File(filePath); // Path to the file containing the information on the PLC (see README.md)
 		Scanner scanner = new Scanner(file); // Reading variable
@@ -32,6 +34,7 @@ public class FileReader {
 			switch (line) {
 			case 0: // Line 1 contains the number of words in the alphabet
 				alphabet = new Alphabet(Integer.valueOf(content)); // Build the alphabet object
+				System.out.println(Arrays.toString(alphabet.getDictionary().toArray()));
 				automate.setAlphabet(alphabet);
 				break;
 			case 1: //
@@ -47,12 +50,13 @@ public class FileReader {
 				automate.setNumTransitions(transitions);
 				break;
 			default: // The other lines contain the transitions
-				String[] word = content.split("[0-9]"); // When we have '01*9', the split returns '*'
-
-				values = content.split("[a-zA-Z*]"); // When we have '01*9', the split returns '01', '9'
-
+				String[] word = content.split("[0-9A-Z]"); // When we have '01a9', the split returns [, , 'a']
+														     // when the array is joined we then get the transition 'a'
+								
+				values = content.split("[a-z*]"); // When we have '01*9', the split returns '01', '9'
+				
 				// If the first state is not already created in the automaton
-				if (!automate.containsStateID(values[0])) {
+				if (!automate.containsStateID(values[0])) {	
 					State state = new State(values[0]);
 					automate.getStates().add(state);
 				}
@@ -62,19 +66,21 @@ public class FileReader {
 					State state = new State(values[1]);
 					automate.getStates().add(state);
 				}
-
+				
 				State state = automate.getByID(values[0]);
 				State next = automate.getByID(values[1]);
 
 				// As the split returns a list, to get the transitions we only
 				// need to join it with no separators as the array is of size one
 				String transitionWord = String.join("", word);
-
+				
 				state.addLink(transitionWord, next);
 
 				// we add as we read the new letters we find for the alphabet 
-				if (!alphabet.getDictionary().contains(transitionWord) && !transitionWord.equals("*")) {
-					alphabet.addWord(transitionWord);
+				if (transitionWord.equals("*")) {
+					if (!alphabet.getDictionary().contains("*")) {
+						alphabet.addWord("*");
+					}
 				}
 
 				break;
