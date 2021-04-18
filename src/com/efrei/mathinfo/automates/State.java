@@ -9,7 +9,7 @@ import java.util.Map;
 public class State implements Cloneable, Comparable<State> {
 
 	// Instances
-	private String id; // '1' or 'A'.
+	private Identifier id; // '1' or 'A'.
 	private Map<String, List<State>> links; // keyword gives the state (Map<key, List of state>)
 	private List<StateType> types; // Status states: ENTRY, COMMON, EXIT
 
@@ -18,8 +18,7 @@ public class State implements Cloneable, Comparable<State> {
 	}
 
 	public State(String id) {
-		
-		this.id = id;
+		this.id = new Identifier(id);
 
 		this.types = new ArrayList<StateType>();
 		this.types.add(StateType.COMMON);
@@ -27,35 +26,23 @@ public class State implements Cloneable, Comparable<State> {
 		this.links = new HashMap<String, List<State>>();
 	}
 	
-	public State(State... states) {
-		this.id = Operations.makeID(states);
-		
-		List<StateType> temp = new ArrayList<StateType>();
-		Map<String, List<State>> tempLinks = new HashMap<String, List<State>>();
-		
-		for (State state : states) {
-			temp = Operations.mergeLists(temp, state.getType());
-			tempLinks = Operations.mergeMaps(tempLinks, state.getLinks());
-		}
-		
-		this.types = temp;
-		this.links = tempLinks;
-	}
-
-	private State(State state) {
-		this.id = state.getID();
+	public State(State state) {
+		this.id = new Identifier(state.getID());
 		
 		this.types = new ArrayList<StateType>(state.getType());
 		this.links = new HashMap<String, List<State>>(state.getLinks());
 	}
 
-	public void setID(String id) {
+	public void setIdentifier(Identifier id) {
 		this.id = id;
 	}
 	
-	// Read and write accessors
-	public String getID() {
+	public Identifier getIdentifier() {
 		return this.id;
+	}
+	
+	public String getID() {
+		return this.id.getID();
 	}
 	
 	public Map<String, List<State>> getLinks() {
@@ -107,7 +94,7 @@ public class State implements Cloneable, Comparable<State> {
 			return;
 		}
 		
-		else if (this.getID().contains(toMerge.getID()) || toMerge.getID().contains(this.id)) {
+		else if (this.getID().contains(toMerge.getID()) || toMerge.getID().contains(this.id.getID())) {
 			return;
 		}
 						
@@ -123,12 +110,12 @@ public class State implements Cloneable, Comparable<State> {
 			this.types.add(StateType.EXIT);
 		}
 		
-		this.setID(Operations.removeDuplicates(String.join("", this.id, toMerge.getID())));
+		this.id = new Identifier(List.of(this.id, toMerge.getIdentifier()));
 	}
 
 	@Override
 	public String toString() {
-		return this.id;
+		return this.id.getID();
 	}
 	
 	@Override

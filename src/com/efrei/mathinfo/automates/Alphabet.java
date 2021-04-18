@@ -31,4 +31,10 @@ public class Alphabet implements Cloneable {
 			this.dictionary.add(word);
 		}
 	}
+	
+	public void removeWord(String word) {
+		if (this.dictionary.contains(word)) {
+			this.dictionary.remove(word);
+		}
+	}
 }

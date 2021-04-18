@@ -11,6 +11,7 @@ import java.util.Set;
 import java.util.Stack;
 import java.util.logging.Level;
 
+import com.efrei.mathinfo.io.ConsoleColors;
 import com.efrei.mathinfo.io.Utils;
 
 public class Operations {
@@ -44,15 +45,16 @@ public class Operations {
 	 * 			the automaton to synchronize
 	 * 
 	 * */
-	private static void synchronize(Automaton automaton) {
+	public static void synchronize(Automaton automaton) {
 		Map<State, State> epsilonStates = new HashMap<State, State>(); // takes state as key and the epsilon value of the state as the value of the map 
 		List<State> newStates = new ArrayList<State>();
 				
 		for (State state : automaton.getStates()) {
 			List<State> toMerge = synchronizeHelper(state); // we build the list of all the epsilon transitions for the state 
 			State[] toMergeArr = toMerge.toArray(new State[0]); // we convert it to an array so that we can call mergeStates function on it 
-			
-			state.getLinks().remove(""); // we remove all epsilon transitions
+						
+			state.getLinks().remove("*"); // we remove all epsilon transitions
+			automaton.getAlphabet().removeWord("*"); // automaton cannot recognize the empty word now
 			
 			epsilonStates.put(state, mergeStates(toMergeArr)); // we put it in our map 
 			
@@ -61,19 +63,20 @@ public class Operations {
 			newStates.add(mergeState); // add it to our state list
 		}
 		
-		
 		automaton.changeStates(newStates);
+		automaton.display();
 	}
  
 	private static List<State> synchronizeHelper(State state) {
 		for (String key : state.getLinks().keySet()) {
+			
 			List<State> destinationsStates = state.getLinks().get(key);	// all the destinations for the transition 'key' 	
 			List<State> epsilonDestinations = new ArrayList<State>(); // we are going to list all of the states we can go to from the epsilon transitions
 			epsilonDestinations.add(state); // we can obviously go to the starting state, so we add it 
 			
 			List<State> travelStates = new ArrayList<State>(); // helper list to store all the other states we can go to from the starting state
 			
-			if (key.equals("")) { 
+			if (key.equals("*")) { 
 				for (State dState : destinationsStates) {
 					
 					if (!travelStates.contains(dState) && !dState.equals(state)) { // we add all the possible "travel states" in the travelStates list 
@@ -188,7 +191,7 @@ public class Operations {
 	}
 
 	public static void complete(Automaton automaton) {
-		if (!isDeterministic(automaton)) { // cannot complete if the automaton isn't deterministic
+		if (!isDeterministic(automaton)) { 
 			System.err.println("\nL'automate que vous cherchez à compléter n'est pas déterministe");
 			determinize(automaton);
 		}
@@ -325,10 +328,6 @@ public class Operations {
 
 	}
 
-	private static boolean isMinimized(Automaton automaton) {
-		return false;
-	}
-
 	public static Automaton getComplementary(Automaton automaton) {
 
 		Automaton complementary = automaton.clone();
@@ -430,19 +429,13 @@ public class Operations {
 	}
 	
 	protected static String makeID(State... states) {
-		String possibleID = states[0].getID();
+		List<Identifier> statesIds = new ArrayList<Identifier>();
 		
-		for (int i = 1; i < states.length; i++) {
-			if (!possibleID.contains(states[i].getID())) {
-				possibleID = String.join("", possibleID, states[i].getID());
-			}
-			
-			else if (states[i].getID().contains(possibleID)){
-				possibleID = states[i].getID();
-			}
+		for (State state : states) {
+			statesIds = mergeLists(statesIds, state.getIdentifier().getIdentifiers());
 		}
-				
-		return removeDuplicates(possibleID);
+		
+		return new Identifier(statesIds).getID();
 	}
 	
 	protected static String removeDuplicates(String string) {

@@ -5,9 +5,9 @@ import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import com.efrei.mathinfo.automates.Automaton;
-import com.efrei.mathinfo.automates.Operations;
 import com.efrei.mathinfo.automates.Alphabet;
+import com.efrei.mathinfo.automates.Automaton;
+import com.efrei.mathinfo.automates.Identifier;
 import com.efrei.mathinfo.automates.State;
 import com.efrei.mathinfo.automates.StateType;
 
@@ -37,7 +37,11 @@ public class FileReader {
 				System.out.println(Arrays.toString(alphabet.getDictionary().toArray()));
 				automate.setAlphabet(alphabet);
 				break;
-			case 1: // Nothing here
+			case 1: // Line 2 is the number of states
+				int numStates = Integer.parseInt(content);
+				for (int i = 0; i < numStates; i++) {
+					automate.getStates().add(new State(String.valueOf(i)));
+				}
 				break;
 			case 2: // Line 3 contains the input states
 				loadStates(content, automate, StateType.ENTRY); // Load the entries
@@ -55,17 +59,7 @@ public class FileReader {
 								
 				values = content.split("[a-z*]"); // When we have '01*9', the split returns '01', '9'
 				
-				// If the first state is not already created in the automaton
-				if (!automate.containsStateID(values[0])) {	
-					State state = new State(values[0]);
-					automate.getStates().add(state);
-				}
-
-				// If the second state is not already created in the automaton
-				if (!automate.containsStateID(values[1])) {
-					State state = new State(values[1]);
-					automate.getStates().add(state);
-				}
+				// TODO: vérifications validité automate
 				
 				State state = automate.getByID(values[0]);
 				State next = automate.getByID(values[1]);
