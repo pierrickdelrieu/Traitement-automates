@@ -13,7 +13,6 @@ public class Automaton implements Cloneable {
 	private List<State> states;
 	private Alphabet alphabet;
 	private int numTransitions;
-	private String filePath;
 
 	// Constructor
 	public Automaton() {
@@ -22,11 +21,22 @@ public class Automaton implements Cloneable {
 	}
 
 	public Automaton(List<State> states) {
-		this.states = new ArrayList<State>(states);
+		this.states = new ArrayList<State>();
+
+		states.forEach(s -> {
+			this.states.add(s.clone());
+		});
 	}
 
-	public String getFilePath() {
-		return this.filePath;
+	public Automaton(Automaton automaton) {
+		this.states = new ArrayList<State>();
+
+		automaton.getStates().forEach(s -> {
+			this.states.add(s.clone());
+		});
+
+		this.alphabet = new Alphabet(automaton.getAlphabet().getDictionary());
+		this.numTransitions = Integer.valueOf(automaton.getNumTransitions());
 	}
 
 	// Read and write accessors
@@ -101,18 +111,7 @@ public class Automaton implements Cloneable {
 	}
 
 	public Automaton clone() {
-
-		List<State> states = new ArrayList<State>();
-		this.states.stream().forEach(state -> states.add(state.clone()));
-
-		Alphabet alphabet = new Alphabet(this.alphabet.getDictionary());
-		int transitions = Integer.valueOf(this.numTransitions);
-
-		Automaton clone = new Automaton(states);
-		clone.setAlphabet(alphabet);
-		clone.setNumTransitions(transitions);
-
-		return clone;
+		return new Automaton(this);
 	}
 
 	public void display() {
@@ -122,12 +121,20 @@ public class Automaton implements Cloneable {
 	public boolean recognizesWord(String word) {
 
 		State[] entries = this.getStatesByType(StateType.ENTRY);
-
+		
+		String letter;
+		for(int i = 0; i < word.length(); i++) {
+			letter = String.valueOf(word.charAt(i));
+			if (!this.alphabet.getDictionary().contains(letter)) {
+				return false;
+			}
+		}
+		
 		for (State entry : entries) {
 			
 			System.out.println("Checking validity for " + entry);
 
-			if (recognizesWordFromState(word, 0, entry)) {
+			if (recognizesWordFromState(word, -1, entry)) {
 				return true;
 			}
 		}
@@ -137,37 +144,22 @@ public class Automaton implements Cloneable {
 
 	private boolean recognizesWordFromState(String word, int index, State current) {
 		
-		String letter = String.valueOf(word.charAt(index));
-		
-		if (!this.alphabet.getDictionary().contains(letter)) {
-			return false;
-		}
-
-		else if (index == word.length()) {
-			System.out.println(current + " last state");
+		if (index == word.length() - 1) {
 			return current.isExit();
 		}
 		
 		else {
+			String letter = String.valueOf(word.charAt(index+1));
 			List<State> destinations = current.getLinks().get(letter);
 			
 			if (destinations == null) {
 				return false;
 			}
 			
-			int i = Integer.valueOf(index + 1);
-			
 			for (State destination : destinations){
-
-				System.out.println("index : " + i + "/" + (word.length()-1));
-				//System.out.println(current + " (" + letter + ")" + " going to " + destination);
 				
-				if(this.recognizesWordFromState(word, i, destination)) {
+				if(this.recognizesWordFromState(word, index+1, destination)) {
 					return true;
-				}
-				
-				else {
-					//System.out.println("C'est pas bon " + current + " (" + letter + ") " + destination);
 				}
 			}
 		}

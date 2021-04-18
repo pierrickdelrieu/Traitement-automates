@@ -11,9 +11,6 @@ import java.util.Set;
 import java.util.Stack;
 import java.util.logging.Level;
 
-import com.efrei.mathinfo.io.ConsoleColors;
-import com.efrei.mathinfo.io.Utils;
-
 public class Operations {
 	 	
 	/**
