@@ -1,11 +1,12 @@
 package com.efrei.mathinfo;
 
 import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.util.Arrays;
 
 import com.efrei.mathinfo.automates.Automaton;
-import com.efrei.mathinfo.io.FileReader;
+import com.efrei.mathinfo.automates.Identifier;
 import com.efrei.mathinfo.automates.Operations;
+import com.efrei.mathinfo.io.FileReader;
 
 public class Main {
 
@@ -14,32 +15,30 @@ public class Main {
 			// Creation of an Automaton instance
 			Automaton a = FileReader.createAutomatonObject("src/com/efrei/mathinfo/automaton.txt");
 			a.display();
-			Operations.complete(a);
 
-//			a.display();
-//			Operations.standardize(a);
-//			System.out.println("standard -- ");
-//			System.out.println(a);
-//
-//			Operations.determinize(a);
+			
+			Operations.minimize(a);			
+			
 //			Operations.complete(a);
+//			
+//			// TODO: fix minimization
+//			Operations.minimize(a);
+			
+//			Automaton b = Operations.getComplementary(a.clone());
+//			Scanner s = new Scanner(System.in);
 //
-			Automaton b = Operations.getComplementary(a.clone());
-
-			Scanner s = new Scanner(System.in);
-
-			String word = " ";
-
-			do {
-				System.out.println("Entrez un mot : ");
-				word = s.nextLine();
-				System.out.println("Mot saisi : " + word);
-				System.out.println(a.recognizesWord(word));
-				System.out.println(b.recognizesWord(word));
-
-				a.display();
-				b.display();
-			} while(!word.equalsIgnoreCase("fin"));
+//			String word = " ";
+//
+//			do {
+//				System.out.println("Entrez un mot : ");
+//				word = s.nextLine();
+//				System.out.println("Mot saisi : " + word);
+//				System.out.println("a : " + a.recognizesWord(word));
+//				System.out.println("b : " + b.recognizesWord(word));
+//
+//			} while(!word.equalsIgnoreCase("fin"));
+//			
+//			System.out.println("Vous avez fini !");
 
 		
 		} catch (FileNotFoundException e) { // Error handling

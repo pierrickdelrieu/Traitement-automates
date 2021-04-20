@@ -94,6 +94,11 @@ public class Identifier implements Comparable<Identifier> {
 	public String getID() {
 		return id;
 	}
+	
+	public void setId(String id) {
+		this.id = id;
+		this.buildIntValue();
+	}
 
 	public int getIntValue() {
 		return intValue;

@@ -34,6 +34,14 @@ public class Automaton implements Cloneable {
 		automaton.getStates().forEach(s -> {
 			this.states.add(s.clone());
 		});
+		
+		for (State state : this.states) {
+			for (String key : state.getLinks().keySet()) {
+				
+				List<State> destinations = state.getLinks().get(key);
+				destinations.replaceAll(s -> this.getByID(s.getID()));
+			}
+		}
 
 		this.alphabet = new Alphabet(automaton.getAlphabet().getDictionary());
 		this.numTransitions = Integer.valueOf(automaton.getNumTransitions());
@@ -68,8 +76,8 @@ public class Automaton implements Cloneable {
 	 * The method checks if a state is already present in the PLC.
 	 * 
 	 * @param id Automaton identifier (example = 1 or A)
-	 * @return true if the state is already present in the automaton false if the
-	 *         state is not present in the automaton
+	 * @return {@code true} if the state is already present in the automaton false
+	 *         if the state is not present in the automaton
 	 */
 	public boolean containsStateID(String id) {
 		for (State state : this.states) {
@@ -82,7 +90,7 @@ public class Automaton implements Cloneable {
 	}
 
 	/**
-	 * The method allows to retrieve a state from its identifier
+	 * The method allows you to retrieve a state from its identifier
 	 * 
 	 * @param id State identifier
 	 * @return the state with the id null if the state is not present in the
@@ -101,13 +109,24 @@ public class Automaton implements Cloneable {
 
 	public State[] getStatesByType(StateType type) {
 
-		List<State> filteredList = this.states.stream().filter(state -> state.getType().contains(type))
+		List<State> filteredList = this.states.stream()
+				.filter(state -> state.getType().contains(type))
 				.collect(Collectors.toList());
-		State[] filteredArray = new State[] {};
 
-		filteredArray = filteredList.toArray(filteredArray);
 
-		return filteredArray;
+		return filteredList.toArray(new State[0]);
+	}
+
+	public State[] getAllStatesButType(StateType type) {
+		List<State> st = new ArrayList<State>();
+
+		for (State state : this.getStates()) {
+			if (!state.getType().contains(type)) {
+				st.add(state);
+			}
+		}
+
+		return st.toArray(new State[0]);
 	}
 
 	public Automaton clone() {
@@ -121,18 +140,16 @@ public class Automaton implements Cloneable {
 	public boolean recognizesWord(String word) {
 
 		State[] entries = this.getStatesByType(StateType.ENTRY);
-		
+
 		String letter;
-		for(int i = 0; i < word.length(); i++) {
+		for (int i = 0; i < word.length(); i++) {
 			letter = String.valueOf(word.charAt(i));
 			if (!this.alphabet.getDictionary().contains(letter)) {
 				return false;
 			}
 		}
-		
+
 		for (State entry : entries) {
-			
-			System.out.println("Checking validity for " + entry);
 
 			if (recognizesWordFromState(word, -1, entry)) {
 				return true;
@@ -143,27 +160,26 @@ public class Automaton implements Cloneable {
 	}
 
 	private boolean recognizesWordFromState(String word, int index, State current) {
-		
+
 		if (index == word.length() - 1) {
-			return current.isExit();
+			return this.getByID(current.getID()).isExit();
 		}
-		
+
 		else {
-			String letter = String.valueOf(word.charAt(index+1));
+			String letter = String.valueOf(word.charAt(index + 1));
 			List<State> destinations = current.getLinks().get(letter);
-			
+
 			if (destinations == null) {
 				return false;
 			}
-			
-			for (State destination : destinations){
-				
-				if(this.recognizesWordFromState(word, index+1, destination)) {
+
+			for (State destination : destinations) {
+				if (this.recognizesWordFromState(word, index + 1, destination)) {
 					return true;
 				}
 			}
 		}
-		
+
 		return false;
 	}
 
@@ -174,13 +190,13 @@ public class Automaton implements Cloneable {
 		// Alphabet display
 		result = this.alphabet.getDictionary().size() + " mots : "
 				+ Arrays.toString(this.alphabet.getDictionary().toArray()) + "\n";
-		/* toArray() permet de convertir une liste en array */
 
 		// States display
 		result += this.states.size() + " états : " + Arrays.toString(this.states.toArray()) + "\n";
 
 		// Inputs displays
 		State[] entries = this.getStatesByType(StateType.ENTRY);
+		
 		/*
 		 * stream : allows you to use the filter method filter returns a list containing
 		 * the filter conditions (<type> -> <filter conditions>)

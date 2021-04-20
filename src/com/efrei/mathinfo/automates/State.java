@@ -71,7 +71,9 @@ public class State implements Cloneable, Comparable<State> {
 	}
 
 	public void addType(StateType type) {
-		this.types.add(type);
+		if (!this.types.contains(type)) {
+			this.types.add(type);
+		}
 	}
 
 	public void removeType(StateType type) {
@@ -91,10 +93,6 @@ public class State implements Cloneable, Comparable<State> {
 	public void mergeWith(State toMerge) {
 		
 		if (this == toMerge) {
-			return;
-		}
-		
-		else if (this.getID().contains(toMerge.getID()) || toMerge.getID().contains(this.id.getID())) {
 			return;
 		}
 						
@@ -125,11 +123,6 @@ public class State implements Cloneable, Comparable<State> {
 
 	@Override
 	public int compareTo(State o) { // When sorting the list, it will sort the list in ascending order
-		
-		try {
-			return Integer.valueOf(this.getID()) - Integer.valueOf(o.getID());
-		} catch (NumberFormatException e) {
-			return this.getID().charAt(0) - o.getID().charAt(0);
-		}
+		return this.getIdentifier().compareTo(o.getIdentifier());
 	}
 }
