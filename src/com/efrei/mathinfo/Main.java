@@ -7,13 +7,24 @@ import com.efrei.mathinfo.automates.Automaton;
 import com.efrei.mathinfo.automates.Identifier;
 import com.efrei.mathinfo.automates.Operations;
 import com.efrei.mathinfo.io.FileReader;
+import java.util.Scanner;
 
+import com.efrei.mathinfo.ihm.Menu;
+
+public class Main {
+	public static void main(String[] args) {
+		Menu.openHomeMenu();
+	}
+}
+
+/*
 public class Main {
 
 	public static void main(String[] args) {
 		try {
 			// Creation of an Automaton instance
-			Automaton a = FileReader.createAutomatonObject("src/com/efrei/mathinfo/automaton.txt");
+
+			Automaton a = FileReader.createAutomatonObject("src/com/efrei/mathinfo/A01-1.txt");
 			a.display();
 
 			
@@ -45,4 +56,19 @@ public class Main {
 			e.printStackTrace();
 		}
 	}
+} */
+
+/*  MAIN FINAL
+
+import com.efrei.mathinfo.ihm.Menu;
+
+public class Main {
+	public static void main(String[] args) {
+		Menu.openHomeMenu();
+
+		if(Menu.choice_automaton != 0) {
+			Menu.openOperationsMenu();
+		}
 }
+
+ */
