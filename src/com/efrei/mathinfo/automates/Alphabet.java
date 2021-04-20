@@ -11,6 +11,10 @@ public class Alphabet implements Cloneable {
 	// Constructor
 	public Alphabet(int size) {
 		this.dictionary = new ArrayList<String>(size);
+		
+		for (int i = 0; i < size; i++) {
+			this.dictionary.add(String.valueOf(Character.valueOf((char) ('a' + i))));
+		}
 	}
 	
 	public Alphabet(List<String> dictionary) {
@@ -25,6 +29,12 @@ public class Alphabet implements Cloneable {
 	public void addWord(String word) {
 		if (!this.dictionary.contains(word)) {
 			this.dictionary.add(word);
+		}
+	}
+	
+	public void removeWord(String word) {
+		if (this.dictionary.contains(word)) {
+			this.dictionary.remove(word);
 		}
 	}
 }
