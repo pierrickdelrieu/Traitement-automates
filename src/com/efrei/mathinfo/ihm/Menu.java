@@ -1,73 +1,139 @@
 package com.efrei.mathinfo.ihm;
+
 import com.efrei.mathinfo.automates.Automaton;
+import com.efrei.mathinfo.automates.Operations;
+import com.efrei.mathinfo.io.FileReader;
+
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Menu {
-    public static int choice_automaton;
-    public static int choice_operation;
-    public final static String header = "****************************\n";
 
-    public final static void clearConsole() {
-        try {
-            final String os = System.getProperty("os.name");
-            if (os.contains("Windows")) {
-                Runtime.getRuntime().exec("cls");
-            }
-            else {
-                Runtime.getRuntime().exec("clear");
-            }
-        }
-        catch (final Exception e) {
-            e.printStackTrace();
-        }
-    }
+	private static Automaton currentAutomaton;
+	private static final String header = "****************************\n";
+	private static final String path = "src/com/efrei/mathinfo";
+	private static final Scanner sc = new Scanner(System.in);
 
-    public static void openHomeMenu() {
-        File directory = new File("src/com/efrei/mathinfo/files");
+	public static void openMainMenu() throws FileNotFoundException {
+		File dir = new File(path + "/files");
+		boolean onMenu = true;
+		int numFiles = dir.listFiles().length;
 
-        if(directory.listFiles() != null) {
-            int file_counter = 0;
-            do {
-                clearConsole();
-                System.out.printf(header);
-                System.out.printf("              HOME\n\n");
-                System.out.printf("Saisir 0 pour quitter\n");
-                System.out.printf("Choix de l'automate :\n");
+		while (onMenu) {
+			log(header);
+			log("Il y a " + numFiles + " automate(s) dans le dossier, choisissez votre automate: ");
+			log("Entrez q pour quitter");
+			log(header);
+			log("Votre choix : ");
 
-                file_counter = directory.listFiles().length;
-                for (int i=0; i<file_counter; i++) {
-                    System.out.printf((i+1) + " - " + directory.listFiles()[file_counter-i-1].getName() + "\n");
-                }
+			if (sc.hasNextInt()) {
+				int choice = sc.nextInt();
 
-                Scanner sc = new Scanner(System.in);
-                System.out.println("Veuillez saisir un numÃ©ro :");
-                choice_automaton = Integer.parseInt(sc.nextLine());
-                System.out.println("Vous avez saisi : " + choice_automaton);
-            }while(((choice_automaton < 0) || (choice_automaton>file_counter)) && (choice_automaton != 0));
-        }
-        else {
-            System.out.printf("Erreur lors de la lecture dans le dossier files");
-        }
+				if (choice > numFiles || choice < 0) {
+					log("Cet automate n'existe pas");
+					continue;
+				}
 
+				currentAutomaton = FileReader
+						.createAutomatonObject(path + "/files/A01-" + String.valueOf(choice) + ".txt");
+				openOperationsMenu();
+			}
 
-    }
+			else {
 
-    public static void openOperationsMenu() {
-        do {
-            System.out.printf("Quelle opÃ©ration souhaitez-vous faire ?");
-            System.out.printf("1. ComplÃ©tion\n" +
-                    "2. Standardisation\n" +
-                    "3. DÃ©terminisation\n" +
-                    "4. Minimisation\n" +
-                    "5. Synchronisation\n\n" +
-                    "6. Retour");
-            Scanner sc = new Scanner(System.in);
-            System.out.println("Veuillez saisir le numÃ©ro de l'opÃ©ration : ");
-            choice_operation = Integer.parseInt(sc.nextLine());
-        }
+				if (sc.nextLine().equalsIgnoreCase("q")) {
+					onMenu = false;
+					break;
+				}
 
+				else {
+					log("Veuillez entrer un nombre entre 1 et " + numFiles);
+				}
+			}
+		}
+		
+		sc.close();
+	}
 
-    }
+	public static void openOperationsMenu() {
+		boolean onMenu = true;
+		int choice;
 
+		while (onMenu) {
+			log(header + "\n");
+			log("Quel opération souhaitez-vous faire ?\n");
+			log("1. Standardisation\n2. Complétion\n3. Déterminisation\n4. Minimisation\n5. Lecture de mot\n6. Complémentaire\n\nr. Retour\n");
+			log("Votre entrée : ");
+
+			if (sc.hasNextInt()) {
+				choice = sc.nextInt();
+
+				switch (choice) {
+				case 1:
+					Operations.standardize(currentAutomaton);
+					break;
+				case 2:
+					Operations.complete(currentAutomaton);
+					break;
+				case 3:
+					Operations.determinize(currentAutomaton);
+					break;
+				case 4:
+					Operations.minimize(currentAutomaton);
+					break;
+				case 5:
+					openWordMenu();
+					break;
+				case 6:
+					Operations.getComplementary(currentAutomaton);
+					break;
+				default:
+					log("Opération non reconnue.");
+					break;
+				}
+			}
+			
+			else if (sc.hasNextLine()){
+				if (sc.nextLine().equalsIgnoreCase("r")) {
+					onMenu = false;
+				}
+				
+				else {
+					log("Veuillez entrer un chiffre entre 1 et 6 (ou r pour retourner en arrière)");
+				}
+			}
+		}
+	}
+
+	public static void openWordMenu() {
+
+		System.out.println("Saisissez votre mot à vérifier, écrire fin pour arrêter.");
+		String word;
+		boolean onMenu = true;
+
+		while (onMenu) {
+			
+			log("Entrez votre mot : ");
+			word = sc.nextLine();
+			
+			if (word.equalsIgnoreCase("fin")) {
+				onMenu = false;
+			}
+			
+			if (currentAutomaton.recognizesWord(word) == true) {
+				log(word + " est reconnu par l'automate.");
+			} else {
+				log(word + " n'est pas reconnu par l'automate.");
+			}
+		} 
+	}
+
+	public static void log(String str) {
+		System.out.println(str);
+	}
+
+	public static void clear() {
+
+	}
 }

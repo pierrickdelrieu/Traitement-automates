@@ -13,7 +13,12 @@ import com.efrei.mathinfo.ihm.Menu;
 
 public class Main {
 	public static void main(String[] args) {
-		Menu.openHomeMenu();
+		try {
+			Menu.openMainMenu();
+		} catch (FileNotFoundException e) {
+			
+			e.printStackTrace();
+		}
 	}
 }
 
