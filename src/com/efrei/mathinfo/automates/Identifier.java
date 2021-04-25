@@ -1,6 +1,7 @@
 package com.efrei.mathinfo.automates;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -50,11 +51,11 @@ public class Identifier implements Comparable<Identifier> {
 				possibleID = String.join(".", possibleID, identifier.getID());
 			}
 
-			else {
-				for (Identifier subID : identifier.getIdentifiers()) {
-					possibleID = String.join(".", possibleID, subID.getID());
-				}
-			}
+//			else {
+//				for (Identifier subID : identifier.getIdentifiers()) {
+//					possibleID = String.join(".", possibleID, subID.getID());
+//				}
+//			}
 		}
 
 		return possibleID;
@@ -107,12 +108,9 @@ public class Identifier implements Comparable<Identifier> {
 	public List<Identifier> getIdentifiers() {
 		return identifiers;
 	}
-
-	public void addIdentifier(Identifier id) {
-		if (!this.identifiers.contains(id)) {
-			this.identifiers.add(id);
-			Collections.sort(this.identifiers);
-		}
+	
+	public boolean isSubIdOf(Identifier id) {
+		return id.getIdentifiers().contains(this);
 	}
 
 	@Override
@@ -124,4 +122,13 @@ public class Identifier implements Comparable<Identifier> {
 	public int compareTo(Identifier o) {
 		return this.intValue - o.getIntValue();
 	}
+	
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        
+        Identifier identifier = (Identifier) o;
+        return this.getID().equals(identifier.getID());
+    }
 }

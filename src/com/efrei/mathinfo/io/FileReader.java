@@ -46,7 +46,7 @@ public class FileReader {
 			case 2: // Line 3 contains the input states
 				loadStates(content, automate, StateType.ENTRY); // Load the entries
 				break;
-			case 3: // Line 4 contains the outpu states
+			case 3: // Line 4 contains the output states
 				loadStates(content, automate, StateType.EXIT); // Load the exits
 				break;
 			case 4: // Line 5 contains the automaton transition number
@@ -58,6 +58,7 @@ public class FileReader {
 														     // when the array is joined we then get the transition 'a'
 								
 				values = content.split("[a-z*]"); // When we have '01*9', the split returns '01', '9'
+				System.out.println(Arrays.toString(values));
 				
 				// TODO: vérifications validité automate
 				

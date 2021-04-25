@@ -25,7 +25,6 @@ public class Alphabet implements Cloneable {
 		return this.dictionary;
 	}
 
-	// Method of adding a character to the alphabet
 	public void addWord(String word) {
 		if (!this.dictionary.contains(word)) {
 			this.dictionary.add(word);

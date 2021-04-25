@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.LinkedHashSet;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
+import java.util.stream.Collectors;
 
 public class Operations {
 
@@ -39,10 +40,19 @@ public class Operations {
 	 * 
 	 */
 	public static void synchronize(Automaton automaton) {
+
 		if (isAsync(automaton)) {
 
+			// The purpose of this map is to store one state as a key and a value that is
+			// its "epsilon cloture"
+			// that way we can access it easier when we will be creating the new merged
+			// states
 			Map<State, List<State>> epsilonStates = new HashMap<State, List<State>>();
+
+			// Empty list that we are going to fill and then put in epsilonStates map
 			List<State> epsilonDestinations = new ArrayList<State>();
+
+			// Will contain all the new states we will be creating
 			List<State> newStates = new ArrayList<State>();
 
 			for (State state : automaton.getStates()) {
@@ -50,33 +60,39 @@ public class Operations {
 				epsilonStates.put(state, new ArrayList<State>(epsilonDestinations));
 				epsilonDestinations.clear();
 
-				state.getLinks().remove("*");
+				state.getLinks().remove("*"); // for each state we remove the epsilon transition
 			}
 
+			// creating all the new states, and naming them with a simple name
 			epsilonStates.forEach((key, value) -> {
-				//System.out.println(key + "->" + Arrays.toString(value.toArray()));
 				State mergedState = mergeStates(value.toArray(new State[0]));
 
 				newStates.add(mergedState);
+
 				value.clear();
 				value.add(mergedState);
+
 				System.out.println(key.getID() + "*" + " == " + mergedState.getID());
-				mergedState.getIdentifier().setId(key.getID() + "*");
+				mergedState.setIdentifier(new Identifier(key.getID() + "*"));
 			});
 
 			for (State state : newStates) {
+
 				for (String key : state.getLinks().keySet()) {
 					List<State> destinations = state.getLinks().get(key);
 					List<State> copy = new ArrayList<State>(destinations);
-					
+
 					for (State destination : copy) {
-						destinations.add(epsilonStates.get(destination).get(0));
-						destinations.remove(destination);
+
+						if (epsilonStates.containsKey(destination)) {
+							destinations.remove(destination);
+							destinations.add(epsilonStates.get(destination).get(0));
+						}
 					}
 				}
 			}
 
-			//newStates.forEach(s -> System.out.println(s));
+			// newStates.forEach(s -> System.out.println(s));
 			Collections.sort(newStates);
 			automaton.changeStates(newStates);
 			automaton.getAlphabet().removeWord("*");
@@ -88,7 +104,14 @@ public class Operations {
 		}
 	}
 
-	public static void fillEpsilonStates(List<State> result, State state) {
+	/**
+	 * Fills a list with all the states that <strong>state</strong> state can travel
+	 * to with epsilon transitions
+	 * 
+	 * @param result The list to fill
+	 * @param state  The starting state
+	 */
+	private static void fillEpsilonStates(List<State> result, State state) {
 
 		if (!result.contains(state)) {
 			result.add(state);
@@ -108,6 +131,16 @@ public class Operations {
 		}
 	}
 
+	/**
+	 * Determinizes an automaton <br>
+	 * 
+	 * For example, if one state has 0->a->[1,2], the function will change the
+	 * destinations to 0->a[1.2] with <strong>1.2</strong> being the combination of
+	 * state 1 and 2. The function then does that for all the states in the
+	 * automaton creating a new set of states if necessary
+	 * 
+	 * @param automaton The automaton to determinize
+	 */
 	public static void determinize(Automaton automaton) {
 
 		if (!isDeterministic(automaton)) {
@@ -123,13 +156,14 @@ public class Operations {
 			toDetermine.add(newEntry);
 
 			List<State> newStates = new ArrayList<State>();
+			automaton.changeStates(newStates);
 
 			int transitions = 0;
 
 			while (!toDetermine.isEmpty()) {
 				State current = toDetermine.pop(); // we retrieve the state to determine
 
-				if (newStates.stream().noneMatch(s -> s.getID().equals(current.getID()))) {
+				if (!automaton.getStates().contains(current)) {
 					for (String key : current.getLinks().keySet()) {
 						transitions++;
 						List<State> destinations = current.getLinks().get(key);
@@ -143,25 +177,20 @@ public class Operations {
 						}
 					}
 
-					newStates.add(current);
+					automaton.getStates().add(current);
 				}
 			}
 
-			automaton.setNumTransitions(transitions);
-
-			// Remove all the other entries but not the first one (which is the only one we
-			// need)
 			for (State entry : newStates) {
-				if (entry != newStates.get(0)) {
+				if (!entry.equals(newEntry)) {
 					entry.removeType(StateType.ENTRY);
 				}
 			}
 
 			automaton.setNumTransitions(transitions);
-			automaton.changeStates(newStates);
 
 			automaton.display();
-			System.out.println("Déterminisation terminée !");
+			System.out.println("\nDéterminisation terminée !");
 		}
 
 		else {
@@ -175,6 +204,7 @@ public class Operations {
 
 		if (entries.length > 1) { // check if the automaton has more than 1 entry, if it has, then it isn't
 									// deterministic
+			System.err.println("Votre automate n'est pas déterministe car il possède " + entries.length + " entrées");
 			return false;
 		}
 
@@ -183,6 +213,8 @@ public class Operations {
 				for (String key : state.getLinks().keySet()) { // We check all the transitions
 					if (state.getLinks().get(key).size() > 1) { // and check if one returns more than one state as its
 																// destination
+						System.err.println("Votre automate n'est pas déterministe à cause de la transition : " + state
+								+ "->" + key + "->" + state.getLinks().get(key));
 						return false;
 					}
 				}
@@ -194,7 +226,7 @@ public class Operations {
 
 	public static void complete(Automaton automaton) {
 		determinize(automaton);
-		
+
 		if (!isCompleted(automaton)) {
 			System.out.println("\nComplétion de votre automate \n");
 
@@ -220,6 +252,7 @@ public class Operations {
 			}
 
 			automaton.getStates().add(bin);
+			Collections.sort(automaton.getStates());
 
 			automaton.display();
 			System.out.println("Complétion terminée ! ");
@@ -245,6 +278,7 @@ public class Operations {
 				// we check if it has the same number of keys as the number of letter in the
 				// alphabet
 				if (transitions < automaton.getAlphabet().getDictionary().size()) {
+					System.out.println("Votre automate n'est pas complet à cause de l'état " + state);
 					return false;
 				}
 			}
@@ -289,12 +323,14 @@ public class Operations {
 		}
 	}
 
-	private static boolean isStandard(Automaton automaton) {
+	public static boolean isStandard(Automaton automaton) {
 
 		State[] entries = automaton.getStatesByType(StateType.ENTRY);
 
 		if (entries.length > 1) { // check if the automaton has more than 1 entry, if it has, then it isn't
 									// standard
+
+			System.err.println("Votre automate n'est pas standard car il contient " + entries.length + " entrées");
 			return false;
 		}
 
@@ -310,6 +346,9 @@ public class Operations {
 							.filter(destination -> destination.getID().equals(entry.getID())).toArray();
 
 					if (listOfTransitions.length >= 1) {
+						System.err.println("Votre automate n'est pas standard car "
+								+ "l'état "  + state 
+								+ " possède une/des transition(s) revenant vers l'état d'entrée " + entries[0]);
 						return false;
 					}
 				}
@@ -327,7 +366,6 @@ public class Operations {
 		}
 
 		List<List<State>> finalTheta = getUnmergedLastTheta(automaton);
-
 		List<State> newStates = new ArrayList<State>();
 
 		if (finalTheta.size() == automaton.getStates().size()) {
@@ -337,19 +375,24 @@ public class Operations {
 		else {
 
 			int count = 0;
-
-			// TODO : fixer le problème des transitions des transitions qui ne changent pas
-			// TODO : fixer les problèmes, tout court.
-
+	
 			for (List<State> states : finalTheta) {
 				String simplifiedID = String.valueOf((char) ('A' + count));
 				State[] statesArr = states.toArray(new State[0]);
-				State state = mergeStates(states.toArray(new State[0]));
-
+				
+				State state = mergeStates(statesArr);
+				
 				if (states.size() > 1) {
+
 					System.out.println(simplifiedID + " == " + Arrays.toString(statesArr));
+
 					state.getIdentifier().setId(simplifiedID);
-					states.forEach(st -> st.setIdentifier(new Identifier(simplifiedID)));
+
+
+					for (State st : states) {
+						st.getIdentifier().setId(simplifiedID);
+					}
+
 					count++;
 				}
 
@@ -359,7 +402,25 @@ public class Operations {
 
 			}
 
+			int numTransitions = 0;
+
+			Collections.sort(newStates);
 			automaton.changeStates(newStates);
+
+			for (State state : newStates) {
+				for (String key : state.getLinks().keySet()) {
+
+					numTransitions++;
+
+					List<State> destinations = state.getLinks().get(key);
+					List<State> nd = Operations.removeDuplicates(destinations);
+
+					destinations.clear();
+					destinations.addAll(nd);
+				}
+			}
+
+			automaton.setNumTransitions(numTransitions);
 			System.out.println("Minimisation terminée");
 			automaton.display();
 		}
@@ -384,21 +445,16 @@ public class Operations {
 			thetaCurrent.add(part2);
 		}
 
-		// System.out.println(Arrays.toString(thetaCurrent.toArray()));
-
 		int count = 0;
 
 		do {
 			System.out.println("theta (" + count + "): " + Arrays.toString(thetaCurrent.toArray()));
 			thetaLast.clear();
-			;
 			thetaLast.addAll(thetaCurrent);
-			// System.out.println("last : " + Arrays.toString(thetaLast.toArray()));
+
 			thetaCurrent.clear();
 
 			for (List<State> part : thetaLast) {
-
-				// System.out.println("part : " + Arrays.toString(part.toArray()));
 
 				if (part.size() > 1) {
 
@@ -423,7 +479,7 @@ public class Operations {
 								subTheta.remove(state1);
 								subTheta.remove(state2);
 								state1 = Operations.mergeLists(state1, state2);
-								j--;
+								j--; // come back one step because we removed one state 
 
 								Collections.sort(state1);
 							}
@@ -434,6 +490,7 @@ public class Operations {
 						}
 					}
 
+					// Adding all the partitions we made in subTheta in thetaCurrent
 					subTheta.forEach(partition -> {
 						thetaCurrent.add(partition);
 					});
@@ -447,33 +504,28 @@ public class Operations {
 			count++;
 
 		} while (thetaCurrent.size() != thetaLast.size());
+		
+		System.out.println("theta (final): " + Arrays.toString(thetaCurrent.toArray()));
+
 
 		return thetaCurrent;
 	}
 
 	private static boolean compareDestinations(State s1, State s2, List<List<State>> theta) {
 		boolean same = true;
-		int check = s1.getLinks().size() - 1;
+		int check = s1.getLinks().size();
 
 		for (String key : s1.getLinks().keySet()) {
 			List<State> dStates1 = s1.getLinks().get(key);
 			List<State> dStates2 = s2.getLinks().get(key);
 
-			// because the automaton is deterministic and complete
 			State dState1 = dStates1.get(0);
 			State dState2 = dStates2.get(0);
 
-			if (check == 0) {
-				return true;
-			}
-
 			for (List<State> partition : theta) {
-				// System.out.println(Arrays.toString(partition.toArray()));
+
 				boolean foundInPartition1 = foundInPartition(dState1, partition);
 				boolean foundInPartition2 = foundInPartition(dState2, partition);
-
-				// System.out.println(s1 + ":" + foundInPartition1 + " && " + s2 + ":" +
-				// foundInPartition2);
 
 				if (foundInPartition1 && foundInPartition2) {
 					same = (same && true);
@@ -484,6 +536,10 @@ public class Operations {
 					same = false;
 				}
 			}
+
+			if (check == 0) {
+				return true;
+			}
 		}
 
 		return same;
@@ -492,7 +548,7 @@ public class Operations {
 	private static boolean foundInPartition(State d1, List<State> partition) {
 
 		for (State state : partition) {
-			if (state.getID().equals(d1.getID())) {
+			if (state.getIdentifier().equals(d1.getIdentifier())) {
 				return true;
 			}
 		}
@@ -562,6 +618,18 @@ public class Operations {
 		}
 	}
 
+	protected static <T> List<T> removeDuplicates(List<T> list) {
+		List<T> noDuplicates = new ArrayList<T>();
+
+		for (T t : list) {
+			if (!noDuplicates.contains(t)) {
+				noDuplicates.add(t);
+			}
+		}
+
+		return noDuplicates;
+	}
+
 	protected static <T> List<T> mergeLists(List<T> list1, List<T> list2) {
 
 		List<T> newList = new ArrayList<T>();
@@ -591,9 +659,17 @@ public class Operations {
 
 		else if (!map1.isEmpty() && !map2.isEmpty()) {
 			newMap.putAll(map1);
-			map2.forEach((key, destinationStates) -> {
-				newMap.merge(key, destinationStates, (v1, v2) -> mergeLists(v1, v2));
-			});
+			
+			for (String key : map2.keySet()) {
+				
+				if (newMap.containsKey(key)) {
+					newMap.get(key).addAll(mergeLists(newMap.get(key), map2.get(key)));
+				}
+				
+				else {
+					newMap.put(key, map2.get(key));
+				}
+			}
 		}
 
 		return newMap;
@@ -607,20 +683,5 @@ public class Operations {
 		}
 
 		return new Identifier(statesIds).getID();
-	}
-
-	private void fixDestinations(Automaton automaton) {
-
-		for (State state : automaton.getStates()) {
-
-			for (String key : state.getLinks().keySet()) {
-
-				List<State> destinations = state.getLinks().get(key);
-
-				for (State destination : destinations) {
-
-				}
-			}
-		}
 	}
 }

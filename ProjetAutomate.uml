@@ -1,0 +1,2146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:UMLLabProfile="http:///schemas/UMLLabProfile/NS/0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http:///schemas/UMLLabProfile/NS/0 pathmap://UMLLAB_PROFILES/UMLLab.profile.uml#UMLLabProfile-Annotation_2-UMLLabProfile">
+  <uml:Model xmi:id="_VIg4kKXWEeurvamXvE32Kw" name="ProjetAutomate">
+    <eAnnotations xmi:id="_Vq7pIKXWEeurvamXvE32Kw" source="http://ns.yatta.de/umllab">
+      <contents xmi:type="ecore:EAnnotation" xmi:id="_Vq8QMKXWEeurvamXvE32Kw" source="codegen">
+        <details xmi:id="_Vq8QMaXWEeurvamXvE32Kw" key="codegenDirectory" value="/ProjetAutomate/src"/>
+        <details xmi:id="_YOYdUKXWEeurvamXvE32Kw" key="AssociatedSourceCode" value="/ProjetAutomate/src/com/efrei/mathinfo/Main.java;3798263847/1;/ProjetAutomate/src/com/efrei/mathinfo/automates/Alphabet.java;2006174354/1;/ProjetAutomate/src/com/efrei/mathinfo/automates/Automaton.java;616783007/1;/ProjetAutomate/src/com/efrei/mathinfo/automates/Identifier.java;793671449/1;/ProjetAutomate/src/com/efrei/mathinfo/automates/Operations.java;3174576851/1;/ProjetAutomate/src/com/efrei/mathinfo/automates/State.java;141941874/1;/ProjetAutomate/src/com/efrei/mathinfo/automates/StateType.java;3396455257/1;/ProjetAutomate/src/com/efrei/mathinfo/io/FileReader.java;3512352834/1;"/>
+      </contents>
+    </eAnnotations>
+    <elementImport xmi:id="_WT67wKXWEeurvamXvE32Kw">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+    </elementImport>
+    <elementImport xmi:id="_WT7i0KXWEeurvamXvE32Kw">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#byte"/>
+    </elementImport>
+    <elementImport xmi:id="_WT7i0aXWEeurvamXvE32Kw">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#char"/>
+    </elementImport>
+    <elementImport xmi:id="_WT7i0qXWEeurvamXvE32Kw">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#double"/>
+    </elementImport>
+    <elementImport xmi:id="_WT8J4KXWEeurvamXvE32Kw">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#float"/>
+    </elementImport>
+    <elementImport xmi:id="_WT8J4aXWEeurvamXvE32Kw">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+    </elementImport>
+    <elementImport xmi:id="_WT8J4qXWEeurvamXvE32Kw">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#long"/>
+    </elementImport>
+    <elementImport xmi:id="_WT8J46XWEeurvamXvE32Kw">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#short"/>
+    </elementImport>
+    <elementImport xmi:id="_WT8w8KXWEeurvamXvE32Kw">
+      <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </elementImport>
+    <packagedElement xmi:type="uml:Package" xmi:id="_WQ0kcKXWEeurvamXvE32Kw" name="com">
+      <packagedElement xmi:type="uml:Package" xmi:id="_WQ1LgKXWEeurvamXvE32Kw" name="efrei">
+        <packagedElement xmi:type="uml:Package" xmi:id="_WQ8gQKXWEeurvamXvE32Kw" name="mathinfo">
+          <packagedElement xmi:type="uml:Package" xmi:id="_WQ9HUKXWEeurvamXvE32Kw" name="automates">
+            <packagedElement xmi:type="uml:Class" xmi:id="_WUBpcKXWEeurvamXvE32Kw" name="Alphabet">
+              <ownedAttribute xmi:id="_Wi5y8KXWEeurvamXvE32Kw" name="dictionary" isOrdered="true" isReadOnly="true">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Wi6aAKXWEeurvamXvE32Kw" value="*"/>
+              </ownedAttribute>
+              <interfaceRealization xmi:id="_WgxE8KXWEeurvamXvE32Kw" client="_WUBpcKXWEeurvamXvE32Kw" supplier="_WgkQoKXWEeurvamXvE32Kw" contract="_WgkQoKXWEeurvamXvE32Kw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Wjm9kKXWEeurvamXvE32Kw" name="Alphabet" specification="_WUDeoKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_Wjm9kaXWEeurvamXvE32Kw" name="size">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_Wjm9kqXWEeurvamXvE32Kw" type="_WUBpcKXWEeurvamXvE32Kw" direction="return">
+                  <name xsi:nil="true"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>this.dictionary = new ArrayList&lt;String>(size);
+		
+		for (int i = 0; i &lt; size; i++) {
+			this.dictionary.add(String.valueOf(Character.valueOf((char) ('a' + i))));
+		}
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WjnkoKXWEeurvamXvE32Kw" name="Alphabet" specification="_WgyTEKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WjnkoaXWEeurvamXvE32Kw" name="dictionary" type="_WdqtoaXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WjnkoqXWEeurvamXvE32Kw" type="_WUBpcKXWEeurvamXvE32Kw" direction="return">
+                  <name xsi:nil="true"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>this.dictionary = new ArrayList&lt;String>(dictionary);
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WjoLsKXWEeurvamXvE32Kw" name="addWord" specification="_WUFT0KXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WjoLsaXWEeurvamXvE32Kw" name="word">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>if (!this.dictionary.contains(word)) {
+			this.dictionary.add(word);
+		}
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WjoLsqXWEeurvamXvE32Kw" name="removeWord" specification="_WUGh8KXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WjoLs6XWEeurvamXvE32Kw" name="word">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>if (this.dictionary.contains(word)) {
+			this.dictionary.remove(word);
+		}
+	</body>
+              </ownedBehavior>
+              <ownedOperation xmi:id="_WUDeoKXWEeurvamXvE32Kw" name="Alphabet" method="_Wjm9kKXWEeurvamXvE32Kw">
+                <eAnnotations xmi:id="_WUEFsKXWEeurvamXvE32Kw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+                  <details xmi:id="_WUEFsaXWEeurvamXvE32Kw" key="create"/>
+                </eAnnotations>
+                <ownedParameter xmi:id="_WUDeoaXWEeurvamXvE32Kw" name="size">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_WUEFsqXWEeurvamXvE32Kw" type="_WUBpcKXWEeurvamXvE32Kw" direction="return"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WUFT0KXWEeurvamXvE32Kw" name="addWord" method="_WjoLsKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WUF64KXWEeurvamXvE32Kw" name="word">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WUGh8KXWEeurvamXvE32Kw" name="removeWord" method="_WjoLsqXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WUGh8aXWEeurvamXvE32Kw" name="word">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WgyTEKXWEeurvamXvE32Kw" name="Alphabet" method="_WjnkoKXWEeurvamXvE32Kw">
+                <eAnnotations xmi:id="_WgyTEqXWEeurvamXvE32Kw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+                  <details xmi:id="_WgyTE6XWEeurvamXvE32Kw" key="create"/>
+                </eAnnotations>
+                <ownedParameter xmi:id="_WgyTEaXWEeurvamXvE32Kw" name="dictionary" type="_WdqtoaXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WgyTFKXWEeurvamXvE32Kw" type="_WUBpcKXWEeurvamXvE32Kw" direction="return"/>
+              </ownedOperation>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Class" xmi:id="_WUJlQKXWEeurvamXvE32Kw" name="Automaton">
+              <ownedAttribute xmi:id="_Wi7BEKXWEeurvamXvE32Kw" name="states" type="_WXIn0KXWEeurvamXvE32Kw" isOrdered="true" isReadOnly="true" association="_Wk3h0KXWEeurvamXvE32Kw">
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Wi7oIKXWEeurvamXvE32Kw" value="*"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_Wi8PMKXWEeurvamXvE32Kw" name="alphabet" type="_WUBpcKXWEeurvamXvE32Kw" association="_WklN8KXWEeurvamXvE32Kw"/>
+              <ownedAttribute xmi:id="_Wi82QKXWEeurvamXvE32Kw" name="numTransitions" isReadOnly="true">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+              </ownedAttribute>
+              <interfaceRealization xmi:id="_Wg3LkKXWEeurvamXvE32Kw" client="_WUJlQKXWEeurvamXvE32Kw" supplier="_WgkQoKXWEeurvamXvE32Kw" contract="_WgkQoKXWEeurvamXvE32Kw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WjoywKXWEeurvamXvE32Kw" name="Automaton" specification="_WUMokKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WjoywaXWEeurvamXvE32Kw" type="_WUJlQKXWEeurvamXvE32Kw" direction="return"/>
+                <language>java</language>
+                <body>this.states = new ArrayList&lt;State>();
+		this.alphabet = null;
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WjpZ0KXWEeurvamXvE32Kw" name="Automaton" specification="_Wg3yoKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WjpZ0aXWEeurvamXvE32Kw" name="states" type="_WdqtoaXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WjpZ0qXWEeurvamXvE32Kw" type="_WUJlQKXWEeurvamXvE32Kw" direction="return"/>
+                <language>java</language>
+                <body>this.states = new ArrayList&lt;State>();
+
+		states.forEach(s -> {
+			this.states.add(s.clone());
+		});
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Wjqn8KXWEeurvamXvE32Kw" name="Automaton" specification="_WeChEKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_Wjqn8aXWEeurvamXvE32Kw" name="automaton" type="_WUJlQKXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_Wjqn8qXWEeurvamXvE32Kw" type="_WUJlQKXWEeurvamXvE32Kw" direction="return"/>
+                <language>java</language>
+                <body>this.states = new ArrayList&lt;State>();
+
+		automaton.getStates().forEach(s -> {
+			this.states.add(s.clone());
+		});
+		
+		for (State state : this.states) {
+			for (String key : state.getLinks().keySet()) {
+				
+				List&lt;State> destinations = state.getLinks().get(key);
+				destinations.replaceAll(s -> this.getByID(s.getID()));
+			}
+		}
+
+		this.alphabet = new Alphabet(automaton.getAlphabet().getDictionary());
+		this.numTransitions = Integer.valueOf(automaton.getNumTransitions());
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WjrPAKXWEeurvamXvE32Kw" name="changeStates" specification="_Wg5n0aXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WjrPAaXWEeurvamXvE32Kw" name="newStates" type="_WdqtoaXWEeurvamXvE32Kw"/>
+                <language>java</language>
+                <body>this.states = newStates;
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WjrPAqXWEeurvamXvE32Kw" name="setNumTransitions" specification="_WUWZkKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WjrPA6XWEeurvamXvE32Kw" name="numTransitions">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>this.numTransitions = Integer.valueOf(numTransitions);
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Wjr2EKXWEeurvamXvE32Kw" name="containsStateID" specification="_WUYOwKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_Wjr2EaXWEeurvamXvE32Kw" name="id">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_Wjr2EqXWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>for (State state : this.states) {
+			if (state.getID().equals(id)) {
+				return true;
+			}
+		}
+
+		return false;
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Wjr2E6XWEeurvamXvE32Kw" name="getByID" specification="_WUarAKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_Wjr2FKXWEeurvamXvE32Kw" name="id">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_Wjr2FaXWEeurvamXvE32Kw" type="_WXIn0KXWEeurvamXvE32Kw" direction="return"/>
+                <language>java</language>
+                <body>for (State state : this.states) {
+			if (state.getID().equals(id)) {
+				return state;
+			}
+		}
+
+		return null; // if the state is not present in the automaton
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WjtEMKXWEeurvamXvE32Kw" name="getStatesByType" specification="_WeDvMaXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WjtEMaXWEeurvamXvE32Kw" name="type" type="_WX9uQKXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WjtEMqXWEeurvamXvE32Kw" type="_WXIn0KXWEeurvamXvE32Kw" direction="return">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WjtEM6XWEeurvamXvE32Kw" value="*"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>List&lt;State> filteredList = this.states.stream()
+				.filter(state -> state.getType().contains(type))
+				.collect(Collectors.toList());
+
+
+		return filteredList.toArray(new State[0]);
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WjuSUKXWEeurvamXvE32Kw" name="getAllStatesButType" specification="_WeM5IKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WjuSUaXWEeurvamXvE32Kw" name="type" type="_WX9uQKXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WjuSUqXWEeurvamXvE32Kw" type="_WXIn0KXWEeurvamXvE32Kw" direction="return">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WjuSU6XWEeurvamXvE32Kw" value="*"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>List&lt;State> st = new ArrayList&lt;State>();
+
+		for (State state : this.getStates()) {
+			if (!state.getType().contains(type)) {
+				st.add(state);
+			}
+		}
+
+		return st.toArray(new State[0]);
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Wj5RcKXWEeurvamXvE32Kw" name="clone" specification="_WUgxoKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_Wj5RcaXWEeurvamXvE32Kw" type="_WUJlQKXWEeurvamXvE32Kw" direction="return"/>
+                <language>java</language>
+                <body>return new Automaton(this);
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Wj54gKXWEeurvamXvE32Kw" name="display" specification="_WUh_wKXWEeurvamXvE32Kw">
+                <language>java</language>
+                <body>System.out.println(this);
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Wj6fkKXWEeurvamXvE32Kw" name="recognizesWord" specification="_WUjN4KXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_Wj6fkaXWEeurvamXvE32Kw" name="word">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_Wj6fkqXWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>State[] entries = this.getStatesByType(StateType.ENTRY);
+
+		String letter;
+		for (int i = 0; i &lt; word.length(); i++) {
+			letter = String.valueOf(word.charAt(i));
+			if (!this.alphabet.getDictionary().contains(letter)) {
+				return false;
+			}
+		}
+
+		for (State entry : entries) {
+
+			if (recognizesWordFromState(word, -1, entry)) {
+				return true;
+			}
+		}
+
+		return false;
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Wj6fk6XWEeurvamXvE32Kw" name="recognizesWordFromState" specification="_WeWqIKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_Wj6flKXWEeurvamXvE32Kw" name="word">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_Wj6flaXWEeurvamXvE32Kw" name="index">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_Wj6flqXWEeurvamXvE32Kw" name="current" type="_WXIn0KXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_Wj6fl6XWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>if (index == word.length() - 1) {
+			return this.getByID(current.getID()).isExit();
+		}
+
+		else {
+			String letter = String.valueOf(word.charAt(index + 1));
+			List&lt;State> destinations = current.getLinks().get(letter);
+
+			if (destinations == null) {
+				return false;
+			}
+
+			for (State destination : destinations) {
+				if (this.recognizesWordFromState(word, index + 1, destination)) {
+					return true;
+				}
+			}
+		}
+
+		return false;
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Wj7tsKXWEeurvamXvE32Kw" name="toString" specification="_WUm4QKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_Wj7tsaXWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>String result = &quot;&quot;;
+
+		// Alphabet display
+		result = this.alphabet.getDictionary().size() + &quot; mots : &quot;
+				+ Arrays.toString(this.alphabet.getDictionary().toArray()) + &quot;\n&quot;;
+
+		// States display
+		result += this.states.size() + &quot; états : &quot; + Arrays.toString(this.states.toArray()) + &quot;\n&quot;;
+
+		// Inputs displays
+		State[] entries = this.getStatesByType(StateType.ENTRY);
+		
+		/*
+		 * stream : allows you to use the filter method filter returns a list containing
+		 * the filter conditions (&lt;type> -> &lt;filter conditions>)
+		 */
+		result += entries.length + &quot; entrées : &quot; + Arrays.toString(entries) + &quot;\n&quot;;
+
+		// Output displays
+		State[] exits = this.getStatesByType(StateType.EXIT);
+		result += exits.length + &quot; sorties : &quot; + Arrays.toString(exits) + &quot;\n&quot;;
+
+		// Display of transitions
+		result += this.numTransitions + &quot; transitions : \n&quot;;
+
+		for (State state : this.states) { // for each state among all states
+
+			Set&lt;String> allKeys = state.getLinks().keySet();
+
+			for (String key : this.alphabet.getDictionary()) { // for each key among all keys
+				if (!allKeys.contains(key)) {
+					result += state.getID() + &quot;->&quot; + key + &quot;->[x] \n&quot;;
+				}
+
+				else {
+					result += state.getID() + &quot;->&quot; + key + &quot;->&quot; + Arrays.toString(state.getLinks().get(key).toArray())
+							+ &quot;\n&quot;;
+				}
+			}
+		}
+
+		return result;
+	</body>
+              </ownedBehavior>
+              <ownedOperation xmi:id="_WUMokKXWEeurvamXvE32Kw" name="Automaton" method="_WjoywKXWEeurvamXvE32Kw">
+                <eAnnotations xmi:id="_WUMokaXWEeurvamXvE32Kw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+                  <details xmi:id="_WUMokqXWEeurvamXvE32Kw" key="create"/>
+                </eAnnotations>
+                <ownedParameter xmi:id="_WUNPoKXWEeurvamXvE32Kw" type="_WUJlQKXWEeurvamXvE32Kw" direction="return"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WUWZkKXWEeurvamXvE32Kw" name="setNumTransitions" method="_WjrPAqXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WUXAoKXWEeurvamXvE32Kw" name="numTransitions">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WUYOwKXWEeurvamXvE32Kw" name="containsStateID" method="_Wjr2EKXWEeurvamXvE32Kw">
+                <ownedComment xmi:id="_WknDIKXWEeurvamXvE32Kw">
+                  <body>The method checks if a state is already present in the PLC.
+	 * 
+	 * @param id Automaton identifier (example = 1 or A)
+	 * @return {@code true} if the state is already present in the automaton false
+	 *         if the state is not present in the automaton</body>
+                </ownedComment>
+                <ownedParameter xmi:id="_WUYOwaXWEeurvamXvE32Kw" name="id">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_WUYOwqXWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WUarAKXWEeurvamXvE32Kw" name="getByID" method="_Wjr2E6XWEeurvamXvE32Kw">
+                <ownedComment xmi:id="_WkoRQKXWEeurvamXvE32Kw">
+                  <body>The method allows you to retrieve a state from its identifier
+	 * 
+	 * @param id State identifier
+	 * @return the state with the id null if the state is not present in the
+	 *         automaton</body>
+                </ownedComment>
+                <ownedParameter xmi:id="_WUb5IKXWEeurvamXvE32Kw" name="id">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_WeDvMKXWEeurvamXvE32Kw" type="_WXIn0KXWEeurvamXvE32Kw" direction="return"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WUgxoKXWEeurvamXvE32Kw" name="clone" method="_Wj5RcKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WeWDEKXWEeurvamXvE32Kw" type="_WUJlQKXWEeurvamXvE32Kw" direction="return"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WUh_wKXWEeurvamXvE32Kw" name="display" method="_Wj54gKXWEeurvamXvE32Kw"/>
+              <ownedOperation xmi:id="_WUjN4KXWEeurvamXvE32Kw" name="recognizesWord" method="_Wj6fkKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WUjN4aXWEeurvamXvE32Kw" name="word">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_WUkcAKXWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WUm4QKXWEeurvamXvE32Kw" name="toString" method="_Wj7tsKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WUoGYKXWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WeChEKXWEeurvamXvE32Kw" name="Automaton" method="_Wjqn8KXWEeurvamXvE32Kw">
+                <eAnnotations xmi:id="_WeDIIKXWEeurvamXvE32Kw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+                  <details xmi:id="_WeDIIaXWEeurvamXvE32Kw" key="create"/>
+                </eAnnotations>
+                <ownedParameter xmi:id="_WeChEaXWEeurvamXvE32Kw" name="automaton" type="_WUJlQKXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WeDIIqXWEeurvamXvE32Kw" type="_WUJlQKXWEeurvamXvE32Kw" direction="return"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WeDvMaXWEeurvamXvE32Kw" name="getStatesByType" method="_WjtEMKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WeEWQKXWEeurvamXvE32Kw" name="type" type="_WX9uQKXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WeLrAKXWEeurvamXvE32Kw" type="_WXIn0KXWEeurvamXvE32Kw" direction="return">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WeLrAaXWEeurvamXvE32Kw" value="*"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WeM5IKXWEeurvamXvE32Kw" name="getAllStatesButType" method="_WjuSUKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WeM5IaXWEeurvamXvE32Kw" name="type" type="_WX9uQKXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WeM5IqXWEeurvamXvE32Kw" type="_WXIn0KXWEeurvamXvE32Kw" direction="return">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WeNgMKXWEeurvamXvE32Kw" value="*"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WeWqIKXWEeurvamXvE32Kw" name="recognizesWordFromState" visibility="private" method="_Wj6fk6XWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WeXRMKXWEeurvamXvE32Kw" name="word">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_WeXRMaXWEeurvamXvE32Kw" name="index">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_WeXRMqXWEeurvamXvE32Kw" name="current" type="_WXIn0KXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WeXRM6XWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_Wg3yoKXWEeurvamXvE32Kw" name="Automaton" method="_WjpZ0KXWEeurvamXvE32Kw">
+                <eAnnotations xmi:id="_Wg3yoqXWEeurvamXvE32Kw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+                  <details xmi:id="_Wg3yo6XWEeurvamXvE32Kw" key="create"/>
+                </eAnnotations>
+                <ownedParameter xmi:id="_Wg3yoaXWEeurvamXvE32Kw" name="states" type="_WdqtoaXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_Wg4ZsKXWEeurvamXvE32Kw" type="_WUJlQKXWEeurvamXvE32Kw" direction="return"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_Wg5n0aXWEeurvamXvE32Kw" name="changeStates" method="_WjrPAKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_Wg6O4KXWEeurvamXvE32Kw" name="newStates" type="_WdqtoaXWEeurvamXvE32Kw"/>
+              </ownedOperation>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Class" xmi:id="_WVBH8KXWEeurvamXvE32Kw" name="Identifier">
+              <ownedAttribute xmi:id="_Wi-rcKXWEeurvamXvE32Kw" name="id" visibility="private">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_Wi_SgKXWEeurvamXvE32Kw" value="&quot;&quot;"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_WjBHsKXWEeurvamXvE32Kw" name="intValue" isReadOnly="true">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+                <defaultValue xmi:type="uml:LiteralString" xmi:id="_WjGnQKXWEeurvamXvE32Kw" value="-1"/>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_WjH1YKXWEeurvamXvE32Kw" name="identifiers" type="_WVBH8KXWEeurvamXvE32Kw" isOrdered="true" isReadOnly="true" association="_Wk5-EKXWEeurvamXvE32Kw">
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WjH1YaXWEeurvamXvE32Kw" value="*"/>
+              </ownedAttribute>
+              <interfaceRealization xmi:id="_WhCKsaXWEeurvamXvE32Kw" client="_WVBH8KXWEeurvamXvE32Kw" supplier="_Wg95QKXWEeurvamXvE32Kw" contract="_Wg95QKXWEeurvamXvE32Kw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Wj870KXWEeurvamXvE32Kw" name="Identifier" specification="_WVK48KXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_Wj870aXWEeurvamXvE32Kw" name="id">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_Wj870qXWEeurvamXvE32Kw" type="_WVBH8KXWEeurvamXvE32Kw" direction="return"/>
+                <language>java</language>
+                <body>this.id = id;
+		this.identifiers = new ArrayList&lt;Identifier>();
+
+		this.buildIntValue();
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Wj9i4KXWEeurvamXvE32Kw" name="Identifier" specification="_WhEm8KXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_Wj9i4aXWEeurvamXvE32Kw" name="identifiers" type="_WdqtoaXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_Wj9i4qXWEeurvamXvE32Kw" type="_WVBH8KXWEeurvamXvE32Kw" direction="return"/>
+                <language>java</language>
+                <body>this.identifiers = buildIdentifiers(identifiers, 0);
+		Collections.sort(this.identifiers);
+		this.id = this.buildID();
+		
+		if (this.id.length() > 0)
+			this.id = this.id.substring(1); // we remove the '.' at the beginning
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Wj-J8KXWEeurvamXvE32Kw" name="isInteger" specification="_WVUp8KXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_Wj-J8aXWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>try {
+			Integer.parseInt(this.id);
+		} catch (NumberFormatException e) {
+			return false;
+		}
+
+		return true;
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkAmMKXWEeurvamXvE32Kw" name="buildID" specification="_WVVRAKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkAmMaXWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>if (this.id != &quot;&quot;) {
+			System.err.println(&quot;La création d'un nouvel identifiant n'est pas nécessaire&quot;);
+			return this.id;
+		}
+
+		String possibleID = &quot;&quot;;
+
+		for (Identifier identifier : this.identifiers) {
+			if (identifier.getIdentifiers().size() == 0) {
+				possibleID = String.join(&quot;.&quot;, possibleID, identifier.getID());
+			}
+
+			else {
+				for (Identifier subID : identifier.getIdentifiers()) {
+					possibleID = String.join(&quot;.&quot;, possibleID, subID.getID());
+				}
+			}
+		}
+
+		return possibleID;
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkAmMqXWEeurvamXvE32Kw" name="buildIdentifiers" specification="_WhHDMaXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkAmM6XWEeurvamXvE32Kw" name="ids" type="_WdqtoaXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WkAmNKXWEeurvamXvE32Kw" name="index">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_WkBNQKXWEeurvamXvE32Kw" type="_WVBH8KXWEeurvamXvE32Kw" isOrdered="true" direction="return">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WkBNQaXWEeurvamXvE32Kw" value="*"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>List&lt;Identifier> subIds = new ArrayList&lt;Identifier>();
+
+		if (index &lt; ids.size()) {
+
+			if (ids.get(index).getIdentifiers().isEmpty()) {
+				subIds.add(ids.get(index));
+				return Operations.mergeLists(subIds, buildIdentifiers(ids, index + 1));
+			}
+
+			else {
+				subIds = Operations.mergeLists(subIds, buildIdentifiers(ids.get(index).getIdentifiers(), 0));
+				return Operations.mergeLists(subIds, buildIdentifiers(ids, index + 1));
+			}
+		}
+		
+		return subIds;
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkBNQqXWEeurvamXvE32Kw" name="buildIntValue" specification="_WVfpEKXWEeurvamXvE32Kw">
+                <language>java</language>
+                <body>if (isInteger()) {
+			this.intValue = Integer.parseInt(this.id);
+		}
+
+		else {
+			this.id.chars().forEach(c -> {
+				this.intValue += c;
+			});
+		}
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkB0UKXWEeurvamXvE32Kw" name="getID" specification="_WVgQIKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkB0UaXWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>return id;
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkB0UqXWEeurvamXvE32Kw" name="setId" specification="_WVkhkKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkB0U6XWEeurvamXvE32Kw" name="id">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>this.id = id;
+		this.buildIntValue();
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkB0VKXWEeurvamXvE32Kw" name="addIdentifier" specification="_WeoW8KXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkB0VaXWEeurvamXvE32Kw" name="id" type="_WVBH8KXWEeurvamXvE32Kw"/>
+                <language>java</language>
+                <body>if (!this.identifiers.contains(id)) {
+			this.identifiers.add(id);
+			Collections.sort(this.identifiers);
+		}
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkCbYKXWEeurvamXvE32Kw" name="isSubIdOf" specification="_WeqzMKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkCbYaXWEeurvamXvE32Kw" name="id" type="_WVBH8KXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WkCbYqXWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>return id.getIdentifiers().contains(this);
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkDCcKXWEeurvamXvE32Kw" name="toString" specification="_WVlvsKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkDCcaXWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>return this.id;
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkEQkKXWEeurvamXvE32Kw" name="compareTo" specification="_WeraQKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkEQkaXWEeurvamXvE32Kw" name="o" type="_WVBH8KXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WkEQkqXWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>return this.intValue - o.getIntValue();
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkFesKXWEeurvamXvE32Kw" name="equals" specification="_WhQ0MKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkFesaXWEeurvamXvE32Kw" name="o" type="_WhPmEKXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WkFesqXWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>if (this == o) return true;
+     if (o == null || getClass() != o.getClass()) return false;
+     
+     Identifier identifier = (Identifier) o;
+     return this.getID().equals(identifier.getID());
+ </body>
+              </ownedBehavior>
+              <ownedOperation xmi:id="_WVK48KXWEeurvamXvE32Kw" name="Identifier" method="_Wj870KXWEeurvamXvE32Kw">
+                <eAnnotations xmi:id="_WVMHEKXWEeurvamXvE32Kw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+                  <details xmi:id="_WVMHEaXWEeurvamXvE32Kw" key="create"/>
+                </eAnnotations>
+                <ownedParameter xmi:id="_WVLgAKXWEeurvamXvE32Kw" name="id">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_WVMHEqXWEeurvamXvE32Kw" type="_WVBH8KXWEeurvamXvE32Kw" direction="return"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WVUp8KXWEeurvamXvE32Kw" name="isInteger" visibility="private" method="_Wj-J8KXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WVUp8aXWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WVVRAKXWEeurvamXvE32Kw" name="buildID" visibility="private" method="_WkAmMKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WVV4EKXWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WVfpEKXWEeurvamXvE32Kw" name="buildIntValue" visibility="private" method="_WkBNQqXWEeurvamXvE32Kw"/>
+              <ownedOperation xmi:id="_WVgQIKXWEeurvamXvE32Kw" name="getID" method="_WkB0UKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WVj6gKXWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WVkhkKXWEeurvamXvE32Kw" name="setId" method="_WkB0UqXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WVkhkaXWEeurvamXvE32Kw" name="id">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WVlvsKXWEeurvamXvE32Kw" name="toString" method="_WkDCcKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WVnk4KXWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WeoW8KXWEeurvamXvE32Kw" name="addIdentifier" method="_WkB0VKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WeplEKXWEeurvamXvE32Kw" name="id" type="_WVBH8KXWEeurvamXvE32Kw"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WeqzMKXWEeurvamXvE32Kw" name="isSubIdOf" method="_WkCbYKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WeqzMaXWEeurvamXvE32Kw" name="id" type="_WVBH8KXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WeqzMqXWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WeraQKXWEeurvamXvE32Kw" name="compareTo" method="_WkEQkKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WesBUKXWEeurvamXvE32Kw" name="o" type="_WVBH8KXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_Wet2gKXWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WhEm8KXWEeurvamXvE32Kw" name="Identifier" method="_Wj9i4KXWEeurvamXvE32Kw">
+                <eAnnotations xmi:id="_WhEm8qXWEeurvamXvE32Kw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+                  <details xmi:id="_WhEm86XWEeurvamXvE32Kw" key="create"/>
+                </eAnnotations>
+                <ownedParameter xmi:id="_WhEm8aXWEeurvamXvE32Kw" name="identifiers" type="_WdqtoaXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WhEm9KXWEeurvamXvE32Kw" type="_WVBH8KXWEeurvamXvE32Kw" direction="return"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WhHDMaXWEeurvamXvE32Kw" name="buildIdentifiers" isStatic="true" method="_WkAmMqXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WhKtkKXWEeurvamXvE32Kw" name="ids" type="_WdqtoaXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WhKtkaXWEeurvamXvE32Kw" name="index">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_WhKtkqXWEeurvamXvE32Kw" type="_WVBH8KXWEeurvamXvE32Kw" isOrdered="true" direction="return">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WhLUoKXWEeurvamXvE32Kw" value="*"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WhQ0MKXWEeurvamXvE32Kw" name="equals" method="_WkFesKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WhQ0MaXWEeurvamXvE32Kw" name="o" type="_WhPmEKXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WhQ0MqXWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+                </ownedParameter>
+              </ownedOperation>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Class" xmi:id="_WV-KMKXWEeurvamXvE32Kw" name="Operations">
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkGs0KXWEeurvamXvE32Kw" name="isAsync" specification="_We-8QKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkGs0aXWEeurvamXvE32Kw" name="automaton" type="_WUJlQKXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WkGs0qXWEeurvamXvE32Kw" direction="return">
+                  <name xsi:nil="true"/>
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>for (State state : automaton.getStates()) {
+			for (String key : state.getLinks().keySet()) {
+				if (key.equals(&quot;*&quot;)) { // &quot;&quot; is an epsilon transition, if one state has such transition, the automaton
+										// is asynchronous
+					return true;
+				}
+			}
+		}
+
+		return false;
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkH68KXWEeurvamXvE32Kw" name="synchronize" specification="_WfAKYKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkH68aXWEeurvamXvE32Kw" name="automaton" type="_WUJlQKXWEeurvamXvE32Kw"/>
+                <language>java</language>
+                <body>if (isAsync(automaton)) {
+
+			// The purpose of this map is to store one state as a key and a value that is
+			// its &quot;epsilon cloture&quot;
+			// that way we can access it easier when we will be creating the new merged
+			// states
+			Map&lt;State, List&lt;State>> epsilonStates = new HashMap&lt;State, List&lt;State>>();
+
+			// Empty list that we are going to fill and then put in epsilonStates map
+			List&lt;State> epsilonDestinations = new ArrayList&lt;State>();
+
+			// Will contain all the new states we will be creating
+			List&lt;State> newStates = new ArrayList&lt;State>();
+
+			for (State state : automaton.getStates()) {
+				fillEpsilonStates(epsilonDestinations, state);
+				epsilonStates.put(state, new ArrayList&lt;State>(epsilonDestinations));
+				epsilonDestinations.clear();
+
+				state.getLinks().remove(&quot;*&quot;); // for each state we remove the epsilon transition
+			}
+
+			// creating all the new states, and naming them with a simple name
+			epsilonStates.forEach((key, value) -> {
+				State mergedState = mergeStates(value.toArray(new State[0]));
+
+				newStates.add(mergedState);
+
+				value.clear();
+				value.add(mergedState);
+
+				System.out.println(key.getID() + &quot;*&quot; + &quot; == &quot; + mergedState.getID());
+				mergedState.setIdentifier(new Identifier(key.getID() + &quot;*&quot;));
+			});
+
+			for (State state : newStates) {
+
+				for (String key : state.getLinks().keySet()) {
+					List&lt;State> destinations = state.getLinks().get(key);
+					List&lt;State> copy = new ArrayList&lt;State>(destinations);
+
+					for (State destination : copy) {
+
+						if (epsilonStates.containsKey(destination)) {
+							destinations.remove(destination);
+							destinations.add(epsilonStates.get(destination).get(0));
+						}
+					}
+				}
+			}
+
+			// newStates.forEach(s -> System.out.println(s));
+			Collections.sort(newStates);
+			automaton.changeStates(newStates);
+			automaton.getAlphabet().removeWord(&quot;*&quot;);
+			automaton.display();
+		}
+
+		else {
+			System.err.println(&quot;Votre automate est déjà synchrone&quot;);
+		}
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkIiAKXWEeurvamXvE32Kw" name="fillEpsilonStates" specification="_WhYI8KXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkIiAaXWEeurvamXvE32Kw" name="result" type="_WdqtoaXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WkIiAqXWEeurvamXvE32Kw" name="state" type="_WXIn0KXWEeurvamXvE32Kw"/>
+                <language>java</language>
+                <body>if (!result.contains(state)) {
+			result.add(state);
+		}
+
+		List&lt;State> destinations = state.getLinks().get(&quot;*&quot;);
+
+		if (destinations == null) {
+			return;
+		}
+
+		for (State destination : destinations) {
+
+			if (!result.contains(destination)) {
+				fillEpsilonStates(result, destination);
+			}
+		}
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkIiA6XWEeurvamXvE32Kw" name="determinize" specification="_WfBYgKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkIiBKXWEeurvamXvE32Kw" name="automaton" type="_WUJlQKXWEeurvamXvE32Kw"/>
+                <language>java</language>
+                <body>if (!isDeterministic(automaton)) {
+
+			System.out.println(&quot;\nDéterminisation de votre automate \n&quot;);
+
+			synchronize(automaton); // Only does it if it's asynchronous
+
+			State[] entries = automaton.getStatesByType(StateType.ENTRY);
+			State newEntry = mergeStates(entries);
+
+			Stack&lt;State> toDetermine = new Stack&lt;State>();
+			toDetermine.add(newEntry);
+
+			List&lt;State> newStates = new ArrayList&lt;State>();
+			automaton.changeStates(newStates);
+
+			int transitions = 0;
+
+			while (!toDetermine.isEmpty()) {
+				State current = toDetermine.pop(); // we retrieve the state to determine
+
+				if (!automaton.getStates().contains(current)) {
+					for (String key : current.getLinks().keySet()) {
+						transitions++;
+						List&lt;State> destinations = current.getLinks().get(key);
+						State mergedState = findOrMerge(automaton, destinations.toArray(new State[0]));
+
+						destinations.clear();
+						destinations.add(mergedState);
+
+						if (!newStates.contains(mergedState)) {
+							toDetermine.add(mergedState);
+						}
+					}
+
+					automaton.getStates().add(current);
+				}
+			}
+
+			// Remove all the other entries but not the first one (which is the only one we
+			// need)
+			for (State entry : newStates) {
+				if (!entry.equals(newEntry)) {
+					entry.removeType(StateType.ENTRY);
+				}
+			}
+
+			automaton.setNumTransitions(transitions);
+
+			automaton.display();
+			System.out.println(&quot;Déterminisation terminée !&quot;);
+		}
+
+		else {
+			System.err.println(&quot;\nVotre automate est déja déterministe&quot;);
+		}
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkJJEKXWEeurvamXvE32Kw" name="isDeterministic" specification="_WfIGMKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkJJEaXWEeurvamXvE32Kw" name="automaton" type="_WUJlQKXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WkJJEqXWEeurvamXvE32Kw" direction="return">
+                  <name xsi:nil="true"/>
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>State[] entries = automaton.getStatesByType(StateType.ENTRY);
+
+		if (entries.length > 1) { // check if the automaton has more than 1 entry, if it has, then it isn't
+									// deterministic
+			System.err.println(&quot;Votre automate n'est pas déterministe car il possède &quot; + entries.length + &quot; entrées&quot;);
+			return false;
+		}
+
+		else {
+			for (State state : automaton.getStates()) { // For all the states
+				for (String key : state.getLinks().keySet()) { // We check all the transitions
+					if (state.getLinks().get(key).size() > 1) { // and check if one returns more than one state as its
+																// destination
+						System.err.println(&quot;Votre automate n'est pas déterministe à cause de la transition : &quot; + state
+								+ &quot;->&quot; + key + &quot;->&quot; + state.getLinks().get(key));
+						return false;
+					}
+				}
+			}
+		}
+
+		return true;
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkKXMKXWEeurvamXvE32Kw" name="complete" specification="_WfJUUKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkKXMaXWEeurvamXvE32Kw" name="automaton" type="_WUJlQKXWEeurvamXvE32Kw"/>
+                <language>java</language>
+                <body>determinize(automaton);
+
+		if (!isCompleted(automaton)) {
+			System.out.println(&quot;\nComplétion de votre automate \n&quot;);
+
+			if (isAsync(automaton)) {
+				synchronize(automaton);
+			}
+
+			State bin = new State(&quot;P&quot;); // we create the 'bin' state
+			for (String key : automaton.getAlphabet().getDictionary()) {
+				bin.addLink(key, bin); // we add as many loops on 'bin' as there are letters in the alphabet
+				automaton.setNumTransitions(automaton.getNumTransitions() + 1);
+			}
+
+			for (State state : automaton.getStates()) {
+				Set&lt;String> keys = state.getLinks().keySet();
+
+				for (String word : automaton.getAlphabet().getDictionary()) {
+					if (!keys.contains(word)) {
+						automaton.setNumTransitions(automaton.getNumTransitions() + 1);
+						state.addLink(word, bin);
+					}
+				}
+			}
+
+			automaton.getStates().add(bin);
+
+			automaton.display();
+			System.out.println(&quot;Complétion terminée ! &quot;);
+		}
+
+		else {
+			System.err.println(&quot;\nVotre automate est déjà complet&quot;);
+		}
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkK-QKXWEeurvamXvE32Kw" name="isCompleted" specification="_WfJ7YKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkK-QaXWEeurvamXvE32Kw" name="automaton" type="_WUJlQKXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WkK-QqXWEeurvamXvE32Kw" direction="return">
+                  <name xsi:nil="true"/>
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>// we check if the automaton is deterministic, if not -> it isn't completed
+		if (!isDeterministic(automaton)) {
+			return false;
+		}
+
+		else {
+			for (State state : automaton.getStates()) {
+
+				int transitions = state.getLinks().keySet().size();
+
+				// we check if it has the same number of keys as the number of letter in the
+				// alphabet
+				if (transitions &lt; automaton.getAlphabet().getDictionary().size()) {
+					System.out.println(&quot;Votre automate n'est pas complet à cause de l'état &quot; + state);
+					return false;
+				}
+			}
+		}
+
+		return true;
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkLlUKXWEeurvamXvE32Kw" name="standardize" specification="_WfKicaXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkLlUaXWEeurvamXvE32Kw" name="automaton" type="_WUJlQKXWEeurvamXvE32Kw"/>
+                <language>java</language>
+                <body>if (!isStandard(automaton)) {
+
+			synchronize(automaton);
+
+			System.out.println(&quot;\nStandardisation de votre automate : \n&quot;);
+
+			State newEntry = new State(&quot;I&quot;);
+			newEntry.addType(StateType.ENTRY);
+
+			State[] entries = automaton.getStatesByType(StateType.ENTRY);
+
+			for (State entry : entries) {
+				for (String key : entry.getLinks().keySet()) {
+
+					List&lt;State> destinations = entry.getLinks().get(key);
+
+					for (State state : destinations) {
+						newEntry.addLink(key, state);
+					}
+				}
+
+				entry.removeType(StateType.ENTRY);
+			}
+
+			automaton.getStates().add(newEntry);
+
+			automaton.display();
+			System.out.println(&quot;Votre automate est désormais standardisé ! \n&quot;);
+		}
+
+		else {
+			System.err.println(&quot;Votre automate est déjà standardisé ! \n&quot;);
+		}
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkLlUqXWEeurvamXvE32Kw" name="isStandard" specification="_WfLwkKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkLlU6XWEeurvamXvE32Kw" name="automaton" type="_WUJlQKXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WkLlVKXWEeurvamXvE32Kw" direction="return">
+                  <name xsi:nil="true"/>
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>State[] entries = automaton.getStatesByType(StateType.ENTRY);
+
+		if (entries.length > 1) { // check if the automaton has more than 1 entry, if it has, then it isn't
+									// standard
+
+			System.err.println(&quot;Votre automate n'est pas standard car il contient &quot; + entries.length + &quot; entrées&quot;);
+			return false;
+		}
+
+		else {
+
+			State entry = (State) entries[0]; // We have only one entry, so we know it is at index 0
+
+			for (State state : automaton.getStates()) { // We check all the states of the automaton
+				for (String key : state.getLinks().keySet()) { // With all their transitions
+
+					// to see if one state has a transition that brings it back to the entry
+					Object[] listOfTransitions = state.getLinks().get(key).stream()
+							.filter(destination -> destination.getID().equals(entry.getID())).toArray();
+
+					if (listOfTransitions.length >= 1) {
+						System.err.println(&quot;Votre automate n'est pas standard car &quot;
+								+ &quot;l'état &quot;  + state 
+								+ &quot; possède une/des transition(s) revenant vers l'état d'entrée &quot; + entries[0]);
+						return false;
+					}
+				}
+			}
+		}
+
+		return true;
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkLlVaXWEeurvamXvE32Kw" name="minimize" specification="_WfSeQKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkLlVqXWEeurvamXvE32Kw" name="automaton" type="_WUJlQKXWEeurvamXvE32Kw"/>
+                <language>java</language>
+                <body>if (!isCompleted(automaton)) {
+			System.err.println(&quot;Votre automate doit être complet pour être minimisé, nous le complétons&quot;);
+			complete(automaton);
+		}
+
+		List&lt;List&lt;State>> finalTheta = getUnmergedLastTheta(automaton);
+		List&lt;State> newStates = new ArrayList&lt;State>();
+
+		if (finalTheta.size() == automaton.getStates().size()) {
+			System.err.println(&quot;Votre automate était déjà minimal&quot;);
+		}
+
+		else {
+
+			int count = 0;
+	
+			for (List&lt;State> states : finalTheta) {
+				String simplifiedID = String.valueOf((char) ('A' + count));
+				State[] statesArr = states.toArray(new State[0]);
+				
+				State state = mergeStates(statesArr);
+				
+				if (states.size() > 1) {
+
+					System.out.println(simplifiedID + &quot; == &quot; + Arrays.toString(statesArr));
+
+					state.getIdentifier().setId(simplifiedID);
+
+
+					for (State st : states) {
+						st.getIdentifier().setId(simplifiedID);
+					}
+
+					count++;
+				}
+
+				if (!newStates.contains(state)) {
+					newStates.add(state);
+				}
+
+			}
+
+			int numTransitions = 0;
+
+			Collections.sort(newStates);
+			automaton.changeStates(newStates);
+
+			for (State state : newStates) {
+				for (String key : state.getLinks().keySet()) {
+
+					numTransitions++;
+
+					List&lt;State> destinations = state.getLinks().get(key);
+					List&lt;State> nd = Operations.removeDuplicates(destinations);
+
+					destinations.clear();
+					destinations.addAll(nd);
+				}
+			}
+
+			automaton.setNumTransitions(numTransitions);
+			System.out.println(&quot;Minimisation terminée&quot;);
+			automaton.display();
+		}
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkMMYKXWEeurvamXvE32Kw" name="getUnmergedLastTheta" specification="_WfUTcKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkMMYaXWEeurvamXvE32Kw" name="automaton" type="_WUJlQKXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WkMMYqXWEeurvamXvE32Kw" type="_WdqtoaXWEeurvamXvE32Kw" isOrdered="true" direction="return">
+                  <name xsi:nil="true"/>
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WkMMY6XWEeurvamXvE32Kw" value="*"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>List&lt;List&lt;State>> thetaCurrent = new ArrayList&lt;List&lt;State>>();
+		List&lt;List&lt;State>> thetaLast = new ArrayList&lt;List&lt;State>>();
+		List&lt;State> part1 = new ArrayList&lt;State>(List.of(automaton.getStatesByType(StateType.EXIT)));
+		List&lt;State> part2 = new ArrayList&lt;State>(List.of(automaton.getAllStatesButType(StateType.EXIT)));
+
+		Collections.sort(part1);
+		Collections.sort(part2);
+
+		// Adding the first two partitions to our theta
+		if (!part1.isEmpty()) {
+			thetaCurrent.add(part1);
+		}
+
+		if (!part2.isEmpty()) {
+			thetaCurrent.add(part2);
+		}
+
+		int count = 0;
+
+		do {
+			System.out.println(&quot;theta (&quot; + count + &quot;): &quot; + Arrays.toString(thetaCurrent.toArray()));
+			thetaLast.clear();
+			thetaLast.addAll(thetaCurrent);
+
+			thetaCurrent.clear();
+
+			for (List&lt;State> part : thetaLast) {
+
+				if (part.size() > 1) {
+
+					List&lt;List&lt;State>> subTheta = new ArrayList&lt;List&lt;State>>();
+
+					part.forEach(state -> subTheta.add(new ArrayList&lt;State>(List.of(state))));
+
+					for (int i = 0; i &lt; subTheta.size(); i++) {
+
+						List&lt;State> state1 = subTheta.get(i);
+
+						for (int j = 0; j &lt; subTheta.size(); j++) {
+
+							if (i == j)
+								continue;
+
+							List&lt;State> state2 = subTheta.get(j);
+
+							boolean v = compareDestinations(state1.get(0), state2.get(0), thetaLast);
+
+							if (v) {
+								subTheta.remove(state1);
+								subTheta.remove(state2);
+								state1 = Operations.mergeLists(state1, state2);
+								j--; // come back one step because we removed one state 
+
+								Collections.sort(state1);
+							}
+						}
+
+						if (!subTheta.contains(state1)) {
+							subTheta.add(state1);
+						}
+					}
+
+					// Adding all the partitions we made in subTheta in thetaCurrent
+					subTheta.forEach(partition -> {
+						thetaCurrent.add(partition);
+					});
+				}
+
+				else {
+					thetaCurrent.add(part);
+				}
+			}
+
+			count++;
+
+		} while (thetaCurrent.size() != thetaLast.size());
+
+		return thetaCurrent;
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkPPsKXWEeurvamXvE32Kw" name="compareDestinations" specification="_WhalMKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkPPsaXWEeurvamXvE32Kw" name="s1" type="_WXIn0KXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WkPPsqXWEeurvamXvE32Kw" name="s2" type="_WXIn0KXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WkPPs6XWEeurvamXvE32Kw" name="theta" type="_WdqtoaXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WkPPtKXWEeurvamXvE32Kw" direction="return">
+                  <name xsi:nil="true"/>
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>boolean same = true;
+		int check = s1.getLinks().size();
+
+		for (String key : s1.getLinks().keySet()) {
+			List&lt;State> dStates1 = s1.getLinks().get(key);
+			List&lt;State> dStates2 = s2.getLinks().get(key);
+
+			State dState1 = dStates1.get(0);
+			State dState2 = dStates2.get(0);
+
+			for (List&lt;State> partition : theta) {
+
+				boolean foundInPartition1 = foundInPartition(dState1, partition);
+				boolean foundInPartition2 = foundInPartition(dState2, partition);
+
+				if (foundInPartition1 &amp;&amp; foundInPartition2) {
+					same = (same &amp;&amp; true);
+					check--;
+				}
+
+				else {
+					same = false;
+				}
+			}
+
+			if (check == 0) {
+				return true;
+			}
+		}
+
+		return same;
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkP2wKXWEeurvamXvE32Kw" name="foundInPartition" specification="_WhePkaXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkP2waXWEeurvamXvE32Kw" name="d1" type="_WXIn0KXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WkP2wqXWEeurvamXvE32Kw" name="partition" type="_WdqtoaXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WkP2w6XWEeurvamXvE32Kw" direction="return">
+                  <name xsi:nil="true"/>
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>for (State state : partition) {
+			if (state.getIdentifier().equals(d1.getIdentifier())) {
+				return true;
+			}
+		}
+		return false;
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkQd0KXWEeurvamXvE32Kw" name="getComplementary" specification="_WfocgKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkQd0aXWEeurvamXvE32Kw" name="automaton" type="_WUJlQKXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WkQd0qXWEeurvamXvE32Kw" type="_WUJlQKXWEeurvamXvE32Kw" direction="return">
+                  <name xsi:nil="true"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>Automaton complementary = automaton.clone();
+
+		System.out.println(&quot;Création de l'automate complémentaire à votre automate \n&quot;);
+
+		for (State state : complementary.getStates()) {
+			if (!state.getType().contains(StateType.EXIT)) {
+				state.addType(StateType.EXIT);
+			}
+
+			else {
+				state.removeType(StateType.EXIT);
+			}
+		}
+
+		System.out.println(Arrays.toString(complementary.getStatesByType(StateType.EXIT)));
+
+		complementary.display();
+		System.out.println(&quot;Création de l'automate complémentaire terminée ! \n&quot;);
+
+		return complementary;
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkRE4KXWEeurvamXvE32Kw" name="mergeStates" specification="_WfujIKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkRE4aXWEeurvamXvE32Kw" name="states" type="_WXIn0KXWEeurvamXvE32Kw">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WkRE4qXWEeurvamXvE32Kw" value="*"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_WkRE46XWEeurvamXvE32Kw" type="_WXIn0KXWEeurvamXvE32Kw" direction="return">
+                  <name xsi:nil="true"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>if (states.length == 0) {
+			return null;
+		}
+
+		else if (states.length == 1) {
+			return states[0];
+		}
+
+		State current = new State(states[0]);
+
+		for (int i = 1; i &lt; states.length; i++) {
+			State next = states[i];
+
+			if (next.equals(current)) {
+				continue;
+			}
+
+			current.mergeWith(next);
+		}
+
+		return current;
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkRE5KXWEeurvamXvE32Kw" name="findOrMerge" specification="_WfyNgaXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkRE5aXWEeurvamXvE32Kw" name="automaton" type="_WUJlQKXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WkRE5qXWEeurvamXvE32Kw" name="states" type="_WXIn0KXWEeurvamXvE32Kw">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WkRE56XWEeurvamXvE32Kw" value="*"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_WkRE6KXWEeurvamXvE32Kw" type="_WXIn0KXWEeurvamXvE32Kw" direction="return">
+                  <name xsi:nil="true"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>String possibleID = makeID(states);
+		State possibleState = automaton.getByID(possibleID);
+
+		if (possibleState != null) {
+			return possibleState;
+		}
+
+		else {
+			return mergeStates(states);
+		}
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkRr8KXWEeurvamXvE32Kw" name="removeDuplicates" specification="_WiBCIKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkRr8aXWEeurvamXvE32Kw" name="list" type="_WdqtoaXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WkRr8qXWEeurvamXvE32Kw" type="_WhlkUKXWEeurvamXvE32Kw" isOrdered="true" direction="return">
+                  <name xsi:nil="true"/>
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WkRr86XWEeurvamXvE32Kw" value="*"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>List&lt;T> noDuplicates = new ArrayList&lt;T>();
+
+		for (T t : list) {
+			if (!noDuplicates.contains(t)) {
+				noDuplicates.add(t);
+			}
+		}
+
+		return noDuplicates;
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkSTAKXWEeurvamXvE32Kw" name="mergeLists" specification="_WiLaMKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkSTAaXWEeurvamXvE32Kw" name="list1" type="_WdqtoaXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WkSTAqXWEeurvamXvE32Kw" name="list2" type="_WdqtoaXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WkSTA6XWEeurvamXvE32Kw" type="_WhlkUKXWEeurvamXvE32Kw" isOrdered="true" direction="return">
+                  <name xsi:nil="true"/>
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WkSTBKXWEeurvamXvE32Kw" value="*"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>List&lt;T> newList = new ArrayList&lt;T>();
+
+		newList.addAll(list1);
+
+		for (T t : list2) {
+			if (!newList.contains(t)) {
+				newList.add(t);
+			}
+		}
+
+		return newList;
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkS6EKXWEeurvamXvE32Kw" name="mergeMaps" specification="_WiXAYKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkS6EaXWEeurvamXvE32Kw" name="map1" type="_We7R4aXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WkS6EqXWEeurvamXvE32Kw" name="map2" type="_We7R4aXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WkS6E6XWEeurvamXvE32Kw" type="_We7R4aXWEeurvamXvE32Kw" direction="return">
+                  <name xsi:nil="true"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>Map&lt;String, List&lt;State>> newMap = new HashMap&lt;String, List&lt;State>>();
+
+		if (map1.isEmpty() &amp;&amp; !map2.isEmpty()) {
+			newMap.putAll(map2);
+		}
+
+		else if (map2.isEmpty()) {
+			newMap.putAll(map1);
+		}
+
+		else if (!map1.isEmpty() &amp;&amp; !map2.isEmpty()) {
+			newMap.putAll(map1);
+			
+			for (String key : map2.keySet()) {
+				
+				if (newMap.containsKey(key)) {
+					newMap.get(key).addAll(mergeLists(newMap.get(key), map2.get(key)));
+				}
+				
+				else {
+					newMap.put(key, map2.get(key));
+				}
+			}
+		}
+
+		return newMap;
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkUvQKXWEeurvamXvE32Kw" name="makeID" specification="_Wf6JUKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkUvQaXWEeurvamXvE32Kw" name="states" type="_WXIn0KXWEeurvamXvE32Kw">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WkUvQqXWEeurvamXvE32Kw" value="*"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_WkUvQ6XWEeurvamXvE32Kw" direction="return">
+                  <name xsi:nil="true"/>
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>List&lt;Identifier> statesIds = new ArrayList&lt;Identifier>();
+
+		for (State state : states) {
+			statesIds = mergeLists(statesIds, state.getIdentifier().getIdentifiers());
+		}
+
+		return new Identifier(statesIds).getID();
+	</body>
+              </ownedBehavior>
+              <ownedOperation xmi:id="_We-8QKXWEeurvamXvE32Kw" name="isAsync" visibility="private" isStatic="true" method="_WkGs0KXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_We-8QaXWEeurvamXvE32Kw" name="automaton" type="_WUJlQKXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_We_jUKXWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WfAKYKXWEeurvamXvE32Kw" name="synchronize" isStatic="true" method="_WkH68KXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WfAKYaXWEeurvamXvE32Kw" name="automaton" type="_WUJlQKXWEeurvamXvE32Kw"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WfBYgKXWEeurvamXvE32Kw" name="determinize" isStatic="true" method="_WkIiA6XWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WfB_kKXWEeurvamXvE32Kw" name="automaton" type="_WUJlQKXWEeurvamXvE32Kw"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WfIGMKXWEeurvamXvE32Kw" name="isDeterministic" visibility="private" isStatic="true" method="_WkJJEKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WfItQKXWEeurvamXvE32Kw" name="automaton" type="_WUJlQKXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WfItQaXWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WfJUUKXWEeurvamXvE32Kw" name="complete" isStatic="true" method="_WkKXMKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WfJUUaXWEeurvamXvE32Kw" name="automaton" type="_WUJlQKXWEeurvamXvE32Kw"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WfJ7YKXWEeurvamXvE32Kw" name="isCompleted" visibility="private" isStatic="true" method="_WkK-QKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WfJ7YaXWEeurvamXvE32Kw" name="automaton" type="_WUJlQKXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WfKicKXWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WfKicaXWEeurvamXvE32Kw" name="standardize" isStatic="true" method="_WkLlUKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WfLJgKXWEeurvamXvE32Kw" name="automaton" type="_WUJlQKXWEeurvamXvE32Kw"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WfLwkKXWEeurvamXvE32Kw" name="isStandard" isStatic="true" method="_WkLlUqXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WfLwkaXWEeurvamXvE32Kw" name="automaton" type="_WUJlQKXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WfM-sKXWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WfSeQKXWEeurvamXvE32Kw" name="minimize" isStatic="true" method="_WkLlVaXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WfTFUKXWEeurvamXvE32Kw" name="automaton" type="_WUJlQKXWEeurvamXvE32Kw"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WfUTcKXWEeurvamXvE32Kw" name="getUnmergedLastTheta" visibility="private" isStatic="true" method="_WkMMYKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WfU6gKXWEeurvamXvE32Kw" name="automaton" type="_WUJlQKXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WfU6gaXWEeurvamXvE32Kw" type="_WdqtoaXWEeurvamXvE32Kw" isOrdered="true" direction="return">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WfVhkKXWEeurvamXvE32Kw" value="*"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WfocgKXWEeurvamXvE32Kw" name="getComplementary" isStatic="true" method="_WkQd0KXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WfsG4KXWEeurvamXvE32Kw" name="automaton" type="_WUJlQKXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WftVAKXWEeurvamXvE32Kw" type="_WUJlQKXWEeurvamXvE32Kw" direction="return"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WfujIKXWEeurvamXvE32Kw" name="mergeStates" visibility="protected" isStatic="true" method="_WkRE4KXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WfujIaXWEeurvamXvE32Kw" name="states" type="_WXIn0KXWEeurvamXvE32Kw">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WfwYUKXWEeurvamXvE32Kw" value="*"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_WfvKMKXWEeurvamXvE32Kw" type="_WXIn0KXWEeurvamXvE32Kw" direction="return"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WfyNgaXWEeurvamXvE32Kw" name="findOrMerge" visibility="protected" isStatic="true" method="_WkRE5KXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WfyNgqXWEeurvamXvE32Kw" name="automaton" type="_WUJlQKXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_Wfy0kKXWEeurvamXvE32Kw" name="states" type="_WXIn0KXWEeurvamXvE32Kw">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Wf0pwKXWEeurvamXvE32Kw" value="*"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_Wf0CsKXWEeurvamXvE32Kw" type="_WXIn0KXWEeurvamXvE32Kw" direction="return"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_Wf6JUKXWEeurvamXvE32Kw" name="makeID" visibility="protected" isStatic="true" method="_WkUvQKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_Wf6JUaXWEeurvamXvE32Kw" name="states" type="_WXIn0KXWEeurvamXvE32Kw">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Wf7-gKXWEeurvamXvE32Kw" value="*"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_Wf7XcKXWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WhYI8KXWEeurvamXvE32Kw" name="fillEpsilonStates" visibility="private" isStatic="true" method="_WkIiAKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WhYI8aXWEeurvamXvE32Kw" name="result" type="_WdqtoaXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WhYI8qXWEeurvamXvE32Kw" name="state" type="_WXIn0KXWEeurvamXvE32Kw"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WhalMKXWEeurvamXvE32Kw" name="compareDestinations" visibility="private" isStatic="true" method="_WkPPsKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WhalMaXWEeurvamXvE32Kw" name="s1" type="_WXIn0KXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WhbMQKXWEeurvamXvE32Kw" name="s2" type="_WXIn0KXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WhbMQaXWEeurvamXvE32Kw" name="theta" type="_WdqtoaXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WhbMQqXWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WhePkaXWEeurvamXvE32Kw" name="foundInPartition" visibility="private" isStatic="true" method="_WkP2wKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WhePkqXWEeurvamXvE32Kw" name="d1" type="_WXIn0KXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_Whe2oKXWEeurvamXvE32Kw" name="partition" type="_WdqtoaXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WhgEwKXWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WiBCIKXWEeurvamXvE32Kw" name="removeDuplicates" visibility="protected" isStatic="true" method="_WkRr8KXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WiC3UKXWEeurvamXvE32Kw" name="list" type="_WdqtoaXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WiGhsKXWEeurvamXvE32Kw" type="_WhlkUKXWEeurvamXvE32Kw" isOrdered="true" direction="return">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WiHIwKXWEeurvamXvE32Kw" value="*"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WiLaMKXWEeurvamXvE32Kw" name="mergeLists" visibility="protected" isStatic="true" method="_WkSTAKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WiMBQKXWEeurvamXvE32Kw" name="list1" type="_WdqtoaXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WiMBQaXWEeurvamXvE32Kw" name="list2" type="_WdqtoaXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WiMoUKXWEeurvamXvE32Kw" type="_WhlkUKXWEeurvamXvE32Kw" isOrdered="true" direction="return">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WiMoUaXWEeurvamXvE32Kw" value="*"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WiXAYKXWEeurvamXvE32Kw" name="mergeMaps" visibility="protected" isStatic="true" method="_WkS6EKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WiXAYaXWEeurvamXvE32Kw" name="map1" type="_We7R4aXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WiXAYqXWEeurvamXvE32Kw" name="map2" type="_We7R4aXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WidHAKXWEeurvamXvE32Kw" type="_We7R4aXWEeurvamXvE32Kw" direction="return"/>
+              </ownedOperation>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Class" xmi:id="_WXIn0KXWEeurvamXvE32Kw" name="State">
+              <ownedAttribute xmi:id="_WjJqkKXWEeurvamXvE32Kw" name="id" visibility="private" type="_WVBH8KXWEeurvamXvE32Kw" association="_Wk7MMaXWEeurvamXvE32Kw"/>
+              <ownedAttribute xmi:id="_WjK4saXWEeurvamXvE32Kw" name="links" type="_WdqtoaXWEeurvamXvE32Kw" isReadOnly="true" association="_Wk9ocaXWEeurvamXvE32Kw">
+                <qualifier xmi:id="_WjNU8KXWEeurvamXvE32Kw">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </qualifier>
+              </ownedAttribute>
+              <ownedAttribute xmi:id="_WjN8AKXWEeurvamXvE32Kw" name="types" visibility="private" type="_WX9uQKXWEeurvamXvE32Kw" isOrdered="true">
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WjN8AaXWEeurvamXvE32Kw" value="*"/>
+              </ownedAttribute>
+              <interfaceRealization xmi:id="_WiwB8KXWEeurvamXvE32Kw" client="_WXIn0KXWEeurvamXvE32Kw" supplier="_WgkQoKXWEeurvamXvE32Kw" contract="_WgkQoKXWEeurvamXvE32Kw"/>
+              <interfaceRealization xmi:id="_WiwpAKXWEeurvamXvE32Kw" client="_WXIn0KXWEeurvamXvE32Kw" supplier="_Wg95QKXWEeurvamXvE32Kw" contract="_Wg95QKXWEeurvamXvE32Kw"/>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkWkcKXWEeurvamXvE32Kw" name="State" specification="_WXLrIKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkWkcaXWEeurvamXvE32Kw" type="_WXIn0KXWEeurvamXvE32Kw" direction="return"/>
+                <language>java</language>
+                <body>this(&quot;&quot;);
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkXLgKXWEeurvamXvE32Kw" name="State" specification="_WXOucKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkXLgaXWEeurvamXvE32Kw" name="id">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_WkXLgqXWEeurvamXvE32Kw" type="_WXIn0KXWEeurvamXvE32Kw" direction="return"/>
+                <language>java</language>
+                <body>this.id = new Identifier(id);
+
+		this.types = new ArrayList&lt;StateType>();
+		this.types.add(StateType.COMMON);
+
+		this.links = new HashMap&lt;String, List&lt;State>>();
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkXykKXWEeurvamXvE32Kw" name="State" specification="_WgFIcKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkXykaXWEeurvamXvE32Kw" name="state" type="_WXIn0KXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WkXykqXWEeurvamXvE32Kw" type="_WXIn0KXWEeurvamXvE32Kw" direction="return"/>
+                <language>java</language>
+                <body>this.id = new Identifier(List.of(state.getIdentifier()));
+
+		this.types = new ArrayList&lt;StateType>(state.getType());
+		this.links = new HashMap&lt;String, List&lt;State>>(state.getLinks());
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkZAsKXWEeurvamXvE32Kw" name="setIdentifier" specification="_WgG9oKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkZAsaXWEeurvamXvE32Kw" name="id" type="_WVBH8KXWEeurvamXvE32Kw"/>
+                <language>java</language>
+                <body>this.id = id;
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkaO0KXWEeurvamXvE32Kw" name="getIdentifier" specification="_WXRKsKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkaO0aXWEeurvamXvE32Kw" type="_WVBH8KXWEeurvamXvE32Kw" direction="return"/>
+                <language>java</language>
+                <body>return this.id;
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkaO0qXWEeurvamXvE32Kw" name="getID" specification="_WXRxwKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkaO06XWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>return this.id.getID();
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkaO1KXWEeurvamXvE32Kw" name="addLink" specification="_WgHksaXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkaO1aXWEeurvamXvE32Kw" name="what">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_WkaO1qXWEeurvamXvE32Kw" name="where" type="_WXIn0KXWEeurvamXvE32Kw"/>
+                <language>java</language>
+                <body>// If the list of this transition is already created
+		if (this.links.containsKey(what)) {
+			if (!this.links.get(what).contains(where)) {
+				this.links.get(what).add(where);
+				Collections.sort(this.links.get(what));
+			}
+		}
+
+		// If there is no list yet in the hash map
+		else {
+			List&lt;State> st = new ArrayList&lt;State>();
+			st.add(where);
+			this.links.put(what, st);
+		}
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Wkbc8KXWEeurvamXvE32Kw" name="getType" specification="_WXTm8KXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_Wkbc8aXWEeurvamXvE32Kw" type="_WX9uQKXWEeurvamXvE32Kw" isOrdered="true" direction="return">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Wkbc8qXWEeurvamXvE32Kw" value="*"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>return this.types;
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Wkbc86XWEeurvamXvE32Kw" name="addType" specification="_WgKA8KXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_Wkbc9KXWEeurvamXvE32Kw" name="type" type="_WX9uQKXWEeurvamXvE32Kw"/>
+                <language>java</language>
+                <body>if (!this.types.contains(type)) {
+			this.types.add(type);
+		}
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkcEAKXWEeurvamXvE32Kw" name="removeType" specification="_WgLPEKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkcEAaXWEeurvamXvE32Kw" name="type" type="_WX9uQKXWEeurvamXvE32Kw"/>
+                <language>java</language>
+                <body>if (this.types.contains(type)) {
+			this.types.remove(type);
+		}
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkcEAqXWEeurvamXvE32Kw" name="isEntry" specification="_WXVcIKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkcrEKXWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>return this.types.contains(StateType.ENTRY);
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkegQKXWEeurvamXvE32Kw" name="isExit" specification="_WXZtkKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkegQaXWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>return this.types.contains(StateType.EXIT);
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkfHUKXWEeurvamXvE32Kw" name="mergeWith" specification="_WgPggKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkfHUaXWEeurvamXvE32Kw" name="toMerge" type="_WXIn0KXWEeurvamXvE32Kw"/>
+                <language>java</language>
+                <body>if (this.equals(toMerge)) {
+			return;
+		}
+		
+		if (toMerge.getIdentifier().isSubIdOf(this.getIdentifier())) {
+			return;
+		}
+
+		if (!this.links.isEmpty() &amp;&amp; !toMerge.getLinks().isEmpty()) {
+			this.links.putAll(Operations.mergeMaps(this.links, toMerge.getLinks())); // we merge the destinations and keys
+		}
+
+		else if (this.links.isEmpty() &amp;&amp; !toMerge.getLinks().isEmpty()) {
+			this.links.putAll(toMerge.getLinks());
+		}
+
+		if (toMerge.isExit() &amp;&amp; !this.isExit()) {
+			this.types.add(StateType.EXIT);
+		}
+		
+		if (toMerge.isEntry() &amp;&amp; !this.isEntry()) {
+			this.types.add(StateType.ENTRY);
+		}
+
+		this.id = new Identifier(List.of(this.id, toMerge.getIdentifier()));
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkfHUqXWEeurvamXvE32Kw" name="toString" specification="_WXemEKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkfHU6XWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>return this.id.getID();
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkfHVKXWEeurvamXvE32Kw" name="clone" specification="_WXjekaXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkfHVaXWEeurvamXvE32Kw" type="_WXIn0KXWEeurvamXvE32Kw" direction="return"/>
+                <language>java</language>
+                <body>return new State(this);
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkfuYKXWEeurvamXvE32Kw" name="equals" specification="_WizFQKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkfuYaXWEeurvamXvE32Kw" name="o" type="_WhPmEKXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WkfuYqXWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+
+		State state = (State) o;
+		return this.getIdentifier().equals(state.getIdentifier());
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkfuY6XWEeurvamXvE32Kw" name="compareTo" specification="_WgQuoKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkfuZKXWEeurvamXvE32Kw" name="o" type="_WXIn0KXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WkfuZaXWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+                </ownedParameter>
+                <language>java</language>
+                <body>return this.getIdentifier().compareTo(o.getIdentifier());
+	</body>
+              </ownedBehavior>
+              <ownedOperation xmi:id="_WXLrIKXWEeurvamXvE32Kw" name="State" method="_WkWkcKXWEeurvamXvE32Kw">
+                <eAnnotations xmi:id="_WXM5QKXWEeurvamXvE32Kw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+                  <details xmi:id="_WXM5QaXWEeurvamXvE32Kw" key="create"/>
+                </eAnnotations>
+                <ownedParameter xmi:id="_WXM5QqXWEeurvamXvE32Kw" type="_WXIn0KXWEeurvamXvE32Kw" direction="return"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WXOucKXWEeurvamXvE32Kw" name="State" method="_WkXLgKXWEeurvamXvE32Kw">
+                <eAnnotations xmi:id="_WXPVgKXWEeurvamXvE32Kw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+                  <details xmi:id="_WXPVgaXWEeurvamXvE32Kw" key="create"/>
+                </eAnnotations>
+                <ownedParameter xmi:id="_WXOucaXWEeurvamXvE32Kw" name="id">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_WXPVgqXWEeurvamXvE32Kw" type="_WXIn0KXWEeurvamXvE32Kw" direction="return"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WXRKsKXWEeurvamXvE32Kw" name="getIdentifier" method="_WkaO0KXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WgHksKXWEeurvamXvE32Kw" type="_WVBH8KXWEeurvamXvE32Kw" direction="return"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WXRxwKXWEeurvamXvE32Kw" name="getID" method="_WkaO0qXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WXSY0KXWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WXTm8KXWEeurvamXvE32Kw" name="getType" method="_Wkbc8KXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WXTm8aXWEeurvamXvE32Kw" type="_WX9uQKXWEeurvamXvE32Kw" isOrdered="true" direction="return">
+                  <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WXUOAKXWEeurvamXvE32Kw" value="*"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WXVcIKXWEeurvamXvE32Kw" name="isEntry" method="_WkcEAqXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WXVcIaXWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WXZtkKXWEeurvamXvE32Kw" name="isExit" method="_WkegQKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WXaUoKXWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WXemEKXWEeurvamXvE32Kw" name="toString" method="_WkfHUqXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WXfNIKXWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WXjekaXWEeurvamXvE32Kw" name="clone" method="_WkfHVKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WgQHkKXWEeurvamXvE32Kw" type="_WXIn0KXWEeurvamXvE32Kw" direction="return"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WgFIcKXWEeurvamXvE32Kw" name="State" method="_WkXykKXWEeurvamXvE32Kw">
+                <eAnnotations xmi:id="_WgGWkaXWEeurvamXvE32Kw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+                  <details xmi:id="_WgGWkqXWEeurvamXvE32Kw" key="create"/>
+                </eAnnotations>
+                <ownedParameter xmi:id="_WgGWkKXWEeurvamXvE32Kw" name="state" type="_WXIn0KXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WgGWk6XWEeurvamXvE32Kw" type="_WXIn0KXWEeurvamXvE32Kw" direction="return"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WgG9oKXWEeurvamXvE32Kw" name="setIdentifier" method="_WkZAsKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WgG9oaXWEeurvamXvE32Kw" name="id" type="_WVBH8KXWEeurvamXvE32Kw"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WgHksaXWEeurvamXvE32Kw" name="addLink" method="_WkaO1KXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WgHksqXWEeurvamXvE32Kw" name="what">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_WgIy0KXWEeurvamXvE32Kw" name="where" type="_WXIn0KXWEeurvamXvE32Kw"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WgKA8KXWEeurvamXvE32Kw" name="addType" method="_Wkbc86XWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WgKA8aXWEeurvamXvE32Kw" name="type" type="_WX9uQKXWEeurvamXvE32Kw"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WgLPEKXWEeurvamXvE32Kw" name="removeType" method="_WkcEAKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WgLPEaXWEeurvamXvE32Kw" name="type" type="_WX9uQKXWEeurvamXvE32Kw"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WgPggKXWEeurvamXvE32Kw" name="mergeWith" method="_WkfHUKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WgPggaXWEeurvamXvE32Kw" name="toMerge" type="_WXIn0KXWEeurvamXvE32Kw"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WgQuoKXWEeurvamXvE32Kw" name="compareTo" method="_WkfuY6XWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WgQuoaXWEeurvamXvE32Kw" name="o" type="_WXIn0KXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WgQuoqXWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#int"/>
+                </ownedParameter>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WizFQKXWEeurvamXvE32Kw" name="equals" method="_WkfuYKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WizFQaXWEeurvamXvE32Kw" name="o" type="_WhPmEKXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WizsUKXWEeurvamXvE32Kw" direction="return">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#boolean"/>
+                </ownedParameter>
+              </ownedOperation>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Enumeration" xmi:id="_WX9uQKXWEeurvamXvE32Kw" name="StateType">
+              <ownedLiteral xmi:id="_WYBYoKXWEeurvamXvE32Kw" name="ENTRY"/>
+              <ownedLiteral xmi:id="_WYB_sKXWEeurvamXvE32Kw" name="COMMON"/>
+              <ownedLiteral xmi:id="_WYB_saXWEeurvamXvE32Kw" name="EXIT"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Class" xmi:id="_WhlkUKXWEeurvamXvE32Kw" name="T"/>
+            <packagedElement xmi:type="uml:Association" xmi:id="_WklN8KXWEeurvamXvE32Kw" name="" memberEnd="_Wi8PMKXWEeurvamXvE32Kw _WkmcEKXWEeurvamXvE32Kw">
+              <ownedEnd xmi:id="_WkmcEKXWEeurvamXvE32Kw" name="" type="_WUJlQKXWEeurvamXvE32Kw" association="_WklN8KXWEeurvamXvE32Kw"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Association" xmi:id="_Wk3h0KXWEeurvamXvE32Kw" name="" memberEnd="_Wk3h0aXWEeurvamXvE32Kw _Wi7BEKXWEeurvamXvE32Kw">
+              <ownedEnd xmi:id="_Wk3h0aXWEeurvamXvE32Kw" name="" type="_WUJlQKXWEeurvamXvE32Kw" association="_Wk3h0KXWEeurvamXvE32Kw"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Association" xmi:id="_Wk5-EKXWEeurvamXvE32Kw" name="" memberEnd="_Wk5-EaXWEeurvamXvE32Kw _WjH1YKXWEeurvamXvE32Kw">
+              <ownedEnd xmi:id="_Wk5-EaXWEeurvamXvE32Kw" name="" type="_WVBH8KXWEeurvamXvE32Kw" association="_Wk5-EKXWEeurvamXvE32Kw"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Association" xmi:id="_Wk7MMaXWEeurvamXvE32Kw" name="" memberEnd="_Wk7MMqXWEeurvamXvE32Kw _WjJqkKXWEeurvamXvE32Kw">
+              <ownedEnd xmi:id="_Wk7MMqXWEeurvamXvE32Kw" name="" type="_WXIn0KXWEeurvamXvE32Kw" association="_Wk7MMaXWEeurvamXvE32Kw"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Association" xmi:id="_Wk9ocaXWEeurvamXvE32Kw" name="" memberEnd="_Wk9ocqXWEeurvamXvE32Kw _WjK4saXWEeurvamXvE32Kw">
+              <ownedEnd xmi:id="_Wk9ocqXWEeurvamXvE32Kw" name="" type="_WXIn0KXWEeurvamXvE32Kw" association="_Wk9ocaXWEeurvamXvE32Kw"/>
+            </packagedElement>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Package" xmi:id="_WQ-VcKXWEeurvamXvE32Kw" name="io">
+            <packagedElement xmi:type="uml:Class" xmi:id="_WYCmwKXWEeurvamXvE32Kw" name="FileReader">
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_Wkg8gKXWEeurvamXvE32Kw" name="createAutomatonObject" specification="_WYLJoKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_Wkg8gaXWEeurvamXvE32Kw" name="filePath">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_Wkg8gqXWEeurvamXvE32Kw" type="_WUJlQKXWEeurvamXvE32Kw" direction="return"/>
+                <language>java</language>
+                <body>File file = new File(filePath); // Path to the file containing the information on the PLC (see README.md)
+		Scanner scanner = new Scanner(file); // Reading variable
+
+		Automaton automate = new Automaton();
+
+		// Initialization
+		Alphabet alphabet = null;
+		int line = 0;
+		int transitions = 0;
+
+		while (scanner.hasNextLine()) { // Read while we can
+			String content = scanner.nextLine().trim(); // Remove unnecessary spaces (just in case)
+			String[] values = content.split(&quot; &quot;); // Get each 'word' in an array
+
+			// Separation of actions for each line
+			switch (line) {
+			case 0: // Line 1 contains the number of words in the alphabet
+				alphabet = new Alphabet(Integer.valueOf(content)); // Build the alphabet object
+				System.out.println(Arrays.toString(alphabet.getDictionary().toArray()));
+				automate.setAlphabet(alphabet);
+				break;
+			case 1: // Line 2 is the number of states
+				int numStates = Integer.parseInt(content);
+				for (int i = 0; i &lt; numStates; i++) {
+					automate.getStates().add(new State(String.valueOf(i)));
+				}
+				break;
+			case 2: // Line 3 contains the input states
+				loadStates(content, automate, StateType.ENTRY); // Load the entries
+				break;
+			case 3: // Line 4 contains the output states
+				loadStates(content, automate, StateType.EXIT); // Load the exits
+				break;
+			case 4: // Line 5 contains the automaton transition number
+				transitions = Integer.valueOf(content); // Let the number of transitions
+				automate.setNumTransitions(transitions);
+				break;
+			default: // The other lines contain the transitions
+				String[] word = content.split(&quot;[0-9A-Z]&quot;); // When we have '01a9', the split returns [, , 'a']
+														     // when the array is joined we then get the transition 'a'
+								
+				values = content.split(&quot;[a-z*]&quot;); // When we have '01*9', the split returns '01', '9'
+				System.out.println(Arrays.toString(values));
+				
+				// TODO: vérifications validité automate
+				
+				State state = automate.getByID(values[0]);
+				State next = automate.getByID(values[1]);
+
+				// As the split returns a list, to get the transitions we only
+				// need to join it with no separators as the array is of size one
+				String transitionWord = String.join(&quot;&quot;, word);
+				
+				state.addLink(transitionWord, next);
+
+				// we add as we read the new letters we find for the alphabet 
+				if (transitionWord.equals(&quot;*&quot;)) {
+					if (!alphabet.getDictionary().contains(&quot;*&quot;)) {
+						alphabet.addWord(&quot;*&quot;);
+					}
+				}
+
+				break;
+			}
+
+			line++;
+		}
+		
+		scanner.close();
+
+		return automate;
+	</body>
+              </ownedBehavior>
+              <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WkhjkKXWEeurvamXvE32Kw" name="loadStates" specification="_WgZ4kKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WkhjkaXWEeurvamXvE32Kw" name="content">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_WkhjkqXWEeurvamXvE32Kw" name="automaton" type="_WUJlQKXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_Wkhjk6XWEeurvamXvE32Kw" name="type" type="_WX9uQKXWEeurvamXvE32Kw"/>
+                <language>java</language>
+                <body>String[] values = content.split(&quot; &quot;);
+		int numStates = Integer.valueOf(values[0]); // First argument is the number of states
+
+		for (int i = 1; i &lt;= numStates; i++) {
+			if (!automaton.containsStateID(values[i])) { // If the automaton is still not created
+				State state = new State(values[i]);
+				state.addType(type);
+				automaton.getStates().add(state);
+			}
+
+			else {
+				automaton.getByID(values[i]).addType(type);
+			}
+		}
+	</body>
+              </ownedBehavior>
+              <ownedOperation xmi:id="_WYLJoKXWEeurvamXvE32Kw" name="createAutomatonObject" isStatic="true" method="_Wkg8gKXWEeurvamXvE32Kw" raisedException="_WdaO8KXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WYLJoaXWEeurvamXvE32Kw" name="filePath">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_WgZRgaXWEeurvamXvE32Kw" type="_WUJlQKXWEeurvamXvE32Kw" direction="return"/>
+              </ownedOperation>
+              <ownedOperation xmi:id="_WgZ4kKXWEeurvamXvE32Kw" name="loadStates" visibility="private" isStatic="true" method="_WkhjkKXWEeurvamXvE32Kw">
+                <ownedParameter xmi:id="_WgbGsKXWEeurvamXvE32Kw" name="content">
+                  <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                </ownedParameter>
+                <ownedParameter xmi:id="_WgbtwKXWEeurvamXvE32Kw" name="automaton" type="_WUJlQKXWEeurvamXvE32Kw"/>
+                <ownedParameter xmi:id="_WgbtwaXWEeurvamXvE32Kw" name="type" type="_WX9uQKXWEeurvamXvE32Kw"/>
+              </ownedOperation>
+            </packagedElement>
+          </packagedElement>
+          <packagedElement xmi:type="uml:Class" xmi:id="_WTuHcKXWEeurvamXvE32Kw" name="Main">
+            <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_WjeasKXWEeurvamXvE32Kw" name="main" specification="_WT9YAKXWEeurvamXvE32Kw">
+              <ownedParameter xmi:id="_Wjfo0KXWEeurvamXvE32Kw" name="args">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Wjfo0aXWEeurvamXvE32Kw" value="*"/>
+              </ownedParameter>
+              <language>java</language>
+              <body>try {
+			// Creation of an Automaton instance
+			
+			
+			long t1 = System.currentTimeMillis();
+
+			for (int i = 1; i &lt; 30; i++) {
+				System.out.println(&quot;Automate numéro : &quot; + i);
+				Automaton a = FileReader.createAutomatonObject(&quot;src/com/efrei/mathinfo/A01-&quot; + String.valueOf(i) + &quot;.txt&quot;);
+				a.display();
+				Operations.minimize(a);
+			}
+			
+//			//TODO automate 11 merge d'entrée ne se fait pas lors de la minimisation de l'état A 
+//			Automaton a = FileReader.createAutomatonObject(&quot;src/com/efrei/mathinfo/A01-34.txt&quot;);
+//			Operations.standardize(a);
+//			Operations.minimize(a);
+			
+			
+			System.out.println(
+					&quot;Execution de tous les algorithmes en &quot; + String.valueOf(System.currentTimeMillis() - t1) + &quot;ms&quot;);
+
+		} catch (FileNotFoundException e) { 
+			e.printStackTrace();
+		}
+	</body>
+            </ownedBehavior>
+            <ownedOperation xmi:id="_WT9YAKXWEeurvamXvE32Kw" name="main" isStatic="true" method="_WjeasKXWEeurvamXvE32Kw">
+              <ownedParameter xmi:id="_WT9_EKXWEeurvamXvE32Kw" name="args">
+                <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+                <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WUAbUKXWEeurvamXvE32Kw" value="*"/>
+              </ownedParameter>
+            </ownedOperation>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_WQ6rEKXWEeurvamXvE32Kw" name="java">
+      <packagedElement xmi:type="uml:Package" xmi:id="_WQ7SIKXWEeurvamXvE32Kw" name="io">
+        <packagedElement xmi:type="uml:Class" xmi:id="_WdaO8KXWEeurvamXvE32Kw" name="FileNotFoundException"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_WgUZAKXWEeurvamXvE32Kw" name="File"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_WQ75MKXWEeurvamXvE32Kw" name="util">
+        <packagedElement xmi:type="uml:Package" xmi:id="_WRgg8KXWEeurvamXvE32Kw" name="stream">
+          <packagedElement xmi:type="uml:Class" xmi:id="_Wd7zYaXWEeurvamXvE32Kw" name="Collectors"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="_Wdg8oKXWEeurvamXvE32Kw" name="Arrays"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_WdmcMKXWEeurvamXvE32Kw" name="ArrayList"/>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_WdqtoaXWEeurvamXvE32Kw" name="List"/>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_WdvmIKXWEeurvamXvE32Kw" name="Iterator"/>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_Wd5XIaXWEeurvamXvE32Kw" name="Set"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_Wef0EKXWEeurvamXvE32Kw" name="Collections"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_We0kMKXWEeurvamXvE32Kw" name="HashMap"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_We3ngaXWEeurvamXvE32Kw" name="HashSet"/>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_We7R4aXWEeurvamXvE32Kw" name="Map"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_We9HEaXWEeurvamXvE32Kw" name="Stack"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_WgXcUKXWEeurvamXvE32Kw" name="Scanner"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_WgjpkKXWEeurvamXvE32Kw" name="lang">
+        <packagedElement xmi:type="uml:Interface" xmi:id="_WgkQoKXWEeurvamXvE32Kw" name="Cloneable"/>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_Wg95QKXWEeurvamXvE32Kw" name="Comparable"/>
+        <packagedElement xmi:type="uml:Class" xmi:id="_WhPmEKXWEeurvamXvE32Kw" name="Object"/>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:id="_VrFaIKXWEeurvamXvE32Kw">
+      <eAnnotations xmi:id="_VrXG8KXWEeurvamXvE32Kw" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UMLLAB_PROFILES/UMLLab.profile.uml#UMLLabProfile-Annotation_2-UMLLabProfile"/>
+      </eAnnotations>
+      <appliedProfile href="pathmap://UMLLAB_PROFILES/UMLLab.profile.uml#UMLLabProfile"/>
+    </profileApplication>
+  </uml:Model>
+  <UMLLabProfile:TargetLanguage xmi:id="_VrkiUKXWEeurvamXvE32Kw" base_Package="_VIg4kKXWEeurvamXvE32Kw">
+    <languageName>java</languageName>
+  </UMLLabProfile:TargetLanguage>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_WUotcKXWEeurvamXvE32Kw" base_Element="_WUm4QKXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Annotations xmi:id="_WUrJsKXWEeurvamXvE32Kw" base_Element="_WUm4QKXWEeurvamXvE32Kw">
+    <annotations xmi:id="_WUrwwKXWEeurvamXvE32Kw" name="Override"/>
+  </UMLLabProfile:Annotations>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_WVozAKXWEeurvamXvE32Kw" base_Element="_WVlvsKXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Annotations xmi:id="_WVqBIKXWEeurvamXvE32Kw" base_Element="_WVlvsKXWEeurvamXvE32Kw">
+    <annotations xmi:id="_WVqBIaXWEeurvamXvE32Kw" name="Override"/>
+  </UMLLabProfile:Annotations>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_WXgbQKXWEeurvamXvE32Kw" base_Element="_WXemEKXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Annotations xmi:id="_WXi3gKXWEeurvamXvE32Kw" base_Element="_WXemEKXWEeurvamXvE32Kw">
+    <annotations xmi:id="_WXjekKXWEeurvamXvE32Kw" name="Override"/>
+  </UMLLabProfile:Annotations>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_WXkssKXWEeurvamXvE32Kw" base_Element="_WXjekaXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Annotations xmi:id="_WXoXEKXWEeurvamXvE32Kw" base_Element="_WXjekaXWEeurvamXvE32Kw">
+    <annotations xmi:id="_WXoXEaXWEeurvamXvE32Kw" name="Override"/>
+  </UMLLabProfile:Annotations>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_WYAKgKXWEeurvamXvE32Kw" base_Element="_WX9uQKXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Reference xmi:id="_WdcrMKXWEeurvamXvE32Kw" base_Element="_WdaO8KXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Reference xmi:id="_WdknAKXWEeurvamXvE32Kw" base_Element="_Wdg8oKXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Reference xmi:id="_WdqtoKXWEeurvamXvE32Kw" base_Element="_WdmcMKXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Reference xmi:id="_Wdtw8KXWEeurvamXvE32Kw" base_Element="_WdqtoaXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Reference xmi:id="_Wd5XIKXWEeurvamXvE32Kw" base_Element="_WdvmIKXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Reference xmi:id="_Wd7zYKXWEeurvamXvE32Kw" base_Element="_Wd5XIaXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Reference xmi:id="_WeBS8KXWEeurvamXvE32Kw" base_Element="_Wd7zYaXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Array xmi:id="_WeMSEKXWEeurvamXvE32Kw" base_Element="_WeDvMaXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Array xmi:id="_WeP8cKXWEeurvamXvE32Kw" base_Element="_WeM5IKXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Reference xmi:id="_WejecKXWEeurvamXvE32Kw" base_Element="_Wef0EKXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_WeudkKXWEeurvamXvE32Kw" base_Element="_WeraQKXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Annotations xmi:id="_Wew50KXWEeurvamXvE32Kw" base_Element="_WeraQKXWEeurvamXvE32Kw">
+    <annotations xmi:id="_Wexg4KXWEeurvamXvE32Kw" name="Override"/>
+  </UMLLabProfile:Annotations>
+  <UMLLabProfile:Reference xmi:id="_We3ngKXWEeurvamXvE32Kw" base_Element="_We0kMKXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Reference xmi:id="_We7R4KXWEeurvamXvE32Kw" base_Element="_We3ngaXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Reference xmi:id="_We9HEKXWEeurvamXvE32Kw" base_Element="_We7R4aXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Reference xmi:id="_We-VMKXWEeurvamXvE32Kw" base_Element="_We9HEaXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Generics xmi:id="_WfboMKXWEeurvamXvE32Kw" genericsValue="State" base_Element="_WfUTcKXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_WfvxQKXWEeurvamXvE32Kw" base_Element="_WfujIKXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Array xmi:id="_WfyNgKXWEeurvamXvE32Kw" base_Element="_WfujIaXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_Wf0CsaXWEeurvamXvE32Kw" base_Element="_WfyNgaXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Array xmi:id="_Wf0pwaXWEeurvamXvE32Kw" base_Element="_Wfy0kKXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_Wf7XcaXWEeurvamXvE32Kw" base_Element="_Wf6JUKXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Array xmi:id="_Wf7-gaXWEeurvamXvE32Kw" base_Element="_Wf6JUaXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_WgRVsKXWEeurvamXvE32Kw" base_Element="_WgQuoKXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Annotations xmi:id="_WgRVsaXWEeurvamXvE32Kw" base_Element="_WgQuoKXWEeurvamXvE32Kw">
+    <annotations xmi:id="_WgR8wKXWEeurvamXvE32Kw" name="Override"/>
+  </UMLLabProfile:Annotations>
+  <UMLLabProfile:Reference xmi:id="_WgW1QKXWEeurvamXvE32Kw" base_Element="_WgUZAKXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Reference xmi:id="_WgZRgKXWEeurvamXvE32Kw" base_Element="_WgXcUKXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Reference xmi:id="_WglewKXWEeurvamXvE32Kw" base_Element="_WgkQoKXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Generics xmi:id="_Wg1WYKXWEeurvamXvE32Kw" genericsValue="String" base_Element="_WgyTEaXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Generics xmi:id="_Wg5n0KXWEeurvamXvE32Kw" genericsValue="State" base_Element="_Wg3yoaXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Generics xmi:id="_Wg7dAKXWEeurvamXvE32Kw" genericsValue="State" base_Element="_Wg6O4KXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Reference xmi:id="_WhCKsKXWEeurvamXvE32Kw" base_Element="_Wg95QKXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Generics xmi:id="_WhDY0KXWEeurvamXvE32Kw" genericsValue="Identifier" base_Element="_WhCKsaXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Generics xmi:id="_WhHDMKXWEeurvamXvE32Kw" genericsValue="Identifier" base_Element="_WhEm8aXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Generics xmi:id="_WhO_AKXWEeurvamXvE32Kw" genericsValue="Identifier" base_Element="_WhKtkKXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Reference xmi:id="_WhQNIKXWEeurvamXvE32Kw" base_Element="_WhPmEKXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_WhRbQKXWEeurvamXvE32Kw" base_Element="_WhQ0MKXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Annotations xmi:id="_WhSpYKXWEeurvamXvE32Kw" base_Element="_WhQ0MKXWEeurvamXvE32Kw">
+    <annotations xmi:id="_WhVFoKXWEeurvamXvE32Kw" name="Override"/>
+  </UMLLabProfile:Annotations>
+  <UMLLabProfile:Generics xmi:id="_WhZXEKXWEeurvamXvE32Kw" genericsValue="State" base_Element="_WhYI8aXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Generics xmi:id="_WhePkKXWEeurvamXvE32Kw" genericsValue="List&lt;State>" base_Element="_WhbMQaXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Generics xmi:id="_Whk9QKXWEeurvamXvE32Kw" genericsValue="State" base_Element="_Whe2oKXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Reference xmi:id="_WhrD4KXWEeurvamXvE32Kw" base_Element="_WhlkUKXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:TypeParameterDeclaration xmi:id="_WiF6oKXWEeurvamXvE32Kw" typeParameterDeclarationValue="T" base_Operation="_WiBCIKXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_WiHv0KXWEeurvamXvE32Kw" base_Element="_WiBCIKXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Generics xmi:id="_WiKzIKXWEeurvamXvE32Kw" genericsValue="T" base_Element="_WiC3UKXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:TypeParameterDeclaration xmi:id="_WiMBQqXWEeurvamXvE32Kw" typeParameterDeclarationValue="T" base_Operation="_WiLaMKXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_WiNPYKXWEeurvamXvE32Kw" base_Element="_WiLaMKXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Generics xmi:id="_WiN2cKXWEeurvamXvE32Kw" genericsValue="T" base_Element="_WiMBQKXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Generics xmi:id="_WiT9EKXWEeurvamXvE32Kw" genericsValue="T" base_Element="_WiMBQaXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Generics xmi:id="_WiY1kKXWEeurvamXvE32Kw" genericsValue="String, List&lt;State>" base_Element="_WiXAYKXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Generics xmi:id="_WilC0KXWEeurvamXvE32Kw" genericsValue="String, List&lt;State>" base_Element="_WiXAYaXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Generics xmi:id="_Wiuz0KXWEeurvamXvE32Kw" genericsValue="String, List&lt;State>" base_Element="_WiXAYqXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Generics xmi:id="_WiyeMKXWEeurvamXvE32Kw" genericsValue="State" base_Element="_WiwpAKXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_WizsUaXWEeurvamXvE32Kw" base_Element="_WizFQKXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Annotations xmi:id="_Wi0TYKXWEeurvamXvE32Kw" base_Element="_WizFQKXWEeurvamXvE32Kw">
+    <annotations xmi:id="_Wi0TYaXWEeurvamXvE32Kw" name="Override"/>
+  </UMLLabProfile:Annotations>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_Wi_5kKXWEeurvamXvE32Kw" base_Element="_Wi-rcKXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_WjK4sKXWEeurvamXvE32Kw" base_Element="_WjJqkKXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Generics xmi:id="_WjMt4KXWEeurvamXvE32Kw" genericsValue="State" base_Element="_WjK4saXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:LegacyStyledElement xmi:id="_WjOjEKXWEeurvamXvE32Kw" base_Element="_WjN8AKXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Reference xmi:id="_Wk4v8KXWEeurvamXvE32Kw" base_Element="_Wk3h0KXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Reference xmi:id="_Wk7MMKXWEeurvamXvE32Kw" base_Element="_Wk5-EKXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Reference xmi:id="_Wk9ocKXWEeurvamXvE32Kw" base_Element="_Wk7MMaXWEeurvamXvE32Kw"/>
+  <UMLLabProfile:Reference xmi:id="_Wk-2kKXWEeurvamXvE32Kw" base_Element="_Wk9ocaXWEeurvamXvE32Kw"/>
+</xmi:XMI>

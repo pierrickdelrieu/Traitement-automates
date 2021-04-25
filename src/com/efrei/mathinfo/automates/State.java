@@ -22,13 +22,13 @@ public class State implements Cloneable, Comparable<State> {
 
 		this.types = new ArrayList<StateType>();
 		this.types.add(StateType.COMMON);
-		
+
 		this.links = new HashMap<String, List<State>>();
 	}
-	
+
 	public State(State state) {
-		this.id = new Identifier(state.getID());
-		
+		this.id = new Identifier(List.of(state.getIdentifier()));
+
 		this.types = new ArrayList<StateType>(state.getType());
 		this.links = new HashMap<String, List<State>>(state.getLinks());
 	}
@@ -36,19 +36,19 @@ public class State implements Cloneable, Comparable<State> {
 	public void setIdentifier(Identifier id) {
 		this.id = id;
 	}
-	
+
 	public Identifier getIdentifier() {
 		return this.id;
 	}
-	
+
 	public String getID() {
 		return this.id.getID();
 	}
-	
+
 	public Map<String, List<State>> getLinks() {
 		return this.links;
 	}
-	
+
 	public void addLink(String what, State where) {
 		// If the list of this transition is already created
 		if (this.links.containsKey(what)) {
@@ -65,7 +65,7 @@ public class State implements Cloneable, Comparable<State> {
 			this.links.put(what, st);
 		}
 	}
-	
+
 	public List<StateType> getType() {
 		return this.types;
 	}
@@ -81,33 +81,41 @@ public class State implements Cloneable, Comparable<State> {
 			this.types.remove(type);
 		}
 	}
-	
+
 	public boolean isEntry() {
 		return this.types.contains(StateType.ENTRY);
 	}
-	
+
 	public boolean isExit() {
 		return this.types.contains(StateType.EXIT);
 	}
-	
+
 	public void mergeWith(State toMerge) {
-		
-		if (this == toMerge) {
+
+		if (this.equals(toMerge)) {
 			return;
 		}
-						
+		
+		if (toMerge.getIdentifier().isSubIdOf(this.getIdentifier())) {
+			return;
+		}
+
 		if (!this.links.isEmpty() && !toMerge.getLinks().isEmpty()) {
 			this.links.putAll(Operations.mergeMaps(this.links, toMerge.getLinks())); // we merge the destinations and keys
 		}
-		
+
 		else if (this.links.isEmpty() && !toMerge.getLinks().isEmpty()) {
 			this.links.putAll(toMerge.getLinks());
 		}
-		
+
 		if (toMerge.isExit() && !this.isExit()) {
 			this.types.add(StateType.EXIT);
 		}
 		
+		if (toMerge.isEntry() && !this.isEntry()) {
+			this.types.add(StateType.ENTRY);
+		}
+
 		this.id = new Identifier(List.of(this.id, toMerge.getIdentifier()));
 	}
 
@@ -115,10 +123,21 @@ public class State implements Cloneable, Comparable<State> {
 	public String toString() {
 		return this.id.getID();
 	}
-	
+
 	@Override
 	public State clone() {
 		return new State(this);
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+
+		State state = (State) o;
+		return this.getIdentifier().equals(state.getIdentifier());
 	}
 
 	@Override
