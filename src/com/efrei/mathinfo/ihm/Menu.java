@@ -22,22 +22,24 @@ public class Menu {
 
 		while (onMenu) {
 			log(header);
-			log("Il y a " + numFiles + " automate(s) dans le dossier, choisissez votre automate: ");
-			log("Entrez q pour quitter");
-			log(header);
+			log("Il y a " + numFiles + " automate(s) dans le dossier, choisissez votre automate: \n");
+			log("Entrez q pour quitter\n");
 			log("Votre choix : ");
 
 			if (sc.hasNextInt()) {
 				int choice = sc.nextInt();
 
 				if (choice > numFiles || choice < 0) {
+					clearConsolRun();
 					log("Cet automate n'existe pas");
 					continue;
-				}
+				} else {
+					currentAutomaton = FileReader
+							.createAutomatonObject(path + "/files/A01-" + String.valueOf(choice) + ".txt");
+					clearConsolRun();
+					openOperationsMenu();
 
-				currentAutomaton = FileReader
-						.createAutomatonObject(path + "/files/A01-" + String.valueOf(choice) + ".txt");
-				openOperationsMenu();
+				}
 			}
 
 			else {
@@ -52,7 +54,7 @@ public class Menu {
 				}
 			}
 		}
-		
+
 		sc.close();
 	}
 
@@ -68,6 +70,7 @@ public class Menu {
 
 			if (sc.hasNextInt()) {
 				choice = sc.nextInt();
+				clearConsolRun();
 
 				switch (choice) {
 				case 1:
@@ -97,10 +100,12 @@ public class Menu {
 			else if (sc.hasNextLine()){
 				if (sc.nextLine().equalsIgnoreCase("r")) {
 					onMenu = false;
+					clearConsolRun();
 				}
 				
 				else {
-					log("Veuillez entrer un chiffre entre 1 et 6 (ou r pour retourner en arrière)");
+					clearConsolRun();
+					log("Veuillez entrer un chiffre entre 1 et 6 (ou r pour retourner en arrière)\n");
 				}
 			}
 		}
@@ -116,9 +121,11 @@ public class Menu {
 			
 			log("Entrez votre mot : ");
 			word = sc.nextLine();
+			clearConsolRun();
 			
 			if (word.equalsIgnoreCase("fin")) {
 				onMenu = false;
+				clearConsolRun();
 			}
 			
 			if (currentAutomaton.recognizesWord(word) == true) {
@@ -130,10 +137,11 @@ public class Menu {
 	}
 
 	public static void log(String str) {
-		System.out.println(str);
+		System.out.printf(str);
 	}
 
-	public static void clear() {
-
+	public static void clearConsolRun() {
+		for(int i = 0; i < 80*300; i++) // Default Height of cmd is 300 and Default width is 80
+			System.out.print("\n"); // Prints a backspace
 	}
 }
