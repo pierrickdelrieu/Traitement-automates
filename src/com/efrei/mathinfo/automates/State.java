@@ -30,7 +30,7 @@ public class State implements Cloneable, Comparable<State> {
 		this.id = new Identifier(List.of(state.getIdentifier()));
 
 		this.types = new ArrayList<StateType>(state.getType());
-		this.links = new HashMap<String, List<State>>(state.getLinks());
+		this.links = Operations.copyOf(state.getLinks());
 	}
 
 	public void setIdentifier(Identifier id) {

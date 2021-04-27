@@ -57,6 +57,7 @@ public class Operations {
 
 			for (State state : automaton.getStates()) {
 				fillEpsilonStates(epsilonDestinations, state);
+				Operations.removeDuplicates(epsilonDestinations);
 				epsilonStates.put(state, new ArrayList<State>(epsilonDestinations));
 				epsilonDestinations.clear();
 
@@ -155,7 +156,7 @@ public class Operations {
 			Stack<State> toDetermine = new Stack<State>();
 			toDetermine.add(newEntry);
 
-			List<State> newStates = new ArrayList<State>();
+			List<State> newStates = new ArrayList<State>();			
 			automaton.changeStates(newStates);
 
 			int transitions = 0;
@@ -579,7 +580,7 @@ public class Operations {
 		return complementary;
 	}
 
-	protected static State mergeStates(State... states) {
+	public static State mergeStates(State... states) {
 
 		if (states.length == 0) {
 			return null;
@@ -589,10 +590,10 @@ public class Operations {
 			return states[0];
 		}
 
-		State current = new State(states[0]);
+		State current = states[0].clone();
 
 		for (int i = 1; i < states.length; i++) {
-			State next = states[i];
+			State next = states[i].clone();
 
 			if (next.equals(current)) {
 				continue;
@@ -608,6 +609,8 @@ public class Operations {
 
 		String possibleID = makeID(states);
 		State possibleState = automaton.getByID(possibleID);
+		
+		//System.out.println("Possible : " + possibleID);
 
 		if (possibleState != null) {
 			return possibleState;
@@ -663,7 +666,13 @@ public class Operations {
 			for (String key : map2.keySet()) {
 				
 				if (newMap.containsKey(key)) {
-					newMap.get(key).addAll(mergeLists(newMap.get(key), map2.get(key)));
+					List<State> newList = new ArrayList<State>();
+					newList.addAll(mergeLists(newMap.get(key), map2.get(key)));
+					
+					removeDuplicates(newList);
+										
+					newMap.get(key).clear();
+					newMap.get(key).addAll(newList);
 				}
 				
 				else {
@@ -674,12 +683,31 @@ public class Operations {
 
 		return newMap;
 	}
+	
+	protected static Map<String, List<State>> copyOf(Map<String, List<State>> map) {
+		Map<String, List<State>> newMap = new HashMap<String, List<State>>();
+		
+		map.forEach((key, value) -> {
+			newMap.put(key, new ArrayList<State>(value));
+		});
+		
+		return newMap;
+	}
 
 	protected static String makeID(State... states) {
 		List<Identifier> statesIds = new ArrayList<Identifier>();
 
 		for (State state : states) {
-			statesIds = mergeLists(statesIds, state.getIdentifier().getIdentifiers());
+						
+			if (state.getIdentifier().getIdentifiers().isEmpty()) {
+				if (!statesIds.contains(state.getIdentifier())) {
+					statesIds.add(state.getIdentifier());
+				}
+			}
+			
+			else {
+				statesIds = mergeLists(statesIds, state.getIdentifier().getIdentifiers());
+			}
 		}
 
 		return new Identifier(statesIds).getID();
