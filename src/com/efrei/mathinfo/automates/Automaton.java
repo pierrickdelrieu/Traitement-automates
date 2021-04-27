@@ -134,6 +134,7 @@ public class Automaton implements Cloneable {
 	}
 
 	public void display() {
+		System.out.println("Affichage de l'automate : \n");
 		System.out.println(this);
 	}
 

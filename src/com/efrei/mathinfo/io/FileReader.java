@@ -34,7 +34,6 @@ public class FileReader {
 			switch (line) {
 			case 0: // Line 1 contains the number of words in the alphabet
 				alphabet = new Alphabet(Integer.valueOf(content)); // Build the alphabet object
-				System.out.println(Arrays.toString(alphabet.getDictionary().toArray()));
 				automate.setAlphabet(alphabet);
 				break;
 			case 1: // Line 2 is the number of states
@@ -58,7 +57,6 @@ public class FileReader {
 														     // when the array is joined we then get the transition 'a'
 								
 				values = content.split("[a-z*]"); // When we have '01*9', the split returns '01', '9'
-				System.out.println(Arrays.toString(values));
 				
 				// TODO: vérifications validité automate
 				

@@ -24,8 +24,8 @@ public class Main {
 //				System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 //			}
 //			
-			//TODO automate 11 merge d'entrée ne se fait pas lors de la minimisation de l'état A -- 28  
-			Automaton a = FileReader.createAutomatonObject("src/com/efrei/mathinfo/A01-36.txt");
+			//TODO automate 11 merge d'entrée ne se fait pas lors de la minimisation de l'état A -- 44 43 34   
+			Automaton a = FileReader.createAutomatonObject("src/com/efrei/mathinfo/A01-33.txt");
 			a.display();
 			//Operations.standardize(a);
 			Operations.minimize(a);

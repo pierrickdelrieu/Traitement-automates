@@ -40,8 +40,12 @@ public class Operations {
 	 * 
 	 */
 	public static void synchronize(Automaton automaton) {
+		
+		System.out.println("\n------ Tentative de synchronisation de l'automate ------\n");
 
 		if (isAsync(automaton)) {
+			
+			System.out.println("\n\tTentative d'élimination des transitions epsilons\n");
 
 			// The purpose of this map is to store one state as a key and a value that is
 			// its "epsilon cloture"
@@ -65,6 +69,7 @@ public class Operations {
 			}
 
 			// creating all the new states, and naming them with a simple name
+			System.out.println("\nEpsilon clotures obtenues : \n");
 			epsilonStates.forEach((key, value) -> {
 				State mergedState = mergeStates(value.toArray(new State[0]));
 
@@ -76,6 +81,8 @@ public class Operations {
 				System.out.println(key.getID() + "*" + " == " + mergedState.getID());
 				mergedState.setIdentifier(new Identifier(key.getID() + "*"));
 			});
+			
+			System.out.println();
 
 			for (State state : newStates) {
 
@@ -98,10 +105,11 @@ public class Operations {
 			automaton.changeStates(newStates);
 			automaton.getAlphabet().removeWord("*");
 			automaton.display();
+			System.out.println("\n------ Votre automate est désormais synchrone ------\n");
 		}
 
 		else {
-			System.err.println("Votre automate est déjà synchrone");
+			System.err.println("\n------ Votre automate est déjà synchrone ------\n");
 		}
 	}
 
@@ -146,9 +154,11 @@ public class Operations {
 
 		if (!isDeterministic(automaton)) {
 
-			System.out.println("\nDéterminisation de votre automate \n");
+			System.out.println("\n------ Tentative de déterminisation de votre automate ------\n");
 
 			synchronize(automaton); // Only does it if it's asynchronous
+			
+			System.out.println("\n------ Début de la déterminisation ------\n");
 
 			State[] entries = automaton.getStatesByType(StateType.ENTRY);
 			State newEntry = mergeStates(entries);
@@ -191,11 +201,11 @@ public class Operations {
 			automaton.setNumTransitions(transitions);
 
 			automaton.display();
-			System.out.println("\nDéterminisation terminée !");
+			System.out.println("\n------ Déterminisation terminée ! ------\n");
 		}
 
 		else {
-			System.err.println("\nVotre automate est déja déterministe");
+			System.err.println("\n------ Votre automate est déja déterministe ------\n");
 		}
 	}
 
@@ -226,10 +236,13 @@ public class Operations {
 	}
 
 	public static void complete(Automaton automaton) {
+		
+		System.out.println("\n------ Tentative de complétion de votre automate ------\n");
+		
 		determinize(automaton);
 
 		if (!isCompleted(automaton)) {
-			System.out.println("\nComplétion de votre automate \n");
+			System.out.println("\n------ Complétion de votre automate ------- \n");
 
 			if (isAsync(automaton)) {
 				synchronize(automaton);
@@ -256,11 +269,11 @@ public class Operations {
 			Collections.sort(automaton.getStates());
 
 			automaton.display();
-			System.out.println("Complétion terminée ! ");
+			System.out.println("\n------ Complétion terminée ! ------\n");
 		}
 
 		else {
-			System.err.println("\nVotre automate est déjà complet");
+			System.err.println("------ \nVotre automate est déjà complet ------\n");
 		}
 	}
 
@@ -268,6 +281,7 @@ public class Operations {
 
 		// we check if the automaton is deterministic, if not -> it isn't completed
 		if (!isDeterministic(automaton)) {
+			System.err.println("Votre état n'est pas complet car celui-ci n'est pas déterministe");
 			return false;
 		}
 
@@ -279,7 +293,15 @@ public class Operations {
 				// we check if it has the same number of keys as the number of letter in the
 				// alphabet
 				if (transitions < automaton.getAlphabet().getDictionary().size()) {
-					System.out.println("Votre automate n'est pas complet à cause de l'état " + state);
+					System.err.println("Votre automate n'est pas complet à cause de l'état " + state);
+					
+					if (transitions == 0) {
+						System.err.println("En effet celui-ci n'a pas de transitions");
+					}
+					
+					else {
+						System.err.println("En effet celui-ci n'a des transitions que pour " + Arrays.toString(state.getLinks().keySet().toArray()));
+					}	
 					return false;
 				}
 			}
@@ -293,7 +315,7 @@ public class Operations {
 
 			synchronize(automaton);
 
-			System.out.println("\nStandardisation de votre automate : \n");
+			System.out.println("\n------ Tentative de standardisation de votre automate ------ \n");
 
 			State newEntry = new State("I");
 			newEntry.addType(StateType.ENTRY);
@@ -316,11 +338,11 @@ public class Operations {
 			automaton.getStates().add(newEntry);
 
 			automaton.display();
-			System.out.println("Votre automate est désormais standardisé ! \n");
+			System.out.println("------ Fin de la standardisation ------ ! \n");
 		}
 
 		else {
-			System.err.println("Votre automate est déjà standardisé ! \n");
+			System.err.println("------ Votre automate est déjà standardisé ! ------ \n");
 		}
 	}
 
@@ -360,17 +382,23 @@ public class Operations {
 	}
 
 	public static void minimize(Automaton automaton) {
+		
+		System.out.println("------ Tentative de minimisation de votre automate ------\n");
 
 		if (!isCompleted(automaton)) {
-			System.err.println("Votre automate doit être complet pour être minimisé, nous le complétons");
+			System.err.println("Avant d'être minimisé, votre automate doit être complet, nous le complétons");
 			complete(automaton);
 		}
+		
+		System.out.println("\n------ Début de la minimisation ------\n");
 
 		List<List<State>> finalTheta = getUnmergedLastTheta(automaton);
 		List<State> newStates = new ArrayList<State>();
 
 		if (finalTheta.size() == automaton.getStates().size()) {
 			System.err.println("Votre automate était déjà minimal");
+			System.out.println("------ Fin de la minimisation ------");
+			return;
 		}
 
 		else {
@@ -384,8 +412,7 @@ public class Operations {
 				State state = mergeStates(statesArr);
 				
 				if (states.size() > 1) {
-
-					System.out.println(simplifiedID + " == " + Arrays.toString(statesArr));
+					System.out.println("L'état " + simplifiedID + " == " + Arrays.toString(statesArr) + "\n");
 
 					state.getIdentifier().setId(simplifiedID);
 
@@ -422,12 +449,14 @@ public class Operations {
 			}
 
 			automaton.setNumTransitions(numTransitions);
-			System.out.println("Minimisation terminée");
 			automaton.display();
+			System.out.println("------ Fin de la minimisation ------");
 		}
 	}
 
 	private static List<List<State>> getUnmergedLastTheta(Automaton automaton) {
+		
+		System.out.println("\n------ Récupération de la partition finale ------\n");
 
 		List<List<State>> thetaCurrent = new ArrayList<List<State>>();
 		List<List<State>> thetaLast = new ArrayList<List<State>>();
@@ -508,7 +537,7 @@ public class Operations {
 		
 		System.out.println("theta (final): " + Arrays.toString(thetaCurrent.toArray()));
 
-
+		System.out.println("\n----- Fin de la récupération ------\n");
 		return thetaCurrent;
 	}
 
@@ -560,7 +589,7 @@ public class Operations {
 
 		Automaton complementary = automaton.clone();
 
-		System.out.println("Création de l'automate complémentaire à votre automate \n");
+		System.out.println("\n------ Création de l'automate complémentaire à votre automate ------\n");
 
 		for (State state : complementary.getStates()) {
 			if (!state.getType().contains(StateType.EXIT)) {
@@ -575,7 +604,7 @@ public class Operations {
 		System.out.println(Arrays.toString(complementary.getStatesByType(StateType.EXIT)));
 
 		complementary.display();
-		System.out.println("Création de l'automate complémentaire terminée ! \n");
+		System.out.println("\n------ Automate complémentaire terminée ! ------\n");
 
 		return complementary;
 	}
