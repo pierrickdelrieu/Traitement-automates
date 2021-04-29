@@ -1,0 +1,359 @@
+Automate numéro : 32
+Affichage de l'automate : 
+
+4 mots : [a, b, c, *]
+22 états : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+1 entrées : [0]
+1 sorties : [21]
+29 transitions : 
+0->a->[x] 
+0->b->[x] 
+0->c->[x] 
+0->*->[1, 10]
+1->a->[x] 
+1->b->[x] 
+1->c->[x] 
+1->*->[2, 6]
+2->a->[x] 
+2->b->[x] 
+2->c->[x] 
+2->*->[3]
+3->a->[x] 
+3->b->[4]
+3->c->[x] 
+3->*->[x] 
+4->a->[x] 
+4->b->[x] 
+4->c->[x] 
+4->*->[3, 5]
+5->a->[x] 
+5->b->[x] 
+5->c->[x] 
+5->*->[8]
+6->a->[7]
+6->b->[x] 
+6->c->[x] 
+6->*->[x] 
+7->a->[x] 
+7->b->[x] 
+7->c->[x] 
+7->*->[8]
+8->a->[x] 
+8->b->[x] 
+8->c->[9]
+8->*->[x] 
+9->a->[x] 
+9->b->[x] 
+9->c->[x] 
+9->*->[21]
+10->a->[x] 
+10->b->[x] 
+10->c->[x] 
+10->*->[11, 15]
+11->a->[x] 
+11->b->[x] 
+11->c->[x] 
+11->*->[12, 14]
+12->a->[13]
+12->b->[x] 
+12->c->[x] 
+12->*->[x] 
+13->a->[x] 
+13->b->[x] 
+13->c->[x] 
+13->*->[12, 14]
+14->a->[x] 
+14->b->[x] 
+14->c->[x] 
+14->*->[17]
+15->a->[x] 
+15->b->[16]
+15->c->[x] 
+15->*->[x] 
+16->a->[x] 
+16->b->[x] 
+16->c->[x] 
+16->*->[17]
+17->a->[x] 
+17->b->[x] 
+17->c->[x] 
+17->*->[18, 20]
+18->a->[x] 
+18->b->[x] 
+18->c->[19]
+18->*->[x] 
+19->a->[x] 
+19->b->[x] 
+19->c->[x] 
+19->*->[18, 20]
+20->a->[x] 
+20->b->[x] 
+20->c->[x] 
+20->*->[21]
+21->a->[x] 
+21->b->[x] 
+21->c->[x] 
+21->*->[x] 
+
+------ Tentative de minimisation de votre automate ------
+
+Votre automate est asynchrone à cause de la transition 0->*->[1, 10]
+
+Votre automate est asynchrone, nous le synchronisons
+
+
+------ Tentative de synchronisation de l'automate ------
+
+Votre automate est asynchrone à cause de la transition 0->*->[1, 10]
+
+	Tentative d'élimination des transitions epsilons
+
+
+Epsilon clotures obtenues : 
+
+7* == 7.8
+20* == 20.21
+17* == 17.18.20.21
+13* == 12.13.14.17.18.20.21
+9* == 9.21
+10* == 10.11.12.14.15.17.18.20.21
+4* == 3.4.5.8
+3* == 3
+16* == 16.17.18.20.21
+5* == 5.8
+12* == 12
+0* == 0.1.2.6.10.11.14.15.17.18.20.21.3*.12*
+18* == 18
+19* == 19.20.21.18*
+21* == 21
+1* == 1.2.6.3*
+8* == 8
+15* == 15
+6* == 6
+11* == 11.14.17.20.12*.21*.18*
+14* == 14.17.20.21*.18*
+2* == 2.3*
+
+Affichage de l'automate : 
+
+3 mots : [a, b, c]
+22 états : [0*, 1*, 2*, 3*, 4*, 5*, 6*, 7*, 8*, 9*, 10*, 20*, 11*, 12*, 21*, 13*, 14*, 15*, 16*, 17*, 18*, 19*]
+1 entrées : [0*]
+11 sorties : [0*, 9*, 10*, 20*, 11*, 21*, 13*, 14*, 16*, 17*, 19*]
+29 transitions : 
+0*->a->[7*, 13*]
+0*->b->[4*, 16*]
+0*->c->[19*]
+1*->a->[7*]
+1*->b->[4*]
+1*->c->[x] 
+2*->a->[x] 
+2*->b->[4*]
+2*->c->[x] 
+3*->a->[x] 
+3*->b->[4*]
+3*->c->[x] 
+4*->a->[x] 
+4*->b->[4*]
+4*->c->[9*]
+5*->a->[x] 
+5*->b->[x] 
+5*->c->[9*]
+6*->a->[7*]
+6*->b->[x] 
+6*->c->[x] 
+7*->a->[x] 
+7*->b->[x] 
+7*->c->[9*]
+8*->a->[x] 
+8*->b->[x] 
+8*->c->[9*]
+9*->a->[x] 
+9*->b->[x] 
+9*->c->[x] 
+10*->a->[13*]
+10*->b->[16*]
+10*->c->[19*]
+20*->a->[x] 
+20*->b->[x] 
+20*->c->[x] 
+11*->a->[13*]
+11*->b->[x] 
+11*->c->[19*]
+12*->a->[13*]
+12*->b->[x] 
+12*->c->[x] 
+21*->a->[x] 
+21*->b->[x] 
+21*->c->[x] 
+13*->a->[13*]
+13*->b->[x] 
+13*->c->[19*]
+14*->a->[x] 
+14*->b->[x] 
+14*->c->[19*]
+15*->a->[x] 
+15*->b->[16*]
+15*->c->[x] 
+16*->a->[x] 
+16*->b->[x] 
+16*->c->[19*]
+17*->a->[x] 
+17*->b->[x] 
+17*->c->[19*]
+18*->a->[x] 
+18*->b->[x] 
+18*->c->[19*]
+19*->a->[x] 
+19*->b->[x] 
+19*->c->[19*]
+
+
+------ Votre automate est désormais synchrone ------
+
+Votre automate n'est pas déterministe à cause de la transition : 0*->a->[7*, 13*]
+Votre état n'est pas complet car celui-ci n'est pas déterministe
+Avant d'être minimisé, votre automate doit être complet, nous le complétons
+
+------ Tentative de complétion de votre automate ------
+
+Votre automate n'est pas déterministe à cause de la transition : 0*->a->[7*, 13*]
+
+------ Tentative de déterminisation de votre automate ------
+
+
+------ Début de la déterminisation ------
+
+Affichage de l'automate : 
+
+3 mots : [a, b, c]
+8 états : [0*, 19*, 4*.16*, 9*.19*, 4*, 9*, 7*.13*, 13*]
+1 entrées : [0*]
+7 sorties : [0*, 19*, 4*.16*, 9*.19*, 9*, 7*.13*, 13*]
+13 transitions : 
+0*->a->[7*.13*]
+0*->b->[4*.16*]
+0*->c->[19*]
+19*->a->[x] 
+19*->b->[x] 
+19*->c->[19*]
+4*.16*->a->[x] 
+4*.16*->b->[4*]
+4*.16*->c->[9*.19*]
+9*.19*->a->[x] 
+9*.19*->b->[x] 
+9*.19*->c->[19*]
+4*->a->[x] 
+4*->b->[4*]
+4*->c->[9*]
+9*->a->[x] 
+9*->b->[x] 
+9*->c->[x] 
+7*.13*->a->[13*]
+7*.13*->b->[x] 
+7*.13*->c->[9*.19*]
+13*->a->[13*]
+13*->b->[x] 
+13*->c->[19*]
+
+
+------ Déterminisation terminée ! ------
+
+Votre automate n'est pas complet à cause de l'état 19*
+En effet celui-ci n'a des transitions que pour [c]
+
+Votre automate est bien déterministe, il peut être complété !
+
+
+------ Complétion de votre automate ------- 
+
+Affichage de l'automate : 
+
+3 mots : [a, b, c]
+9 états : [4*.16*, 9*.19*, 7*.13*, P, 0*, 4*, 9*, 13*, 19*]
+1 entrées : [0*]
+7 sorties : [4*.16*, 9*.19*, 7*.13*, 0*, 9*, 13*, 19*]
+27 transitions : 
+4*.16*->a->[P]
+4*.16*->b->[4*]
+4*.16*->c->[9*.19*]
+9*.19*->a->[P]
+9*.19*->b->[P]
+9*.19*->c->[19*]
+7*.13*->a->[13*]
+7*.13*->b->[P]
+7*.13*->c->[9*.19*]
+P->a->[P]
+P->b->[P]
+P->c->[P]
+0*->a->[7*.13*]
+0*->b->[4*.16*]
+0*->c->[19*]
+4*->a->[P]
+4*->b->[4*]
+4*->c->[9*]
+9*->a->[P]
+9*->b->[P]
+9*->c->[P]
+13*->a->[13*]
+13*->b->[P]
+13*->c->[19*]
+19*->a->[P]
+19*->b->[P]
+19*->c->[19*]
+
+
+------ Complétion terminée ! ------
+
+
+Votre automate est bien déterministe et complet, toutes les conditions sont remplies !
+
+
+------ Début de la minimisation ------
+
+
+------ Récupération de la partition finale ------
+
+theta (0): [[4*.16*, 9*.19*, 7*.13*, 0*, 9*, 13*, 19*], [P, 4*]]
+theta (1): [[0*], [9*], [4*.16*, 9*.19*, 19*], [7*.13*, 13*], [P], [4*]]
+theta (2): [[0*], [9*], [4*.16*], [9*.19*, 19*], [7*.13*, 13*], [P], [4*]]
+theta (final): [[0*], [9*], [4*.16*], [9*.19*, 19*], [7*.13*, 13*], [P], [4*]]
+
+----- Fin de la récupération ------
+
+L'état A == [9*.19*, 19*]
+
+L'état B == [7*.13*, 13*]
+
+Affichage de l'automate : 
+
+3 mots : [a, b, c]
+7 états : [4*.16*, A, B, P, 0*, 4*, 9*]
+1 entrées : [0*]
+5 sorties : [4*.16*, A, B, 0*, 9*]
+21 transitions : 
+4*.16*->a->[P]
+4*.16*->b->[4*]
+4*.16*->c->[A]
+A->a->[P]
+A->b->[P]
+A->c->[A]
+B->a->[B]
+B->b->[P]
+B->c->[A]
+P->a->[P]
+P->b->[P]
+P->c->[P]
+0*->a->[B]
+0*->b->[4*.16*]
+0*->c->[A]
+4*->a->[P]
+4*->b->[4*]
+4*->c->[9*]
+9*->a->[P]
+9*->b->[P]
+9*->c->[P]
+
+
+------ Fin de la minimisation ------
+

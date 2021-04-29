@@ -1,0 +1,36 @@
+Automate numéro : 38
+Affichage de l'automate : 
+
+2 mots : [a, b]
+4 états : [0, 1, 2, 3]
+1 entrées : [0]
+3 sorties : [0, 1, 2]
+8 transitions : 
+0->a->[1]
+0->b->[3]
+1->a->[1]
+1->b->[2]
+2->a->[3]
+2->b->[3]
+3->a->[3]
+3->b->[3]
+
+------ Tentative de minimisation de votre automate ------
+
+
+Votre automate est bien déterministe et complet, toutes les conditions sont remplies !
+
+
+------ Début de la minimisation ------
+
+
+------ Récupération de la partition finale ------
+
+theta (0): [[0, 1, 2], [3]]
+theta (1): [[0], [1], [2], [3]]
+theta (final): [[0], [1], [2], [3]]
+
+----- Fin de la récupération ------
+
+Votre automate était déjà minimal
+------ Fin de la minimisation ------

@@ -1,0 +1,112 @@
+Automate numéro : 42
+Affichage de l'automate : 
+
+3 mots : [a, b, c]
+5 états : [0, 1, 2, 3, 4]
+1 entrées : [1]
+1 sorties : [1]
+14 transitions : 
+0->a->[3]
+0->b->[1]
+0->c->[3]
+1->a->[0]
+1->b->[2]
+1->c->[x] 
+2->a->[1]
+2->b->[4]
+2->c->[4]
+3->a->[3]
+3->b->[3]
+3->c->[3]
+4->a->[4]
+4->b->[4]
+4->c->[4]
+
+------ Tentative de minimisation de votre automate ------
+
+Votre automate n'est pas complet à cause de l'état 1
+En effet celui-ci n'a des transitions que pour [a, b]
+Avant d'être minimisé, votre automate doit être complet, nous le complétons
+
+------ Tentative de complétion de votre automate ------
+
+
+------ Votre automate est déja déterministe ------
+
+Votre automate n'est pas complet à cause de l'état 1
+En effet celui-ci n'a des transitions que pour [a, b]
+
+Votre automate est bien déterministe, il peut être complété !
+
+
+------ Complétion de votre automate ------- 
+
+Affichage de l'automate : 
+
+3 mots : [a, b, c]
+6 états : [0, 1, 2, 3, 4, P]
+1 entrées : [1]
+1 sorties : [1]
+18 transitions : 
+0->a->[3]
+0->b->[1]
+0->c->[3]
+1->a->[0]
+1->b->[2]
+1->c->[P]
+2->a->[1]
+2->b->[4]
+2->c->[4]
+3->a->[3]
+3->b->[3]
+3->c->[3]
+4->a->[4]
+4->b->[4]
+4->c->[4]
+P->a->[P]
+P->b->[P]
+P->c->[P]
+
+
+------ Complétion terminée ! ------
+
+
+Votre automate est bien déterministe et complet, toutes les conditions sont remplies !
+
+
+------ Début de la minimisation ------
+
+
+------ Récupération de la partition finale ------
+
+theta (0): [[1], [0, 2, 3, 4, P]]
+theta (1): [[1], [0], [2], [3, 4, P]]
+theta (final): [[1], [0], [2], [3, 4, P]]
+
+----- Fin de la récupération ------
+
+L'état A == [3, 4, P]
+
+Affichage de l'automate : 
+
+3 mots : [a, b, c]
+4 états : [0, 1, 2, A]
+1 entrées : [1]
+1 sorties : [1]
+12 transitions : 
+0->a->[A]
+0->b->[1]
+0->c->[A]
+1->a->[0]
+1->b->[2]
+1->c->[A]
+2->a->[1]
+2->b->[A]
+2->c->[A]
+A->a->[A]
+A->b->[A]
+A->c->[A]
+
+
+------ Fin de la minimisation ------
+

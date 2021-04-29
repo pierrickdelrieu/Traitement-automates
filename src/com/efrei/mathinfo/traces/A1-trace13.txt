@@ -1,0 +1,50 @@
+Automate numéro : 13
+Affichage de l'automate : 
+
+1 mots : [a]
+8 états : [0, 1, 2, 3, 4, 5, 6, 7]
+1 entrées : [1]
+6 sorties : [0, 3, 4, 5, 6, 7]
+8 transitions : 
+0->a->[0]
+1->a->[2]
+2->a->[3]
+3->a->[4]
+4->a->[5]
+5->a->[6]
+6->a->[7]
+7->a->[0]
+
+------ Tentative de minimisation de votre automate ------
+
+
+Votre automate est bien déterministe et complet, toutes les conditions sont remplies !
+
+
+------ Début de la minimisation ------
+
+
+------ Récupération de la partition finale ------
+
+theta (0): [[0, 3, 4, 5, 6, 7], [1, 2]]
+theta (1): [[0, 3, 4, 5, 6, 7], [1], [2]]
+theta (final): [[0, 3, 4, 5, 6, 7], [1], [2]]
+
+----- Fin de la récupération ------
+
+L'état A == [0, 3, 4, 5, 6, 7]
+
+Affichage de l'automate : 
+
+1 mots : [a]
+3 états : [1, 2, A]
+1 entrées : [1]
+1 sorties : [A]
+3 transitions : 
+1->a->[2]
+2->a->[A]
+A->a->[A]
+
+
+------ Fin de la minimisation ------
+

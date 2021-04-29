@@ -1,0 +1,58 @@
+Automate numéro : 7
+Affichage de l'automate : 
+
+1 mots : [a]
+2 états : [0, 1]
+1 entrées : [1]
+1 sorties : [0]
+2 transitions : 
+0->a->[x] 
+1->a->[0, 1]
+
+------ Tentative de minimisation de votre automate ------
+
+Votre automate n'est pas déterministe à cause de la transition : 1->a->[0, 1]
+Votre état n'est pas complet car celui-ci n'est pas déterministe
+Avant d'être minimisé, votre automate doit être complet, nous le complétons
+
+------ Tentative de complétion de votre automate ------
+
+Votre automate n'est pas déterministe à cause de la transition : 1->a->[0, 1]
+
+------ Tentative de déterminisation de votre automate ------
+
+
+------ Début de la déterminisation ------
+
+Affichage de l'automate : 
+
+1 mots : [a]
+2 états : [1, 0.1]
+1 entrées : [1]
+1 sorties : [0.1]
+2 transitions : 
+1->a->[0.1]
+0.1->a->[0.1]
+
+
+------ Déterminisation terminée ! ------
+
+------ 
+Votre automate est déjà complet ------
+
+
+Votre automate est bien déterministe et complet, toutes les conditions sont remplies !
+
+
+------ Début de la minimisation ------
+
+
+------ Récupération de la partition finale ------
+
+theta (0): [[0.1], [1]]
+theta (final): [[0.1], [1]]
+
+----- Fin de la récupération ------
+
+Votre automate était déjà minimal
+------ Fin de la minimisation ------

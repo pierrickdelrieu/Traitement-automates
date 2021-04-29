@@ -1,0 +1,94 @@
+Automate numéro : 21
+Affichage de l'automate : 
+
+4 mots : [a, b, c, d]
+4 états : [0, 1, 2, 3]
+1 entrées : [1]
+1 sorties : [1]
+4 transitions : 
+0->a->[x] 
+0->b->[x] 
+0->c->[x] 
+0->d->[1]
+1->a->[2]
+1->b->[x] 
+1->c->[x] 
+1->d->[x] 
+2->a->[x] 
+2->b->[3]
+2->c->[x] 
+2->d->[x] 
+3->a->[x] 
+3->b->[x] 
+3->c->[0]
+3->d->[x] 
+
+------ Tentative de minimisation de votre automate ------
+
+Votre automate n'est pas complet à cause de l'état 0
+En effet celui-ci n'a des transitions que pour [d]
+Avant d'être minimisé, votre automate doit être complet, nous le complétons
+
+------ Tentative de complétion de votre automate ------
+
+
+------ Votre automate est déja déterministe ------
+
+Votre automate n'est pas complet à cause de l'état 0
+En effet celui-ci n'a des transitions que pour [d]
+
+Votre automate est bien déterministe, il peut être complété !
+
+
+------ Complétion de votre automate ------- 
+
+Affichage de l'automate : 
+
+4 mots : [a, b, c, d]
+5 états : [0, 1, 2, 3, P]
+1 entrées : [1]
+1 sorties : [1]
+20 transitions : 
+0->a->[P]
+0->b->[P]
+0->c->[P]
+0->d->[1]
+1->a->[2]
+1->b->[P]
+1->c->[P]
+1->d->[P]
+2->a->[P]
+2->b->[3]
+2->c->[P]
+2->d->[P]
+3->a->[P]
+3->b->[P]
+3->c->[0]
+3->d->[P]
+P->a->[P]
+P->b->[P]
+P->c->[P]
+P->d->[P]
+
+
+------ Complétion terminée ! ------
+
+
+Votre automate est bien déterministe et complet, toutes les conditions sont remplies !
+
+
+------ Début de la minimisation ------
+
+
+------ Récupération de la partition finale ------
+
+theta (0): [[1], [0, 2, 3, P]]
+theta (1): [[1], [0], [2, 3, P]]
+theta (2): [[1], [0], [3], [2, P]]
+theta (3): [[1], [0], [3], [2], [P]]
+theta (final): [[1], [0], [3], [2], [P]]
+
+----- Fin de la récupération ------
+
+Votre automate était déjà minimal
+------ Fin de la minimisation ------

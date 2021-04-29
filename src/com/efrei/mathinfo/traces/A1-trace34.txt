@@ -1,0 +1,177 @@
+Automate numéro : 34
+Affichage de l'automate : 
+
+3 mots : [a, b, *]
+7 états : [0, 1, 2, 3, 4, 5, 6]
+1 entrées : [0]
+1 sorties : [6]
+10 transitions : 
+0->a->[x] 
+0->b->[x] 
+0->*->[1, 4]
+1->a->[2]
+1->b->[x] 
+1->*->[2]
+2->a->[x] 
+2->b->[3]
+2->*->[x] 
+3->a->[x] 
+3->b->[x] 
+3->*->[2, 6]
+4->a->[x] 
+4->b->[5]
+4->*->[x] 
+5->a->[x] 
+5->b->[x] 
+5->*->[4, 6]
+6->a->[x] 
+6->b->[x] 
+6->*->[x] 
+
+------ Tentative de minimisation de votre automate ------
+
+Votre automate est asynchrone à cause de la transition 0->*->[1, 4]
+
+Votre automate est asynchrone, nous le synchronisons
+
+
+------ Tentative de synchronisation de l'automate ------
+
+Votre automate est asynchrone à cause de la transition 0->*->[1, 4]
+
+	Tentative d'élimination des transitions epsilons
+
+
+Epsilon clotures obtenues : 
+
+1* == 1.2
+6* == 6
+4* == 4
+3* == 2.3.6*
+0* == 0.1.2.4*
+2* == 2
+5* == 5.4*.6*
+
+Affichage de l'automate : 
+
+2 mots : [a, b]
+7 états : [0*, 1*, 2*, 3*, 4*, 5*, 6*]
+1 entrées : [0*]
+3 sorties : [3*, 5*, 6*]
+10 transitions : 
+0*->a->[2*]
+0*->b->[3*, 5*]
+1*->a->[2*]
+1*->b->[3*]
+2*->a->[x] 
+2*->b->[3*]
+3*->a->[x] 
+3*->b->[3*]
+4*->a->[x] 
+4*->b->[5*]
+5*->a->[x] 
+5*->b->[5*]
+6*->a->[x] 
+6*->b->[x] 
+
+
+------ Votre automate est désormais synchrone ------
+
+Votre automate n'est pas déterministe à cause de la transition : 0*->b->[3*, 5*]
+Votre état n'est pas complet car celui-ci n'est pas déterministe
+Avant d'être minimisé, votre automate doit être complet, nous le complétons
+
+------ Tentative de complétion de votre automate ------
+
+Votre automate n'est pas déterministe à cause de la transition : 0*->b->[3*, 5*]
+
+------ Tentative de déterminisation de votre automate ------
+
+
+------ Début de la déterminisation ------
+
+Affichage de l'automate : 
+
+2 mots : [a, b]
+4 états : [0*, 3*.5*, 2*, 3*]
+1 entrées : [0*]
+2 sorties : [3*.5*, 3*]
+5 transitions : 
+0*->a->[2*]
+0*->b->[3*.5*]
+3*.5*->a->[x] 
+3*.5*->b->[3*.5*]
+2*->a->[x] 
+2*->b->[3*]
+3*->a->[x] 
+3*->b->[3*]
+
+
+------ Déterminisation terminée ! ------
+
+Votre automate n'est pas complet à cause de l'état 3*.5*
+En effet celui-ci n'a des transitions que pour [b]
+
+Votre automate est bien déterministe, il peut être complété !
+
+
+------ Complétion de votre automate ------- 
+
+Affichage de l'automate : 
+
+2 mots : [a, b]
+5 états : [3*.5*, P, 0*, 2*, 3*]
+1 entrées : [0*]
+2 sorties : [3*.5*, 3*]
+10 transitions : 
+3*.5*->a->[P]
+3*.5*->b->[3*.5*]
+P->a->[P]
+P->b->[P]
+0*->a->[2*]
+0*->b->[3*.5*]
+2*->a->[P]
+2*->b->[3*]
+3*->a->[P]
+3*->b->[3*]
+
+
+------ Complétion terminée ! ------
+
+
+Votre automate est bien déterministe et complet, toutes les conditions sont remplies !
+
+
+------ Début de la minimisation ------
+
+
+------ Récupération de la partition finale ------
+
+theta (0): [[3*.5*, 3*], [P, 0*, 2*]]
+theta (1): [[3*.5*, 3*], [P], [0*, 2*]]
+theta (2): [[3*.5*, 3*], [P], [0*], [2*]]
+theta (final): [[3*.5*, 3*], [P], [0*], [2*]]
+
+----- Fin de la récupération ------
+
+L'état A == [3*.5*, 3*]
+
+Affichage de l'automate : 
+
+2 mots : [a, b]
+4 états : [A, P, 0*, 2*]
+1 entrées : [0*]
+1 sorties : [A]
+8 transitions : 
+A->a->[P]
+A->b->[A]
+P->a->[P]
+P->b->[P]
+0*->a->[2*]
+0*->b->[A]
+2*->a->[P]
+2*->b->[A]
+
+
+------ Fin de la minimisation ------
+

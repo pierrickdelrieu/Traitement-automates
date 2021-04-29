@@ -48,6 +48,12 @@ public class State implements Cloneable, Comparable<State> {
 	public Map<String, List<State>> getLinks() {
 		return this.links;
 	}
+	
+	public void transformTo(State state) {
+		this.id = state.getIdentifier();
+		this.types = state.getType();
+		this.links = state.getLinks();
+	}
 
 	public void addLink(String what, State where) {
 		// If the list of this transition is already created

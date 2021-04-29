@@ -1,0 +1,29 @@
+Automate numéro : 8
+Affichage de l'automate : 
+
+1 mots : [a]
+2 états : [0, 1]
+1 entrées : [1]
+1 sorties : [0]
+2 transitions : 
+0->a->[0]
+1->a->[0]
+
+------ Tentative de minimisation de votre automate ------
+
+
+Votre automate est bien déterministe et complet, toutes les conditions sont remplies !
+
+
+------ Début de la minimisation ------
+
+
+------ Récupération de la partition finale ------
+
+theta (0): [[0], [1]]
+theta (final): [[0], [1]]
+
+----- Fin de la récupération ------
+
+Votre automate était déjà minimal
+------ Fin de la minimisation ------

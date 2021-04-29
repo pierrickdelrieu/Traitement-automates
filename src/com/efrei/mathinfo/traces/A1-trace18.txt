@@ -1,0 +1,132 @@
+Automate numéro : 18
+Affichage de l'automate : 
+
+4 mots : [a, b, c, d]
+5 états : [0, 1, 2, 3, 4]
+1 entrées : [1]
+1 sorties : [0]
+13 transitions : 
+0->a->[x] 
+0->b->[x] 
+0->c->[x] 
+0->d->[x] 
+1->a->[2]
+1->b->[3]
+1->c->[4]
+1->d->[0]
+2->a->[2]
+2->b->[3]
+2->c->[4]
+2->d->[0]
+3->a->[x] 
+3->b->[3]
+3->c->[4]
+3->d->[0]
+4->a->[x] 
+4->b->[x] 
+4->c->[4]
+4->d->[0]
+
+------ Tentative de minimisation de votre automate ------
+
+Votre automate n'est pas complet à cause de l'état 0
+En effet celui-ci n'a pas de transitions
+Avant d'être minimisé, votre automate doit être complet, nous le complétons
+
+------ Tentative de complétion de votre automate ------
+
+
+------ Votre automate est déja déterministe ------
+
+Votre automate n'est pas complet à cause de l'état 0
+En effet celui-ci n'a pas de transitions
+
+Votre automate est bien déterministe, il peut être complété !
+
+
+------ Complétion de votre automate ------- 
+
+Affichage de l'automate : 
+
+4 mots : [a, b, c, d]
+6 états : [0, 1, 2, 3, 4, P]
+1 entrées : [1]
+1 sorties : [0]
+24 transitions : 
+0->a->[P]
+0->b->[P]
+0->c->[P]
+0->d->[P]
+1->a->[2]
+1->b->[3]
+1->c->[4]
+1->d->[0]
+2->a->[2]
+2->b->[3]
+2->c->[4]
+2->d->[0]
+3->a->[P]
+3->b->[3]
+3->c->[4]
+3->d->[0]
+4->a->[P]
+4->b->[P]
+4->c->[4]
+4->d->[0]
+P->a->[P]
+P->b->[P]
+P->c->[P]
+P->d->[P]
+
+
+------ Complétion terminée ! ------
+
+
+Votre automate est bien déterministe et complet, toutes les conditions sont remplies !
+
+
+------ Début de la minimisation ------
+
+
+------ Récupération de la partition finale ------
+
+theta (0): [[0], [1, 2, 3, 4, P]]
+theta (1): [[0], [P], [1, 2, 3, 4]]
+theta (2): [[0], [P], [3], [4], [1, 2]]
+theta (final): [[0], [P], [3], [4], [1, 2]]
+
+----- Fin de la récupération ------
+
+L'état A == [1, 2]
+
+Affichage de l'automate : 
+
+4 mots : [a, b, c, d]
+5 états : [0, 3, 4, A, P]
+1 entrées : [A]
+1 sorties : [0]
+20 transitions : 
+0->a->[P]
+0->b->[P]
+0->c->[P]
+0->d->[P]
+3->a->[P]
+3->b->[3]
+3->c->[4]
+3->d->[0]
+4->a->[P]
+4->b->[P]
+4->c->[4]
+4->d->[0]
+A->a->[A]
+A->b->[3]
+A->c->[4]
+A->d->[0]
+P->a->[P]
+P->b->[P]
+P->c->[P]
+P->d->[P]
+
+
+------ Fin de la minimisation ------
+

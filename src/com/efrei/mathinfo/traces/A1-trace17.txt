@@ -1,0 +1,194 @@
+Automate numéro : 17
+Affichage de l'automate : 
+
+4 mots : [a, b, c, d]
+6 états : [0, 1, 2, 3, 4, 5]
+4 entrées : [1, 2, 3, 4]
+1 sorties : [5]
+12 transitions : 
+0->a->[x] 
+0->b->[x] 
+0->c->[x] 
+0->d->[x] 
+1->a->[1, 2]
+1->b->[x] 
+1->c->[x] 
+1->d->[x] 
+2->a->[x] 
+2->b->[2, 3]
+2->c->[x] 
+2->d->[x] 
+3->a->[x] 
+3->b->[x] 
+3->c->[3, 4]
+3->d->[x] 
+4->a->[x] 
+4->b->[x] 
+4->c->[x] 
+4->d->[4, 5]
+5->a->[0]
+5->b->[0]
+5->c->[0]
+5->d->[0]
+
+------ Tentative de minimisation de votre automate ------
+
+Votre automate n'est pas déterministe car il possède 4 entrées
+Votre état n'est pas complet car celui-ci n'est pas déterministe
+Avant d'être minimisé, votre automate doit être complet, nous le complétons
+
+------ Tentative de complétion de votre automate ------
+
+Votre automate n'est pas déterministe car il possède 4 entrées
+
+------ Tentative de déterminisation de votre automate ------
+
+
+------ Début de la déterminisation ------
+
+Affichage de l'automate : 
+
+4 mots : [a, b, c, d]
+7 états : [1.2.3.4, 4.5, 0.4.5, 0, 3.4, 2.3, 1.2]
+1 entrées : [1.2.3.4]
+2 sorties : [4.5, 0.4.5]
+18 transitions : 
+1.2.3.4->a->[1.2]
+1.2.3.4->b->[2.3]
+1.2.3.4->c->[3.4]
+1.2.3.4->d->[4.5]
+4.5->a->[0]
+4.5->b->[0]
+4.5->c->[0]
+4.5->d->[0.4.5]
+0.4.5->a->[0]
+0.4.5->b->[0]
+0.4.5->c->[0]
+0.4.5->d->[0.4.5]
+0->a->[x] 
+0->b->[x] 
+0->c->[x] 
+0->d->[x] 
+3.4->a->[x] 
+3.4->b->[x] 
+3.4->c->[3.4]
+3.4->d->[4.5]
+2.3->a->[x] 
+2.3->b->[2.3]
+2.3->c->[3.4]
+2.3->d->[x] 
+1.2->a->[1.2]
+1.2->b->[2.3]
+1.2->c->[x] 
+1.2->d->[x] 
+
+
+------ Déterminisation terminée ! ------
+
+Votre automate n'est pas complet à cause de l'état 0
+En effet celui-ci n'a pas de transitions
+
+Votre automate est bien déterministe, il peut être complété !
+
+
+------ Complétion de votre automate ------- 
+
+Affichage de l'automate : 
+
+4 mots : [a, b, c, d]
+8 états : [1.2.3.4, 4.5, 0.4.5, 3.4, 2.3, 1.2, 0, P]
+1 entrées : [1.2.3.4]
+2 sorties : [4.5, 0.4.5]
+32 transitions : 
+1.2.3.4->a->[1.2]
+1.2.3.4->b->[2.3]
+1.2.3.4->c->[3.4]
+1.2.3.4->d->[4.5]
+4.5->a->[0]
+4.5->b->[0]
+4.5->c->[0]
+4.5->d->[0.4.5]
+0.4.5->a->[0]
+0.4.5->b->[0]
+0.4.5->c->[0]
+0.4.5->d->[0.4.5]
+3.4->a->[P]
+3.4->b->[P]
+3.4->c->[3.4]
+3.4->d->[4.5]
+2.3->a->[P]
+2.3->b->[2.3]
+2.3->c->[3.4]
+2.3->d->[P]
+1.2->a->[1.2]
+1.2->b->[2.3]
+1.2->c->[P]
+1.2->d->[P]
+0->a->[P]
+0->b->[P]
+0->c->[P]
+0->d->[P]
+P->a->[P]
+P->b->[P]
+P->c->[P]
+P->d->[P]
+
+
+------ Complétion terminée ! ------
+
+
+Votre automate est bien déterministe et complet, toutes les conditions sont remplies !
+
+
+------ Début de la minimisation ------
+
+
+------ Récupération de la partition finale ------
+
+theta (0): [[4.5, 0.4.5], [1.2.3.4, 3.4, 2.3, 1.2, 0, P]]
+theta (1): [[4.5, 0.4.5], [1.2.3.4, 3.4], [1.2, 2.3, 0, P]]
+theta (2): [[4.5, 0.4.5], [1.2.3.4, 3.4], [2.3], [1.2, 0, P]]
+theta (3): [[4.5, 0.4.5], [1.2.3.4], [3.4], [2.3], [1.2], [0, P]]
+theta (final): [[4.5, 0.4.5], [1.2.3.4], [3.4], [2.3], [1.2], [0, P]]
+
+----- Fin de la récupération ------
+
+L'état A == [4.5, 0.4.5]
+
+L'état B == [0, P]
+
+Affichage de l'automate : 
+
+4 mots : [a, b, c, d]
+6 états : [1.2.3.4, 3.4, 2.3, 1.2, A, B]
+1 entrées : [1.2.3.4]
+1 sorties : [A]
+24 transitions : 
+1.2.3.4->a->[1.2]
+1.2.3.4->b->[2.3]
+1.2.3.4->c->[3.4]
+1.2.3.4->d->[A]
+3.4->a->[B]
+3.4->b->[B]
+3.4->c->[3.4]
+3.4->d->[A]
+2.3->a->[B]
+2.3->b->[2.3]
+2.3->c->[3.4]
+2.3->d->[B]
+1.2->a->[1.2]
+1.2->b->[2.3]
+1.2->c->[B]
+1.2->d->[B]
+A->a->[B]
+A->b->[B]
+A->c->[B]
+A->d->[A]
+B->a->[B]
+B->b->[B]
+B->c->[B]
+B->d->[B]
+
+
+------ Fin de la minimisation ------
+

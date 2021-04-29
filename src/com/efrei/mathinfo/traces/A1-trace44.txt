@@ -1,0 +1,87 @@
+Automate numéro : 44
+Affichage de l'automate : 
+
+2 mots : [a, b]
+4 états : [0, 1, 2, 3]
+1 entrées : [0]
+2 sorties : [2, 3]
+10 transitions : 
+0->a->[1, 2]
+0->b->[2]
+1->a->[x] 
+1->b->[3]
+2->a->[3]
+2->b->[2]
+3->a->[2, 3]
+3->b->[2, 3]
+
+------ Tentative de minimisation de votre automate ------
+
+Votre automate n'est pas déterministe à cause de la transition : 0->a->[1, 2]
+Votre état n'est pas complet car celui-ci n'est pas déterministe
+Avant d'être minimisé, votre automate doit être complet, nous le complétons
+
+------ Tentative de complétion de votre automate ------
+
+Votre automate n'est pas déterministe à cause de la transition : 0->a->[1, 2]
+
+------ Tentative de déterminisation de votre automate ------
+
+
+------ Début de la déterminisation ------
+
+Affichage de l'automate : 
+
+2 mots : [a, b]
+5 états : [0, 2, 3, 2.3, 1.2]
+1 entrées : [0]
+4 sorties : [2, 3, 2.3, 1.2]
+10 transitions : 
+0->a->[1.2]
+0->b->[2]
+2->a->[3]
+2->b->[2]
+3->a->[2.3]
+3->b->[2.3]
+2.3->a->[2.3]
+2.3->b->[2.3]
+1.2->a->[3]
+1.2->b->[2.3]
+
+
+------ Déterminisation terminée ! ------
+
+------ 
+Votre automate est déjà complet ------
+
+
+Votre automate est bien déterministe et complet, toutes les conditions sont remplies !
+
+
+------ Début de la minimisation ------
+
+
+------ Récupération de la partition finale ------
+
+theta (0): [[2.3, 1.2, 2, 3], [0]]
+theta (final): [[2.3, 1.2, 2, 3], [0]]
+
+----- Fin de la récupération ------
+
+L'état A == [2.3, 1.2, 2, 3]
+
+Affichage de l'automate : 
+
+2 mots : [a, b]
+2 états : [0, A]
+1 entrées : [0]
+1 sorties : [A]
+4 transitions : 
+0->a->[A]
+0->b->[A]
+A->a->[A]
+A->b->[A]
+
+
+------ Fin de la minimisation ------
+

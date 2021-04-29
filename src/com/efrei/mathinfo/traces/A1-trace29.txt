@@ -1,0 +1,83 @@
+Automate numéro : 29
+Affichage de l'automate : 
+
+1 mots : [a]
+6 états : [0, 1, 2, 3, 4, 5]
+1 entrées : [1]
+2 sorties : [0, 3]
+9 transitions : 
+0->a->[4]
+1->a->[2, 4]
+2->a->[3]
+3->a->[0, 2]
+4->a->[3, 5]
+5->a->[0]
+
+------ Tentative de minimisation de votre automate ------
+
+Votre automate n'est pas déterministe à cause de la transition : 1->a->[2, 4]
+Votre état n'est pas complet car celui-ci n'est pas déterministe
+Avant d'être minimisé, votre automate doit être complet, nous le complétons
+
+------ Tentative de complétion de votre automate ------
+
+Votre automate n'est pas déterministe à cause de la transition : 1->a->[2, 4]
+
+------ Tentative de déterminisation de votre automate ------
+
+
+------ Début de la déterminisation ------
+
+Affichage de l'automate : 
+
+1 mots : [a]
+8 états : [1, 2.4, 3.5, 0.2, 3.4, 0.2.3.5, 0.2.3.4, 0.2.3.4.5]
+1 entrées : [1]
+6 sorties : [3.5, 0.2, 3.4, 0.2.3.5, 0.2.3.4, 0.2.3.4.5]
+8 transitions : 
+1->a->[2.4]
+2.4->a->[3.5]
+3.5->a->[0.2]
+0.2->a->[3.4]
+3.4->a->[0.2.3.5]
+0.2.3.5->a->[0.2.3.4]
+0.2.3.4->a->[0.2.3.4.5]
+0.2.3.4.5->a->[0.2.3.4.5]
+
+
+------ Déterminisation terminée ! ------
+
+------ 
+Votre automate est déjà complet ------
+
+
+Votre automate est bien déterministe et complet, toutes les conditions sont remplies !
+
+
+------ Début de la minimisation ------
+
+
+------ Récupération de la partition finale ------
+
+theta (0): [[3.5, 0.2, 3.4, 0.2.3.5, 0.2.3.4, 0.2.3.4.5], [2.4, 1]]
+theta (1): [[3.5, 0.2, 0.2.3.5, 0.2.3.4, 0.2.3.4.5, 3.4], [2.4], [1]]
+theta (final): [[3.5, 0.2, 0.2.3.4, 0.2.3.4.5, 3.4, 0.2.3.5], [2.4], [1]]
+
+----- Fin de la récupération ------
+
+L'état A == [3.5, 0.2, 0.2.3.4, 0.2.3.4.5, 3.4, 0.2.3.5]
+
+Affichage de l'automate : 
+
+1 mots : [a]
+3 états : [2.4, 1, A]
+1 entrées : [1]
+1 sorties : [A]
+3 transitions : 
+2.4->a->[A]
+1->a->[2.4]
+A->a->[A]
+
+
+------ Fin de la minimisation ------
+

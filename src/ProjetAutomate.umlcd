@@ -164,6 +164,9 @@
       <stereotypes xmi:id="_cOy3YKXZEeurvamXvE32Kw" name="LegacyStyledElement"/>
       <stereotypes xmi:id="_cO0FgKXZEeurvamXvE32Kw" name="LegacyStyledElement"/>
       <stereotypes xmi:id="_cO8oYKXZEeurvamXvE32Kw" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_okJ9UKdUEeu4SsVf2mcR-w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_okNnsKdUEeu4SsVf2mcR-w" name="LegacyStyledElement"/>
+      <stereotypes xmi:id="_okbDEKdUEeu4SsVf2mcR-w" name="LegacyStyledElement"/>
       <visibility xmi:id="_YbnoFaXWEeurvamXvE32Kw" label="-"/>
       <cardinality xmi:id="_YbnoFqXWEeurvamXvE32Kw" label="1" max="1" min="1"/>
       <type xmi:id="_YbnoF6XWEeurvamXvE32Kw" name="Identifier">
@@ -178,6 +181,9 @@
       <stereotypes xmi:id="_cO2hwKXZEeurvamXvE32Kw" name="Generics"/>
       <stereotypes xmi:id="_cO5lEKXZEeurvamXvE32Kw" name="Generics"/>
       <stereotypes xmi:id="_cO92gKXZEeurvamXvE32Kw" name="Generics"/>
+      <stereotypes xmi:id="_okQrAKdUEeu4SsVf2mcR-w" name="Generics"/>
+      <stereotypes xmi:id="_okXYsKdUEeu4SsVf2mcR-w" name="Generics"/>
+      <stereotypes xmi:id="_okdfUKdUEeu4SsVf2mcR-w" name="Generics"/>
       <visibility xmi:id="_YbnoGqXWEeurvamXvE32Kw" label="+"/>
       <cardinality xmi:id="_YbnoG6XWEeurvamXvE32Kw" label="1" max="1" min="1"/>
       <type xmi:id="_YbnoHKXWEeurvamXvE32Kw" name="List">
@@ -705,7 +711,7 @@
       <stereotypes xmi:id="_YcZEc6XWEeurvamXvE32Kw" name="LegacyStyledElement">
         <modelElement href="../ProjetAutomate.uml#_WfvxQKXWEeurvamXvE32Kw"/>
       </stereotypes>
-      <visibility xmi:id="_YcZEdKXWEeurvamXvE32Kw" label="#"/>
+      <visibility xmi:id="_YcZEdKXWEeurvamXvE32Kw" label="+"/>
       <cardinality xmi:id="_YcZEdaXWEeurvamXvE32Kw" label="1" max="1" min="1"/>
       <outParameters xmi:id="_YcZEdqXWEeurvamXvE32Kw">
         <modelElement href="../ProjetAutomate.uml#_WfvKMKXWEeurvamXvE32Kw"/>
@@ -929,6 +935,27 @@
         </type>
       </parameters>
     </operations>
+    <operations xmi:id="_tIRowKdUEeu4SsVf2mcR-w" name="copyOf" staticOperation="true">
+      <modelElement href="../ProjetAutomate.uml#_sN98oKdUEeu4SsVf2mcR-w"/>
+      <stereotypes xmi:id="_tIRowadUEeu4SsVf2mcR-w" name="Generics">
+        <modelElement href="../ProjetAutomate.uml#_sOBnAKdUEeu4SsVf2mcR-w"/>
+      </stereotypes>
+      <visibility xmi:id="_tIRowqdUEeu4SsVf2mcR-w" label="#"/>
+      <cardinality xmi:id="_tIRow6dUEeu4SsVf2mcR-w" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_tIRoxKdUEeu4SsVf2mcR-w">
+        <modelElement href="../ProjetAutomate.uml#_sN-jsadUEeu4SsVf2mcR-w"/>
+        <type xmi:id="_tIRoxadUEeu4SsVf2mcR-w" name="Map">
+          <modelElement href="../ProjetAutomate.uml#_We7R4aXWEeurvamXvE32Kw"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_tIRoxqdUEeu4SsVf2mcR-w" name="map">
+        <modelElement href="../ProjetAutomate.uml#_sN-jsKdUEeu4SsVf2mcR-w"/>
+        <cardinality xmi:id="_tIRox6dUEeu4SsVf2mcR-w" label="1" max="1" min="1"/>
+        <type xmi:id="_tIRoyKdUEeu4SsVf2mcR-w" name="Map">
+          <modelElement href="../ProjetAutomate.uml#_We7R4aXWEeurvamXvE32Kw"/>
+        </type>
+      </parameters>
+    </operations>
   </nodes>
   <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_YbJuAKXWEeurvamXvE32Kw" name="FileReader">
     <modelElement href="../ProjetAutomate.uml#_WYCmwKXWEeurvamXvE32Kw"/>
@@ -1095,18 +1122,6 @@
           <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </type>
       </outParameters>
-    </operations>
-    <operations xmi:id="_YXOQeKXWEeurvamXvE32Kw" name="addIdentifier">
-      <modelElement href="../ProjetAutomate.uml#_WeoW8KXWEeurvamXvE32Kw"/>
-      <visibility xmi:id="_YXOQeaXWEeurvamXvE32Kw" label="+"/>
-      <cardinality xmi:id="_YXOQeqXWEeurvamXvE32Kw" label="1" max="1" min="1"/>
-      <parameters xmi:id="_YXOQe6XWEeurvamXvE32Kw" name="id">
-        <modelElement href="../ProjetAutomate.uml#_WeplEKXWEeurvamXvE32Kw"/>
-        <cardinality xmi:id="_YXOQfKXWEeurvamXvE32Kw" label="1" max="1" min="1"/>
-        <type xmi:id="_YXOQfaXWEeurvamXvE32Kw" name="Identifier">
-          <modelElement href="../ProjetAutomate.uml#_WVBH8KXWEeurvamXvE32Kw"/>
-        </type>
-      </parameters>
     </operations>
     <operations xmi:id="_YXOQfqXWEeurvamXvE32Kw" name="isSubIdOf">
       <modelElement href="../ProjetAutomate.uml#_WeqzMKXWEeurvamXvE32Kw"/>
@@ -1507,5 +1522,10 @@
         </type>
       </parameters>
     </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_tOsZ0KdUEeu4SsVf2mcR-w" name="NewClass1">
+    <modelElement href="../ProjetAutomate.uml#_tOm6QKdUEeu4SsVf2mcR-w"/>
+    <visualProperties xmi:id="_tOsZ0adUEeu4SsVf2mcR-w" position="-344.0,337.0" size="14.0,92.0"/>
+    <visibility xmi:id="_tOsZ0qdUEeu4SsVf2mcR-w" label="+"/>
   </nodes>
 </com.yattasolutions.uml.diagrams.classifier:ClassDiagram>

@@ -163,19 +163,20 @@ public class Automaton implements Cloneable {
 	private boolean recognizesWordFromState(String word, int index, State current) {
 
 		if (index == word.length() - 1) {
-			return this.getByID(current.getID()).isExit();
+			return current.isExit();
 		}
 
 		else {
 			String letter = String.valueOf(word.charAt(index + 1));
 			List<State> destinations = current.getLinks().get(letter);
-
+			
 			if (destinations == null) {
 				return false;
 			}
 
 			for (State destination : destinations) {
-				if (this.recognizesWordFromState(word, index + 1, destination)) {
+				
+				if (destination != null && this.recognizesWordFromState(word, index + 1, destination)) {
 					return true;
 				}
 			}

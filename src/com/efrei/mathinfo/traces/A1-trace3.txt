@@ -1,0 +1,61 @@
+Automate numéro : 3
+Affichage de l'automate : 
+
+1 mots : [a]
+2 états : [0, 1]
+1 entrées : [0]
+1 sorties : [1]
+1 transitions : 
+0->a->[1]
+1->a->[x] 
+
+------ Tentative de minimisation de votre automate ------
+
+Votre automate n'est pas complet à cause de l'état 1
+En effet celui-ci n'a pas de transitions
+Avant d'être minimisé, votre automate doit être complet, nous le complétons
+
+------ Tentative de complétion de votre automate ------
+
+
+------ Votre automate est déja déterministe ------
+
+Votre automate n'est pas complet à cause de l'état 1
+En effet celui-ci n'a pas de transitions
+
+Votre automate est bien déterministe, il peut être complété !
+
+
+------ Complétion de votre automate ------- 
+
+Affichage de l'automate : 
+
+1 mots : [a]
+3 états : [0, 1, P]
+1 entrées : [0]
+1 sorties : [1]
+3 transitions : 
+0->a->[1]
+1->a->[P]
+P->a->[P]
+
+
+------ Complétion terminée ! ------
+
+
+Votre automate est bien déterministe et complet, toutes les conditions sont remplies !
+
+
+------ Début de la minimisation ------
+
+
+------ Récupération de la partition finale ------
+
+theta (0): [[1], [0, P]]
+theta (1): [[1], [0], [P]]
+theta (final): [[1], [0], [P]]
+
+----- Fin de la récupération ------
+
+Votre automate était déjà minimal
+------ Fin de la minimisation ------

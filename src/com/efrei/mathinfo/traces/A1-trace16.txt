@@ -1,0 +1,138 @@
+Automate numéro : 16
+Affichage de l'automate : 
+
+4 mots : [a, b, c, d]
+5 états : [0, 1, 2, 3, 4]
+1 entrées : [1]
+1 sorties : [0]
+8 transitions : 
+0->a->[x] 
+0->b->[x] 
+0->c->[x] 
+0->d->[x] 
+1->a->[1, 2]
+1->b->[x] 
+1->c->[x] 
+1->d->[x] 
+2->a->[x] 
+2->b->[2, 3]
+2->c->[x] 
+2->d->[x] 
+3->a->[x] 
+3->b->[x] 
+3->c->[3, 4]
+3->d->[x] 
+4->a->[x] 
+4->b->[x] 
+4->c->[x] 
+4->d->[0, 4]
+
+------ Tentative de minimisation de votre automate ------
+
+Votre automate n'est pas déterministe à cause de la transition : 1->a->[1, 2]
+Votre état n'est pas complet car celui-ci n'est pas déterministe
+Avant d'être minimisé, votre automate doit être complet, nous le complétons
+
+------ Tentative de complétion de votre automate ------
+
+Votre automate n'est pas déterministe à cause de la transition : 1->a->[1, 2]
+
+------ Tentative de déterminisation de votre automate ------
+
+
+------ Début de la déterminisation ------
+
+Affichage de l'automate : 
+
+4 mots : [a, b, c, d]
+5 états : [1, 1.2, 2.3, 3.4, 0.4]
+1 entrées : [1]
+1 sorties : [0.4]
+8 transitions : 
+1->a->[1.2]
+1->b->[x] 
+1->c->[x] 
+1->d->[x] 
+1.2->a->[1.2]
+1.2->b->[2.3]
+1.2->c->[x] 
+1.2->d->[x] 
+2.3->a->[x] 
+2.3->b->[2.3]
+2.3->c->[3.4]
+2.3->d->[x] 
+3.4->a->[x] 
+3.4->b->[x] 
+3.4->c->[3.4]
+3.4->d->[0.4]
+0.4->a->[x] 
+0.4->b->[x] 
+0.4->c->[x] 
+0.4->d->[0.4]
+
+
+------ Déterminisation terminée ! ------
+
+Votre automate n'est pas complet à cause de l'état 1
+En effet celui-ci n'a des transitions que pour [a]
+
+Votre automate est bien déterministe, il peut être complété !
+
+
+------ Complétion de votre automate ------- 
+
+Affichage de l'automate : 
+
+4 mots : [a, b, c, d]
+6 états : [1.2, 2.3, 3.4, 0.4, 1, P]
+1 entrées : [1]
+1 sorties : [0.4]
+24 transitions : 
+1.2->a->[1.2]
+1.2->b->[2.3]
+1.2->c->[P]
+1.2->d->[P]
+2.3->a->[P]
+2.3->b->[2.3]
+2.3->c->[3.4]
+2.3->d->[P]
+3.4->a->[P]
+3.4->b->[P]
+3.4->c->[3.4]
+3.4->d->[0.4]
+0.4->a->[P]
+0.4->b->[P]
+0.4->c->[P]
+0.4->d->[0.4]
+1->a->[1.2]
+1->b->[P]
+1->c->[P]
+1->d->[P]
+P->a->[P]
+P->b->[P]
+P->c->[P]
+P->d->[P]
+
+
+------ Complétion terminée ! ------
+
+
+Votre automate est bien déterministe et complet, toutes les conditions sont remplies !
+
+
+------ Début de la minimisation ------
+
+
+------ Récupération de la partition finale ------
+
+theta (0): [[0.4], [1.2, 2.3, 3.4, 1, P]]
+theta (1): [[0.4], [3.4], [1.2, 2.3, 1, P]]
+theta (2): [[0.4], [3.4], [2.3], [1.2, 1, P]]
+theta (3): [[0.4], [3.4], [2.3], [1.2], [1, P]]
+theta (4): [[0.4], [3.4], [2.3], [1.2], [1], [P]]
+theta (final): [[0.4], [3.4], [2.3], [1.2], [1], [P]]
+
+----- Fin de la récupération ------
+
+Votre automate était déjà minimal
+------ Fin de la minimisation ------

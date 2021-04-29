@@ -1,0 +1,119 @@
+Automate numéro : 36
+Affichage de l'automate : 
+
+2 mots : [a, b]
+3 états : [0, 1, 2]
+2 entrées : [0, 2]
+2 sorties : [1, 2]
+7 transitions : 
+0->a->[1]
+0->b->[1, 2]
+1->a->[x] 
+1->b->[0, 2]
+2->a->[0, 1]
+2->b->[x] 
+
+------ Tentative de minimisation de votre automate ------
+
+Votre automate n'est pas déterministe car il possède 2 entrées
+Votre état n'est pas complet car celui-ci n'est pas déterministe
+Avant d'être minimisé, votre automate doit être complet, nous le complétons
+
+------ Tentative de complétion de votre automate ------
+
+Votre automate n'est pas déterministe car il possède 2 entrées
+
+------ Tentative de déterminisation de votre automate ------
+
+
+------ Début de la déterminisation ------
+
+Affichage de l'automate : 
+
+2 mots : [a, b]
+5 états : [0.2, 1.2, 0.1, 0.1.2, 1]
+1 entrées : [0.2]
+5 sorties : [0.2, 1.2, 0.1, 0.1.2, 1]
+9 transitions : 
+0.2->a->[0.1]
+0.2->b->[1.2]
+1.2->a->[0.1]
+1.2->b->[0.2]
+0.1->a->[1]
+0.1->b->[0.1.2]
+0.1.2->a->[0.1]
+0.1.2->b->[0.1.2]
+1->a->[x] 
+1->b->[0.2]
+
+
+------ Déterminisation terminée ! ------
+
+Votre automate n'est pas complet à cause de l'état 1
+En effet celui-ci n'a des transitions que pour [b]
+
+Votre automate est bien déterministe, il peut être complété !
+
+
+------ Complétion de votre automate ------- 
+
+Affichage de l'automate : 
+
+2 mots : [a, b]
+6 états : [0.2, 1.2, 0.1, 0.1.2, 1, P]
+1 entrées : [0.2]
+5 sorties : [0.2, 1.2, 0.1, 0.1.2, 1]
+12 transitions : 
+0.2->a->[0.1]
+0.2->b->[1.2]
+1.2->a->[0.1]
+1.2->b->[0.2]
+0.1->a->[1]
+0.1->b->[0.1.2]
+0.1.2->a->[0.1]
+0.1.2->b->[0.1.2]
+1->a->[P]
+1->b->[0.2]
+P->a->[P]
+P->b->[P]
+
+
+------ Complétion terminée ! ------
+
+
+Votre automate est bien déterministe et complet, toutes les conditions sont remplies !
+
+
+------ Début de la minimisation ------
+
+
+------ Récupération de la partition finale ------
+
+theta (0): [[0.2, 1.2, 0.1, 0.1.2, 1], [P]]
+theta (1): [[1], [0.2, 1.2, 0.1.2, 0.1], [P]]
+theta (2): [[1], [0.1], [0.2, 1.2, 0.1.2], [P]]
+theta (final): [[1], [0.1], [0.2, 1.2, 0.1.2], [P]]
+
+----- Fin de la récupération ------
+
+L'état A == [0.2, 1.2, 0.1.2]
+
+Affichage de l'automate : 
+
+2 mots : [a, b]
+4 états : [0.1, 1, A, P]
+1 entrées : [A]
+3 sorties : [0.1, 1, A]
+8 transitions : 
+0.1->a->[1]
+0.1->b->[A]
+1->a->[P]
+1->b->[A]
+A->a->[0.1]
+A->b->[A]
+P->a->[P]
+P->b->[P]
+
+
+------ Fin de la minimisation ------
+

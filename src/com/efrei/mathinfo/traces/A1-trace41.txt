@@ -1,0 +1,61 @@
+Automate numéro : 41
+Affichage de l'automate : 
+
+2 mots : [a, b]
+6 états : [0, 1, 2, 3, 4, 5]
+1 entrées : [0]
+4 sorties : [1, 2, 3, 4]
+11 transitions : 
+0->a->[1]
+0->b->[4]
+1->a->[2]
+1->b->[3]
+2->a->[2]
+2->b->[3]
+3->a->[5]
+3->b->[5]
+4->a->[5]
+4->b->[5]
+5->a->[5]
+5->b->[5]
+
+------ Tentative de minimisation de votre automate ------
+
+
+Votre automate est bien déterministe et complet, toutes les conditions sont remplies !
+
+
+------ Début de la minimisation ------
+
+
+------ Récupération de la partition finale ------
+
+theta (0): [[1, 2, 3, 4], [0, 5]]
+theta (1): [[1, 2], [3, 4], [0], [5]]
+theta (final): [[1, 2], [3, 4], [0], [5]]
+
+----- Fin de la récupération ------
+
+L'état A == [1, 2]
+
+L'état B == [3, 4]
+
+Affichage de l'automate : 
+
+2 mots : [a, b]
+4 états : [0, 5, A, B]
+1 entrées : [0]
+2 sorties : [A, B]
+8 transitions : 
+0->a->[A]
+0->b->[B]
+5->a->[5]
+5->b->[5]
+A->a->[A]
+A->b->[B]
+B->a->[5]
+B->b->[5]
+
+
+------ Fin de la minimisation ------
+

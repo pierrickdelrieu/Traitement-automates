@@ -25,7 +25,7 @@ public class Operations {
 			for (String key : state.getLinks().keySet()) {
 				if (key.equals("*")) { // "" is an epsilon transition, if one state has such transition, the automaton
 										// is asynchronous
-					System.err.println("Votre automate est asynchrone à cause de la transition " + state + "->" + key
+					System.out.println("Votre automate est asynchrone à cause de la transition " + state + "->" + key
 							+ "->" + state.getLinks().get(key));
 					return true;
 				}
@@ -49,10 +49,11 @@ public class Operations {
 
 			System.out.println("\n\tTentative d'élimination des transitions epsilons\n");
 
-			// The purpose of this map is to store one state as a key and a value that is
-			// its "epsilon cloture"
-			// that way we can access it easier when we will be creating the new merged
-			// states
+			/*
+			 * The purpose of this map is to store one state as a key and a value that is
+			 * its "epsilon cloture" that way we can access it easier when we will be
+			 * creating the new merged states
+			 */
 			Map<State, List<State>> epsilonStates = new HashMap<State, List<State>>();
 
 			// Empty list that we are going to fill and then put in epsilonStates map
@@ -62,7 +63,7 @@ public class Operations {
 			List<State> newStates = new ArrayList<State>();
 
 			for (State state : automaton.getStates()) {
-				
+
 				fillEpsilonStates(epsilonDestinations, state);
 				Operations.removeDuplicates(epsilonDestinations);
 				epsilonStates.put(state, new ArrayList<State>(epsilonDestinations));
@@ -111,7 +112,7 @@ public class Operations {
 		}
 
 		else {
-			System.err.println("\n------ Votre automate est déjà synchrone ------\n");
+			System.out.println("\n------ Votre automate est déjà synchrone ------\n");
 		}
 	}
 
@@ -159,7 +160,7 @@ public class Operations {
 			System.out.println("\n------ Tentative de déterminisation de votre automate ------\n");
 
 			if (isAsync(automaton))
-				synchronize(automaton); 
+				synchronize(automaton);
 
 			System.out.println("\n------ Début de la déterminisation ------\n");
 
@@ -208,30 +209,35 @@ public class Operations {
 		}
 
 		else {
-			System.err.println("\n------ Votre automate est déja déterministe ------\n");
+			System.out.println("\n------ Votre automate est déja déterministe ------\n");
 		}
 	}
 
 	/**
-	 * Checks if <strong>automaton</strong> is deterministic or not <br><br>
+	 * Checks if <strong>automaton</strong> is deterministic or not <br>
+	 * <br>
 	 * 
-	 * By definition, an automaton is deterministic if it has one entry 
-	 * and if all of its states have transitions that lead to one destination <br>
+	 * By definition, an automaton is deterministic if it has one entry and if all
+	 * of its states have transitions that lead to one destination <br>
 	 * 
-	 * For example, if the automaton has a state <strong>0</strong> with
-	 * a transition such as <strong>0->a->[1,2]</strong> that would make the 
-	 * automaton not deterministic
+	 * For example, if the automaton has a state <strong>0</strong> with a
+	 * transition such as <strong>0->a->[1,2]</strong> that would make the automaton
+	 * not deterministic
 	 * 
 	 * @param automaton The automaton we want to check
 	 * @return {@code true} if it is deterministic, {@code false} otherwise
-	 * */
+	 */
 	private static boolean isDeterministic(Automaton automaton) {
+		
+		if (isAsync(automaton)) {
+			System.out.println("\nVotre automate est asynchrone, nous le synchronisons\n");
+			synchronize(automaton);
+		}
 
 		State[] entries = automaton.getStatesByType(StateType.ENTRY);
 
-		if (entries.length > 1) { // check if the automaton has more than 1 entry, if it has, then it isn't
-									// deterministic
-			System.err.println("Votre automate n'est pas déterministe car il possède " + entries.length + " entrées");
+		if (entries.length > 1) {
+			System.out.println("Votre automate n'est pas déterministe car il possède " + entries.length + " entrées");
 			return false;
 		}
 
@@ -240,7 +246,7 @@ public class Operations {
 				for (String key : state.getLinks().keySet()) {
 					if (state.getLinks().get(key).size() > 1) {
 
-						System.err.println("Votre automate n'est pas déterministe à cause de la transition : " + state
+						System.out.println("Votre automate n'est pas déterministe à cause de la transition : " + state
 								+ "->" + key + "->" + state.getLinks().get(key));
 						return false;
 					}
@@ -253,13 +259,15 @@ public class Operations {
 
 	/**
 	 * Completes the <strong>automaton</strong> by filling all of its empty
-	 * transitions. <br><br>
+	 * transitions. <br>
+	 * <br>
 	 * 
-	 * It creates a new state <strong>P</strong> known as a "bin state" or "garbage state"
-	 * which will replace all of the empty transitions of the automaton's states 
+	 * It creates a new state <strong>P</strong> known as a "bin state" or "garbage
+	 * state" which will replace all of the empty transitions of the automaton's
+	 * states
 	 * 
 	 * @param automaton The automaton to complete
-	 * */
+	 */
 	public static void complete(Automaton automaton) {
 
 		System.out.println("\n------ Tentative de complétion de votre automate ------\n");
@@ -267,6 +275,7 @@ public class Operations {
 		determinize(automaton);
 
 		if (!isCompleted(automaton)) {
+			System.out.println("\nVotre automate est bien déterministe, il peut être complété !\n");
 			System.out.println("\n------ Complétion de votre automate ------- \n");
 
 			if (isAsync(automaton)) {
@@ -274,7 +283,7 @@ public class Operations {
 			}
 
 			State bin = new State("P");
-			
+
 			for (String key : automaton.getAlphabet().getDictionary()) {
 				bin.addLink(key, bin);
 				automaton.setNumTransitions(automaton.getNumTransitions() + 1);
@@ -299,21 +308,22 @@ public class Operations {
 		}
 
 		else {
-			System.err.println("------ \nVotre automate est déjà complet ------\n");
+			System.out.println("------ \nVotre automate est déjà complet ------\n");
 		}
 	}
 
 	/**
-	 * Checks if the <strong>automaton</strong> is complete or not <br><br>
+	 * Checks if the <strong>automaton</strong> is complete or not <br>
+	 * <br>
 	 * 
 	 * @param automaton The automaton to complete
 	 * @return {@code true} if complete, {@code false} otherwise
-	 * */
+	 */
 	private static boolean isCompleted(Automaton automaton) {
 
 		// we check if the automaton is deterministic, if not -> it isn't completed
 		if (!isDeterministic(automaton)) {
-			System.err.println("Votre état n'est pas complet car celui-ci n'est pas déterministe");
+			System.out.println("Votre état n'est pas complet car celui-ci n'est pas déterministe");
 			return false;
 		}
 
@@ -325,14 +335,14 @@ public class Operations {
 				// we check if it has the same number of keys as the number of letter in the
 				// alphabet
 				if (transitions < automaton.getAlphabet().getDictionary().size()) {
-					System.err.println("Votre automate n'est pas complet à cause de l'état " + state);
+					System.out.println("Votre automate n'est pas complet à cause de l'état " + state);
 
 					if (transitions == 0) {
-						System.err.println("En effet celui-ci n'a pas de transitions");
+						System.out.println("En effet celui-ci n'a pas de transitions");
 					}
 
 					else {
-						System.err.println("En effet celui-ci n'a des transitions que pour "
+						System.out.println("En effet celui-ci n'a des transitions que pour "
 								+ Arrays.toString(state.getLinks().keySet().toArray()));
 					}
 					return false;
@@ -375,7 +385,7 @@ public class Operations {
 		}
 
 		else {
-			System.err.println("------ Votre automate est déjà standardisé ! ------ \n");
+			System.out.println("------ Votre automate est déjà standardisé ! ------ \n");
 		}
 	}
 
@@ -386,7 +396,7 @@ public class Operations {
 		if (entries.length > 1) { // check if the automaton has more than 1 entry, if it has, then it isn't
 									// standard
 
-			System.err.println("Votre automate n'est pas standard car il contient " + entries.length + " entrées");
+			System.out.println("Votre automate n'est pas standard car il contient " + entries.length + " entrées");
 			return false;
 		}
 
@@ -402,7 +412,7 @@ public class Operations {
 							.filter(destination -> destination.getID().equals(entry.getID())).toArray();
 
 					if (listOfTransitions.length >= 1) {
-						System.err.println("Votre automate n'est pas standard car " + "l'état " + state
+						System.out.println("Votre automate n'est pas standard car " + "l'état " + state
 								+ " possède une/des transition(s) revenant vers l'état d'entrée " + entries[0]);
 						return false;
 					}
@@ -418,17 +428,18 @@ public class Operations {
 		System.out.println("------ Tentative de minimisation de votre automate ------\n");
 
 		if (!isCompleted(automaton)) {
-			System.err.println("Avant d'être minimisé, votre automate doit être complet, nous le complétons");
+			System.out.println("Avant d'être minimisé, votre automate doit être complet, nous le complétons");
 			complete(automaton);
 		}
 
+		System.out.println("\nVotre automate est bien déterministe et complet, toutes les conditions sont remplies !\n");
 		System.out.println("\n------ Début de la minimisation ------\n");
 
 		List<List<State>> finalTheta = getUnmergedLastTheta(automaton);
 		List<State> newStates = new ArrayList<State>();
 
 		if (finalTheta.size() == automaton.getStates().size()) {
-			System.err.println("Votre automate était déjà minimal");
+			System.out.println("Votre automate était déjà minimal");
 			System.out.println("------ Fin de la minimisation ------");
 			return;
 		}
@@ -447,18 +458,20 @@ public class Operations {
 					System.out.println("L'état " + simplifiedID + " == " + Arrays.toString(statesArr) + "\n");
 
 					state.getIdentifier().setId(simplifiedID);
-					System.out.println(state + " " + state.getIdentifier().getIdentifiers());
 
 					for (State st : states) {
-						for (String key : st.getLinks().keySet()) {
+
+						for (String key : st.getLinks().keySet()) { // This fixes a small bug when displaying the final
+																	// automaton
 							for (State des : st.getLinks().get(key)) {
-								
+
 								if (st.equals(des))
 									des.setIdentifier(state.getIdentifier());
 							}
 						}
-						
-						st.setIdentifier(state.getIdentifier());
+
+						st.setIdentifier(state.getIdentifier()); // We need to rename all the states of the partition
+																	// with the name we gave to the partition
 					}
 
 					count++;
@@ -490,7 +503,7 @@ public class Operations {
 
 			automaton.setNumTransitions(numTransitions);
 			automaton.display();
-			System.out.println("------ Fin de la minimisation ------");
+			System.out.println("\n------ Fin de la minimisation ------\n");
 		}
 	}
 
