@@ -1,14 +1,9 @@
 package com.efrei.mathinfo;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintStream;
 
-import com.efrei.mathinfo.automates.Automaton;
-import com.efrei.mathinfo.automates.Operations;
+import java.io.IOException;
+
 import com.efrei.mathinfo.ihm.Menu;
-import com.efrei.mathinfo.io.FileReader;
 
 public class Main {
 

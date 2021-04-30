@@ -2,12 +2,10 @@ package com.efrei.mathinfo.io;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Arrays;
 import java.util.Scanner;
 
 import com.efrei.mathinfo.automates.Alphabet;
 import com.efrei.mathinfo.automates.Automaton;
-import com.efrei.mathinfo.automates.Identifier;
 import com.efrei.mathinfo.automates.State;
 import com.efrei.mathinfo.automates.StateType;
 

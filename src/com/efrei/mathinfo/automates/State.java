@@ -8,7 +8,6 @@ import java.util.Map;
 
 public class State implements Cloneable, Comparable<State> {
 
-	// Instances
 	private Identifier id; // '1' or 'A'.
 	private Map<String, List<State>> links; // keyword gives the state (Map<key, List of state>)
 	private List<StateType> types; // Status states: ENTRY, COMMON, EXIT
@@ -29,7 +28,7 @@ public class State implements Cloneable, Comparable<State> {
 	public State(State state) {
 		this.id = new Identifier(List.of(state.getIdentifier()));
 
-		this.types = new ArrayList<StateType>(state.getType());
+		this.types = new ArrayList<StateType>(state.getTypes());
 		this.links = Operations.copyOf(state.getLinks());
 	}
 
@@ -51,7 +50,7 @@ public class State implements Cloneable, Comparable<State> {
 	
 	public void transformTo(State state) {
 		this.id = state.getIdentifier();
-		this.types = state.getType();
+		this.types = state.getTypes();
 		this.links = state.getLinks();
 	}
 
@@ -72,7 +71,7 @@ public class State implements Cloneable, Comparable<State> {
 		}
 	}
 
-	public List<StateType> getType() {
+	public List<StateType> getTypes() {
 		return this.types;
 	}
 

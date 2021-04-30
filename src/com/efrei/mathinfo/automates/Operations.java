@@ -4,12 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
-import java.util.stream.Collectors;
 
 public class Operations {
 
@@ -321,7 +319,6 @@ public class Operations {
 	 */
 	private static boolean isCompleted(Automaton automaton) {
 
-		// we check if the automaton is deterministic, if not -> it isn't completed
 		if (!isDeterministic(automaton)) {
 			System.out.println("Votre état n'est pas complet car celui-ci n'est pas déterministe");
 			return false;
@@ -332,8 +329,6 @@ public class Operations {
 
 				int transitions = state.getLinks().keySet().size();
 
-				// we check if it has the same number of keys as the number of letter in the
-				// alphabet
 				if (transitions < automaton.getAlphabet().getDictionary().size()) {
 					System.out.println("Votre automate n'est pas complet à cause de l'état " + state);
 
@@ -393,9 +388,7 @@ public class Operations {
 
 		State[] entries = automaton.getStatesByType(StateType.ENTRY);
 
-		if (entries.length > 1) { // check if the automaton has more than 1 entry, if it has, then it isn't
-									// standard
-
+		if (entries.length > 1) { 
 			System.out.println("Votre automate n'est pas standard car il contient " + entries.length + " entrées");
 			return false;
 		}
@@ -404,8 +397,8 @@ public class Operations {
 
 			State entry = (State) entries[0]; // We have only one entry, so we know it is at index 0
 
-			for (State state : automaton.getStates()) { // We check all the states of the automaton
-				for (String key : state.getLinks().keySet()) { // With all their transitions
+			for (State state : automaton.getStates()) { 
+				for (String key : state.getLinks().keySet()) { 
 
 					// to see if one state has a transition that brings it back to the entry
 					Object[] listOfTransitions = state.getLinks().get(key).stream()
@@ -519,7 +512,6 @@ public class Operations {
 		Collections.sort(part1);
 		Collections.sort(part2);
 
-		// Adding the first two partitions to our theta
 		if (!part1.isEmpty()) {
 			thetaCurrent.add(part1);
 		}
@@ -645,7 +637,7 @@ public class Operations {
 		System.out.println("\n------ Création de l'automate complémentaire à votre automate ------\n");
 
 		for (State state : complementary.getStates()) {
-			if (!state.getType().contains(StateType.EXIT)) {
+			if (!state.getTypes().contains(StateType.EXIT)) {
 				state.addType(StateType.EXIT);
 			}
 

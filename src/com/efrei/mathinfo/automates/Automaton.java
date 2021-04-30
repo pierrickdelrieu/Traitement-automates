@@ -2,7 +2,6 @@ package com.efrei.mathinfo.automates;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -110,7 +109,7 @@ public class Automaton implements Cloneable {
 	public State[] getStatesByType(StateType type) {
 
 		List<State> filteredList = this.states.stream()
-				.filter(state -> state.getType().contains(type))
+				.filter(state -> state.getTypes().contains(type))
 				.collect(Collectors.toList());
 
 
@@ -121,7 +120,7 @@ public class Automaton implements Cloneable {
 		List<State> st = new ArrayList<State>();
 
 		for (State state : this.getStates()) {
-			if (!state.getType().contains(type)) {
+			if (!state.getTypes().contains(type)) {
 				st.add(state);
 			}
 		}
