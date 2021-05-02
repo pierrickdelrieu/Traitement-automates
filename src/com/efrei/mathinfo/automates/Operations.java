@@ -648,8 +648,6 @@ public class Operations {
 			}
 		}
 
-		System.out.println(Arrays.toString(complementary.getStatesByType(StateType.EXIT)));
-
 		complementary.display();
 		System.out.println("\n------ Automate complémentaire terminée ! ------\n");
 
