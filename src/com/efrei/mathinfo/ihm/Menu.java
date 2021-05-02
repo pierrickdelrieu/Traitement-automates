@@ -10,6 +10,7 @@ import com.efrei.mathinfo.io.FileReader;
 
 public class Menu {
 	private static Automaton currentAutomaton;
+	private static Automaton safeCopy;
 	private static final String header = "****************************\n";
 	private static final String path = "src/com/efrei/mathinfo";
 	private static final Scanner sc = new Scanner(System.in);
@@ -29,14 +30,14 @@ public class Menu {
 				int choice = sc.nextInt();
 
 				if (choice > numFiles || choice < 0) {
-					clearConsolRun();
+					clearConsoleRun();
 					log("Cet automate n'existe pas");
 					log("");
 					continue;
 				} else {
 					currentAutomaton = FileReader
 							.createAutomatonObject(path + "/files/A01-" + String.valueOf(choice) + ".txt");
-					clearConsolRun();
+					clearConsoleRun();
 					openOperationsMenu();
 
 				}
@@ -64,6 +65,7 @@ public class Menu {
 		int choice;
 
 		while (onMenu) {
+			currentAutomaton.display();
 			log(header + "\n");
 			log("Quel opération souhaitez-vous faire ?\n");
 			log("1. Standardisation\n2. Complétion\n3. Déterminisation\n4. Minimisation\n5. Lecture de mot\n6. Complémentaire\n\nr. Retour\n");
@@ -71,12 +73,11 @@ public class Menu {
 
 			if (sc.hasNextInt()) {
 				choice = sc.nextInt();
-				clearConsolRun();
+				clearConsoleRun();
 
 				switch (choice) {
 				case 1:
-					Automaton copy = currentAutomaton.clone();
-					Operations.standardize(copy);
+					Operations.standardize(currentAutomaton);
 					break;
 				case 2:
 					Operations.complete(currentAutomaton);
@@ -91,7 +92,7 @@ public class Menu {
 					openWordMenu();
 					break;
 				case 6:
-					Operations.getComplementary(currentAutomaton);
+					currentAutomaton = Operations.getComplementary(currentAutomaton);
 					break;
 				default:
 					log("Opération non reconnue.");
@@ -102,11 +103,11 @@ public class Menu {
 			else if (sc.hasNextLine()){
 				if (sc.nextLine().equalsIgnoreCase("r")) {
 					onMenu = false;
-					clearConsolRun();
+					clearConsoleRun();
 				}
 				
 				else {
-					clearConsolRun();
+					clearConsoleRun();
 					log("Veuillez entrer un chiffre entre 1 et 6 (ou r pour retourner en arrière)\n");
 				}
 			}
@@ -124,11 +125,11 @@ public class Menu {
 			
 			log("\nEntrez votre mot : ");
 			word = sc.nextLine();
-			clearConsolRun();
+			clearConsoleRun();
 			
 			if (word.equalsIgnoreCase("fin")) {
 				onMenu = false;
-				clearConsolRun();
+				clearConsoleRun();
 			}
 			
 			log(currentAutomaton.toString());
@@ -158,7 +159,7 @@ public class Menu {
 		System.out.println(str);
 	}
 
-	public static void clearConsolRun() {
+	public static void clearConsoleRun() {
 		for(int i = 0; i < 100; i++) // Default Height of cmd is 300 and Default width is 80
 			System.out.println("\n"); // Prints a backspace
 	}

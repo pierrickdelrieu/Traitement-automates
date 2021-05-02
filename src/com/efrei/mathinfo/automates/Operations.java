@@ -350,9 +350,7 @@ public class Operations {
 
 	public static void standardize(Automaton automaton) {
 		if (!isStandard(automaton)) {
-
-			synchronize(automaton);
-
+			
 			System.out.println("\n------ Tentative de standardisation de votre automate ------ \n");
 
 			State newEntry = new State("I");
@@ -387,6 +385,10 @@ public class Operations {
 	public static boolean isStandard(Automaton automaton) {
 
 		State[] entries = automaton.getStatesByType(StateType.ENTRY);
+		
+		if (isAsync(automaton)) {
+			synchronize(automaton);
+		}
 
 		if (entries.length > 1) { 
 			System.out.println("Votre automate n'est pas standard car il contient " + entries.length + " entrées");

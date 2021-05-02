@@ -26,7 +26,7 @@ public class State implements Cloneable, Comparable<State> {
 	}
 
 	public State(State state) {
-		this.id = new Identifier(List.of(state.getIdentifier()));
+		this.id = new Identifier(state.getIdentifier());
 
 		this.types = new ArrayList<StateType>(state.getTypes());
 		this.links = Operations.copyOf(state.getLinks());

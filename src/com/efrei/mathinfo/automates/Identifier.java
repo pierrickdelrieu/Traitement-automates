@@ -17,6 +17,13 @@ public class Identifier implements Comparable<Identifier> {
 
 		this.buildIntValue();
 	}
+	
+	public Identifier(Identifier identifier) {
+		this.id = identifier.getID();
+		this.identifiers = new ArrayList<Identifier>(identifier.getIdentifiers());
+		
+		this.buildIntValue();
+	}
 
 	public Identifier(List<Identifier> identifiers) {
 		this.identifiers = buildIdentifiers(identifiers, 0);
