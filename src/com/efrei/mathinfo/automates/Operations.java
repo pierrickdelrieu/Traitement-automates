@@ -788,6 +788,13 @@ public class Operations {
 		return noDuplicates;
 	}
 
+	/**
+	* Method that merge two list together. </br>
+	* No duplicates.
+	* @param list1 the first list to be merged.
+	* @param list2 the second list to be merged.
+	* @return List newList, the merged list 
+	*/
 	protected static <T> List<T> mergeLists(List<T> list1, List<T> list2) {
 
 		List<T> newList = new ArrayList<T>();
@@ -803,6 +810,13 @@ public class Operations {
 		return newList;
 	}
 
+	/**
+	 * The method merges 2 maps from parameters
+	 *
+	 * @param map1 to merge with map2
+	 * @param map2 to merge with map1
+	 * @return newMap from map1 and map2
+	*/
 	protected static Map<String, List<State>> mergeMaps(Map<String, List<State>> map1, Map<String, List<State>> map2) {
 
 		Map<String, List<State>> newMap = new HashMap<String, List<State>>();
@@ -839,6 +853,12 @@ public class Operations {
 		return newMap;
 	}
 
+	/**
+	 * The method copies a map to another one
+	 *
+	 * @param map
+	 * @return newMap copied from {@code map}
+	*/
 	protected static Map<String, List<State>> copyOf(Map<String, List<State>> map) {
 		Map<String, List<State>> newMap = new HashMap<String, List<State>>();
 
@@ -848,7 +868,13 @@ public class Operations {
 
 		return newMap;
 	}
-
+	
+	/**
+	* Method that create a new ID for a new state.
+	* Merge states into a list, and uses the list to create the new ID.
+	* @param states List of states
+	* @return String the new ID.
+	*/
 	protected static String makeID(State... states) {
 		List<Identifier> statesIds = new ArrayList<Identifier>();
 
