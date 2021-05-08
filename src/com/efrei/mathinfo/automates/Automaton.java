@@ -8,26 +8,26 @@ import java.util.stream.Collectors;
 
 public class Automaton implements Cloneable {
 
-	// Attributes
 	private List<State> states;
 	private Alphabet alphabet;
 	private int numTransitions;
 
-	// Constructor
+
+	/**
+	* Constructor <br>
+	* Initialize all attributes to 0 or null
+	*/
 	public Automaton() {
 		this.states = new ArrayList<State>();
 		this.alphabet = null;
 	}
 
-	public Automaton(List<State> states) {
-		this.states = new ArrayList<State>();
-
-		states.forEach(s -> {
-			this.states.add(s.clone());
-		});
-	}
-
-	public Automaton(Automaton automaton) {
+	/**
+	* Copy constructor <br>
+	* Copy the entire state list, alphabet and transition number. It create new benchmarks. No reference of the copied automaton is re-used
+	* @param automaton Automaton to copy
+	*/
+	private Automaton(Automaton automaton) {
 		this.states = new ArrayList<State>();
 
 		automaton.getStates().forEach(s -> {
@@ -46,7 +46,6 @@ public class Automaton implements Cloneable {
 		this.numTransitions = Integer.valueOf(automaton.getNumTransitions());
 	}
 
-	// Read and write accessors
 	public List<State> getStates() {
 		return this.states;
 	}
@@ -106,6 +105,12 @@ public class Automaton implements Cloneable {
 		return null; // if the state is not present in the automaton
 	}
 
+	/**
+	 * The method tells us which states have a particular type
+	 *
+	 * @param type to check if a state has it
+	 * @return Array of states having the {@code StateType} type
+	*/
 	public State[] getStatesByType(StateType type) {
 
 		List<State> filteredList = this.states.stream()
@@ -116,6 +121,12 @@ public class Automaton implements Cloneable {
 		return filteredList.toArray(new State[0]);
 	}
 
+	/**
+	 * The method tells us the states that don't have a particular type
+	 *
+	 * @param type to check if a state has it
+	 * @return Array of states without the {@code StateType} type
+	 */
 	public State[] getAllStatesButType(StateType type) {
 		List<State> st = new ArrayList<State>();
 
@@ -128,6 +139,10 @@ public class Automaton implements Cloneable {
 		return st.toArray(new State[0]);
 	}
 
+	/**
+	 * The method copies the automaton
+	 * @return new {@code Automaton} 
+	*/
 	public Automaton clone() {
 		return new Automaton(this);
 	}
@@ -137,6 +152,12 @@ public class Automaton implements Cloneable {
 		System.out.println(this);
 	}
 
+	/**
+	 * The method tells us if he recognizes a word
+	 *
+	 * @param word entered by user to check
+	 * @return {@code true} if the word is recognized {@code false} if the word is not recognized
+	*/
 	public boolean recognizesWord(String word) {
 
 		State[] entries = this.getStatesByType(StateType.ENTRY);
@@ -159,6 +180,14 @@ public class Automaton implements Cloneable {
 		return false;
 	}
 
+	/**
+	 * helper method that starts in a State to read a word 
+	 *
+	 * @param word entered by user to check
+	 * @param index to see which character is being evaluated
+	 * @param current the State in which we are
+	 * @return {@code true} if final state is an exit, {@code false} otherwise 
+	*/
 	private boolean recognizesWordFromState(String word, int index, State current) {
 
 		if (index == word.length() - 1) {
@@ -199,7 +228,7 @@ public class Automaton implements Cloneable {
 		State[] entries = this.getStatesByType(StateType.ENTRY);
 		
 		/*
-		 * stream : allows you to use the filter method filter returns a list containing
+		 * stream : allows you to use the filter method filter which returns a list containing
 		 * the filter conditions (<type> -> <filter conditions>)
 		 */
 		result += entries.length + " entrées : " + Arrays.toString(entries) + "\n";

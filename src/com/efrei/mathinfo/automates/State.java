@@ -12,10 +12,12 @@ public class State implements Cloneable, Comparable<State> {
 	private Map<String, List<State>> links; // keyword gives the state (Map<key, List of state>)
 	private List<StateType> types; // Status states: ENTRY, COMMON, EXIT
 
-	public State() {
-		this("");
-	}
-
+	/**
+	* Constructor<br>
+	* Create a state with its identifier and initialize the other attributes to 0 or null
+	* Initialize as a common state (neither input nor output)
+	* @param id Identifiers of the state
+	*/
 	public State(String id) {
 		this.id = new Identifier(id);
 
@@ -25,6 +27,11 @@ public class State implements Cloneable, Comparable<State> {
 		this.links = new HashMap<String, List<State>>();
 	}
 
+	/**
+	* Copy constructor<br>
+	* No reference of the copied state is re-used
+	* @param state State to copy
+	*/
 	public State(State state) {
 		this.id = new Identifier(state.getIdentifier());
 
@@ -47,13 +54,12 @@ public class State implements Cloneable, Comparable<State> {
 	public Map<String, List<State>> getLinks() {
 		return this.links;
 	}
-	
-	public void transformTo(State state) {
-		this.id = state.getIdentifier();
-		this.types = state.getTypes();
-		this.links = state.getLinks();
-	}
 
+	/**
+	* Create a new transition from one state to another.
+	* @param what is the character that the transition will need to be readed
+	* @param where is the state this transition will lead to
+	**/
 	public void addLink(String what, State where) {
 		// If the list of this transition is already created
 		if (this.links.containsKey(what)) {
@@ -75,12 +81,20 @@ public class State implements Cloneable, Comparable<State> {
 		return this.types;
 	}
 
+	/**
+	* Add a type to the current state such as Entry type or Exit type
+	* @param type that will added to the state
+	**/
 	public void addType(StateType type) {
 		if (!this.types.contains(type)) {
 			this.types.add(type);
 		}
 	}
 
+	/**
+	* Remove a type from the current state such as Entry type or Exit type
+	* @param type that will disapeer from the state
+	**/
 	public void removeType(StateType type) {
 		if (this.types.contains(type)) {
 			this.types.remove(type);
@@ -95,6 +109,10 @@ public class State implements Cloneable, Comparable<State> {
 		return this.types.contains(StateType.EXIT);
 	}
 
+	/**
+	* Function that allow to merge to two states (including all their links)
+	* @param toMerge is the state you'll merge with your current state
+	**/
 	public void mergeWith(State toMerge) {
 
 		if (this.equals(toMerge)) {

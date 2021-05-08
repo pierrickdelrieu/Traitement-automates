@@ -10,11 +10,15 @@ import com.efrei.mathinfo.io.FileReader;
 
 public class Menu {
 	private static Automaton currentAutomaton;
-	private static Automaton safeCopy;
 	private static final String header = "****************************\n";
 	private static final String path = "src/com/efrei/mathinfo";
 	private static final Scanner sc = new Scanner(System.in);
 
+	/**
+	 * Open the main menu where you can choose which automaton you want to work with
+	 * 
+	 * @throws FileNotFoundException if the file is not found
+	 * */
 	public static void openMainMenu() throws FileNotFoundException {
 		File dir = new File(path + "/files");
 		boolean onMenu = true;
@@ -36,7 +40,7 @@ public class Menu {
 					continue;
 				} else {
 					currentAutomaton = FileReader
-							.createAutomatonObject(path + "/files/A01-" + String.valueOf(choice) + ".txt");
+							.createAutomatonObject(path + "/files/A1-" + String.valueOf(choice) + ".txt");
 					clearConsoleRun();
 					openOperationsMenu();
 
@@ -59,11 +63,15 @@ public class Menu {
 		sc.close();
 		System.out.println("Merci d'avoir utilisé notre programme !");
 	}
-
+	
+	
+	/**
+	 *  Open the menu where you can chose which operation you want to execute
+	 */
 	public static void openOperationsMenu() {
 		boolean onMenu = true;
 		int choice;
-
+		
 		while (onMenu) {
 			currentAutomaton.display();
 			log(header + "\n");
@@ -92,7 +100,10 @@ public class Menu {
 					openWordMenu();
 					break;
 				case 6:
-					currentAutomaton = Operations.getComplementary(currentAutomaton);
+					Automaton a = Operations.getComplementary(currentAutomaton);
+					if (a != null) {
+						currentAutomaton = a;
+					}
 					break;
 				default:
 					log("Opération non reconnue.");
@@ -113,15 +124,26 @@ public class Menu {
 			}
 		}
 	}
-
+	/**
+	* Open the menu where you can type a word to check if a word can be readed by your automaton
+	**/
 	public static void openWordMenu() {
 
 		System.out.println("Saisissez votre mot à vérifier, écrire fin pour arrêter.");
 		String word;
 		boolean onMenu = true;
-		Automaton complementary = Operations.getComplementary(currentAutomaton);
+		
+		if(Operations.isAsync(currentAutomaton)) {
+			System.out.println("Pour utiliser ce menu, votre automate doit être synchrone");
+			System.out.println("Nous le synchronisons pour vous : ");
+			Operations.synchronize(currentAutomaton);
+		}
+		
+		sc.nextLine(); // clear buffer
 
 		while (onMenu) {
+			
+			log(currentAutomaton.toString() + "\n");
 			
 			log("\nEntrez votre mot : ");
 			word = sc.nextLine();
@@ -132,33 +154,31 @@ public class Menu {
 				clearConsoleRun();
 			}
 			
-			log(currentAutomaton.toString());
 			
 			boolean current = currentAutomaton.recognizesWord(word);
-			boolean compl = complementary.recognizesWord(word);
 			
 			if (current) {
-				log(word + " est reconnu par l'automate.");
+				log(word + " est reconnu par l'automate.\n");
 			} 
 			
 			else {
-				log(word + " n'est pas reconnu par l'automate.");
-			}
-			
-			if (compl) {
-				log(word + " est reconnu par l'automate complémentaire.");
-			}
-			
-			else {
-				log(word + " n'est pas reconnu par l'automate complémentaire.");
+				log(word + " n'est pas reconnu par l'automate.\n");
 			}
 		} 
 	}
 
+	/**
+	* Simplification of 'System.out.println'
+	* @param str string to display
+	**/
 	public static void log(String str) {
 		System.out.println(str);
 	}
 
+	/**
+	* Removed the run console from the IDE.
+	* Realization of a set of spaces because the RUN console cannot be clear like a terminal 
+	**/
 	public static void clearConsoleRun() {
 		for(int i = 0; i < 100; i++) // Default Height of cmd is 300 and Default width is 80
 			System.out.println("\n"); // Prints a backspace

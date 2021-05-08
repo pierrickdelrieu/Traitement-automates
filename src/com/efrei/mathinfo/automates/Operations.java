@@ -18,7 +18,7 @@ public class Operations {
 	 * 
 	 * @return true if it is async false if not
 	 */
-	private static boolean isAsync(Automaton automaton) {
+	public static boolean isAsync(Automaton automaton) {
 		for (State state : automaton.getStates()) {
 			for (String key : state.getLinks().keySet()) {
 				if (key.equals("*")) { // "" is an epsilon transition, if one state has such transition, the automaton
@@ -317,7 +317,7 @@ public class Operations {
 	 * @param automaton The automaton to complete
 	 * @return {@code true} if complete, {@code false} otherwise
 	 */
-	private static boolean isCompleted(Automaton automaton) {
+	public static boolean isCompleted(Automaton automaton) {
 
 		if (!isDeterministic(automaton)) {
 			System.out.println("Votre état n'est pas complet car celui-ci n'est pas déterministe");
@@ -348,6 +348,16 @@ public class Operations {
 		return true;
 	}
 
+	/**
+	 * Standardizes the <strong>automaton</strong> in the parameters <br>
+	 * For example, if the automaton has 2 entries or one transition to the entry 
+	 * then it will need to be standardized <br>
+	 * 
+	 * This function can be called at any time during the process, after the completion <br>
+	 * or the determinization...
+	 * 
+	 * @param automaton The automaton to standardize
+	 * */
 	public static void standardize(Automaton automaton) {
 		if (!isStandard(automaton)) {
 			
@@ -382,6 +392,13 @@ public class Operations {
 		}
 	}
 
+	/**
+	 * Checks if the automaton is standard or not <br>
+	 * The function first checks if the automaton is asynchronous by calling {@code isAsync()} <br>
+	 * if it is it will synchronize it !
+	 * 
+	 * @param automaton The automaton we want to check
+	 * */
 	public static boolean isStandard(Automaton automaton) {
 
 		State[] entries = automaton.getStatesByType(StateType.ENTRY);
@@ -418,6 +435,12 @@ public class Operations {
 		return true;
 	}
 
+	/**
+	 * Minimizes the <strong>automaton</strong> in the parameters <br>
+	 * The automaton will need to be deterministic and completed so the function <br>
+	 * makes sure this is the case by calling {@code isDeterminized()} and {@code isCompleted()}
+	 * @param automaton The automaton to minimize
+	 * */
 	public static void minimize(Automaton automaton) {
 
 		System.out.println("------ Tentative de minimisation de votre automate ------\n");
@@ -502,6 +525,14 @@ public class Operations {
 		}
 	}
 
+	/**
+	 * Private function that returns a list containing all the final partitions <br>
+	 * The function will try to put states in the same in the same partition if they
+	 * can be merged during the minimization process 
+	 * 
+	 * @param automaton The automaton from which we will build the final partition
+	 * @return a {@code List<List<State>>} containing the final partitions
+	 * */
 	private static List<List<State>> getUnmergedLastTheta(Automaton automaton) {
 
 		System.out.println("\n------ Récupération de la partition finale ------\n");
@@ -588,6 +619,15 @@ public class Operations {
 		return thetaCurrent;
 	}
 
+	/**
+	 * Helper function that compare the destinations between two states and the current theta 
+	 * <br> It will check if the states have transitions that brings them in the same partitions <br>
+	 * 
+	 * @param s1 The first state to compare with s2
+	 * @param s2 The second state to compare with s1
+	 * @param theta The current theta containing all the partitions
+	 * @return {@code true} if the states both go in the same partitions {@code false} otherwise
+	 * */
 	private static boolean compareDestinations(State s1, State s2, List<List<State>> theta) {
 		boolean same = true;
 		int check = s1.getLinks().size();
@@ -622,6 +662,13 @@ public class Operations {
 		return same;
 	}
 
+	/**
+	 * Checks if a state is in a partition
+	 * 
+	 * @param d1 The State to check
+	 * @param partition The partition to check
+	 * @return {@code true}
+	 * */
 	private static boolean foundInPartition(State d1, List<State> partition) {
 
 		for (State state : partition) {
@@ -632,7 +679,21 @@ public class Operations {
 		return false;
 	}
 
+	/**
+	 * Get the complementary of the automaton, all the exits will be changed to only common states <br>
+	 * All the non-final states will be added the {@code StateType EXIT}
+	 * 
+	 * The automaton isn't directly changed, the function makes a copy and returns the copy
+	 * 
+	 * @param automaton The automaton from which we want the complementary
+	 * @return 
+	 * */
 	public static Automaton getComplementary(Automaton automaton) {
+		
+		if (!isCompleted(automaton)) {
+			System.out.println("Votre automate n'est pas complet, nous ne pouvons pas faire le complémentaire");
+			return null;
+		}
 
 		Automaton complementary = automaton.clone();
 
@@ -654,6 +715,12 @@ public class Operations {
 		return complementary;
 	}
 
+	/**
+	 * The method merges states
+	 *
+	 * @param states array with all states that we want to merge
+	 * @return the merged State 
+	*/
 	public static State mergeStates(State... states) {
 
 		if (states.length == 0) {
@@ -679,6 +746,14 @@ public class Operations {
 		return current;
 	}
 
+
+	/**
+	 * The method creates the possible merged state of <strong>states</strong> only if it does not exist yet
+	 *
+	 * @param automaton being analyzed
+	 * @param states array with all states that we want to merge
+	 * @return {@code possibleState} if state found, else merged states
+	*/
 	protected static State findOrMerge(Automaton automaton, State... states) {
 
 		String possibleID = makeID(states);
@@ -695,6 +770,12 @@ public class Operations {
 		}
 	}
 
+	/**
+	 * The method removes all duplicates from a list, for example, [1,1,2]->[1,2]
+	 *
+	 * @param list of whatever type T
+	 * @return new list with no duplicates
+	*/
 	protected static <T> List<T> removeDuplicates(List<T> list) {
 		List<T> noDuplicates = new ArrayList<T>();
 
